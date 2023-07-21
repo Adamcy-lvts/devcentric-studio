@@ -36,7 +36,7 @@ class ContactUsForm extends Component
         $this->email = '';
         $this->message = '';
 
-        session()->flash('success_message', 'We recieved your message successfully and will get back to you shortly!');
+        session()->flash('success_message', 'Message successfully sent!!');
 
        
     }
