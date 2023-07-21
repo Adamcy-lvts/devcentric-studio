@@ -1,0 +1,188 @@
+/* body {
+    font-family: Arial, helvetica, Sans-serif;
+    background: #f1f1f1;
+} */
+div.candidatos, div.text {
+    position:relative;
+    height: 40px;
+    margin:40px 20px;
+    padding-left:50px;
+}
+div.text p{
+    font-size: 10px;
+    font-weight: 600;
+    color: #9e9c9b;
+    text-transform: uppercase;
+}
+div.text p a{
+    color: #5e5c5b;
+}
+div.candidatos img {
+    position:absolute;
+    top:0;
+    left:0;
+    width:40px;
+    height:40px;
+    border-radius: 50%;
+    border: 2px solid #ddd;
+    padding:1px;
+}
+div.candidatos .parcial {
+    display:inline-block;
+    width:100%;
+    height:40px;
+    vertical-align:middle;
+    padding: 0 0 0 10px;
+}
+div.candidatos .parcial .info {
+    height:15px;
+    position: relative;
+}
+div.candidatos .parcial .info > div {
+    float:left;
+}
+div.candidatos .parcial .info .nome {
+    position: absolute;
+    top: 0;
+    left:0;
+    font-size: 15px;
+    font-weight: 600;
+    color: #192D49;
+}
+div.candidatos .parcial .info .eleito, div.candidatos .parcial .info .segundo-turno {
+    color: #fff;
+    padding: 0 5px 2px 5px;
+    border-radius: 2px;
+}
+div.candidatos .parcial .info .percentagem-num {
+    position: absolute;
+    top:0;
+    right:0;
+    font-size: 18px;
+    font-weight: 700;
+    color: #192D49;
+}
+div.candidatos .parcial .progressBar {
+    position:relative;
+    width:100%;
+    height:7px;
+    margin:5px 0 2px;
+    border-radius:10px;
+    background: #b9b8b8;
+}
+div.candidatos .parcial .progressBar .percentagem {
+    position:absolute;
+    top:0;
+    left:0;
+    height:7px;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    /* background: #A4B5C0; */
+    -webkit-transition: 5s all;
+    -webkit-animation-duration: 5s;
+    -webkit-animation-name: animationProgress;
+}
+/* div.candidatos.color1 .parcial .percentagem {
+    background-color:#EACF00;
+}
+div.candidatos.color2 .parcial .percentagem {
+    background-color:#C44738;
+}
+div.candidatos.color3 .parcial .percentagem {
+    background-color:#4086CD;
+} */
+/* div.candidatos.color4 .parcial .percentagem {
+    background-color:#272726;
+} */
+div.candidatos .parcial .partidas {
+    font-family: Arial, helvetica, Sans-serif;
+    font-size: 10px;
+    font-weight: 600;
+    color: #9e9c9b;
+    text-transform: uppercase;
+}
+.percentual {
+    -webkit-transition: 5s all;
+    -webkit-animation-duration: 5s;
+    -webkit-animation-name: animationProgress;
+    transition: 5s all;
+    animation-duration: 5s;
+    animation-name: animationProgress;
+}
+@-webkit-keyframes animationProgress {
+    from {
+        width:0;
+    }
+}
+@keyframes animationProgress {
+    from {
+        width:0;
+    }
+}
+
+.bg-orange-600 {
+    --tw-bg-opacity: 1;
+    background-color: rgb(234 88 12 / var(--tw-bg-opacity));
+  }
+
+  .bg-blue-450 {
+    --tw-bg-opacity: 1;
+    background-color: rgb(64 134 205 / var(--tw-bg-opacity));
+  }
+
+  .bg-yellow-350 {
+    --tw-bg-opacity: 1;
+    background-color: rgb(240 219 79 / var(--tw-bg-opacity));
+  }
+
+  .bg-amber-900 {
+    --tw-bg-opacity: 1;
+    background-color: rgb(120 53 15 / var(--tw-bg-opacity));
+  }
+
+  .bg-purple-950 {
+    --tw-bg-opacity: 1;
+    background-color: rgb(59 7 100 / var(--tw-bg-opacity));
+  }
+
+  /* Add this CSS code to your existing styles */
+/* .gradient-fill {
+    background-image: linear-gradient(45deg, #ff9f00, #ff2a68);
+  } */
+  
+  .group {
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .group:hover {
+    transform: scale(1.05);
+  }
+  
+
+.glow {
+  
+    box-shadow: 0 4px 15px 0 rgba(0, 0, 0, 0.2);
+    /* transition: box-shadow .3s ease-in-out; */
+}
+
+.glow:hover {
+    box-shadow: 0 20px 40px rgba(0, 0, 0, .4);
+}
+
+
+.tooltip-arrow {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-top: 8px solid #111827; /* Change to the hexadecimal value of gray-200 */
+  }
+  
+  
+  
