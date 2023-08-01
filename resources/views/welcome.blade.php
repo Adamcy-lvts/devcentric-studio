@@ -13,7 +13,8 @@
     <!-- Scripts -->
     @wireUiScripts
     @vite(['resources/css/app.css', 'resources/js/app.js'])
-    <script src="https://unpkg.com/@alpine-collective/toolkit@1.0.0/dist/cdn.min.js"></script>
+    {{-- <script src="https://unpkg.com/@alpine-collective/toolkit@1.0.0/dist/cdn.min.js"></script> --}}
+    <script src="{{ asset('js/alpinetoolkit.js') }}"></script>
 
     <!-- Styles -->
     <link href="{{ asset('css/main.css') }}" media="screen" rel="stylesheet" />
@@ -25,7 +26,7 @@
     @livewireStyles
 </head>
 
-<body >
+<body>
 
 
     <div id="main" class="relative">
@@ -48,17 +49,17 @@
                             <h2 class=" studio text-white text-3xl md:text-5xl">Studio</h2>
                         </a>
                     </div>
-                     {{-- Desktop Navigation Menu --}}
-                     <div>
+                    {{-- Desktop Navigation Menu --}}
+                    <div>
                         @include('partials.desktop-navigation')
-                     </div>
-              
+                    </div>
+
                 </div>
                 <div>
                     @include('partials.mobile-navigation')
-                 </div>
+                </div>
             </div>
-           
+
 
             <div>
                 <div class="relative bg-cover bg-center bg-no-repeat py-8"
@@ -68,15 +69,17 @@
                     <div class="container relative z-30 pt-20 pb-12 sm:pt-56 sm:pb-48 lg:pt-64 lg:pb-48">
                         <div class="flex flex-col items-center justify-center lg:flex-row">
                             <div class="rounded-full border-4 border-white animate__animated animate__bounceIn">
-                                <img src="{{asset('storage/'.$profile->user->profile_photo_path)}}" class="h-48 rounded-full sm:h-56" alt="author" />
-                                
+                                <img src="{{ asset('storage/' . $profile->user->profile_photo_path) }}"
+                                    class="h-48 rounded-full sm:h-56" alt="author" />
+
                             </div>
                             <div class="pt-8 sm:pt-10 lg:pl-8 lg:pt-0">
                                 <h1
                                     class="text-center font-header text-4xl md:text-center sm:text-center text-white sm:text-left sm:text-5xl md:text-6xl animate__animated animate__backInDown">
-                                    Hello I'm {{$profile->name ?? ''}}!
+                                    Hello I'm {{ $profile->name ?? '' }}!
                                 </h1>
-                                <div class="flex flex-col justify-center pt-3 sm:flex-row sm:pt-5 lg:justify-start animate__animated animate__backInUp">
+                                <div
+                                    class="flex flex-col justify-center pt-3 sm:flex-row sm:pt-5 lg:justify-start animate__animated animate__backInUp">
                                     <div class="flex items-center justify-center pl-0 sm:justify-start md:pl-1">
                                         <p class="font-body text-lg uppercase text-white">Let's connect</p>
                                         <div class="hidden sm:block">
@@ -84,20 +87,20 @@
                                         </div>
                                     </div>
                                     <div class="flex items-center justify-center pt-5 pl-2 sm:justify-start sm:pt-0">
-                                        <a href="{{$profile->facebook ?? ''}}" target="_blank">
+                                        <a href="{{ $profile->facebook ?? '' }}" target="_blank">
                                             <i
                                                 class="bx bxl-facebook-square text-2xl text-white hover:text-teal-400"></i>
                                         </a>
-                                        <a href="{{$profile->twitter ?? ''}}" target="_blank" class="pl-4">
+                                        <a href="{{ $profile->twitter ?? '' }}" target="_blank" class="pl-4">
                                             <i class="bx bxl-twitter text-2xl text-white hover:text-teal-400"></i>
                                         </a>
-                                        <a href="{{$profile->whatsapp ?? ''}}" target="_blank" class="pl-4">
+                                        <a href="{{ $profile->whatsapp ?? '' }}" target="_blank" class="pl-4">
                                             <i class="bx bxl-whatsapp text-2xl text-white hover:text-teal-400"></i>
                                         </a>
-                                        <a href="{{$profile->linkedin ?? ''}}" target="_blank" class="pl-4">
+                                        <a href="{{ $profile->linkedin ?? '' }}" target="_blank" class="pl-4">
                                             <i class="bx bxl-linkedin text-2xl text-white hover:text-teal-400"></i>
                                         </a>
-                                        <a href="{{$profile->instagram ?? ''}}" target="_blank" class="pl-4">
+                                        <a href="{{ $profile->instagram ?? '' }}" target="_blank" class="pl-4">
                                             <i class="bx bxl-instagram text-2xl text-white hover:text-teal-400"></i>
                                         </a>
                                     </div>
@@ -108,7 +111,7 @@
                 </div>
 
                 {{-- Intro Section  --}}
-               @include('profile-section', ['profile' => $profile])
+                @include('profile-section', ['profile' => $profile])
             </div>
             {{-- My Services Section  --}}
             <div class="mx-auto sm:w-10/12 px-5 py-16 md:py-20" id="services">
@@ -126,11 +129,11 @@
 
             </div>
 
-            @include('sections.blog-section',['posts' => $posts])
+            @include('sections.blog-section', ['posts' => $posts])
 
             @livewire('contact-us-form')
 
-            @include('components.footer',['profile' => $profile])
+            @include('components.footer', ['profile' => $profile])
 
         </div>
     </div>
