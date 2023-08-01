@@ -1,10 +1,10 @@
 <div class="bg-grey-50" id="about" style="background-image: url('{{ asset('img/bg_triangles_pattern.webp') }}')">
     <div class=" sm:w-10/12 mx-auto flex flex-col items-center py-16 md:py-20 lg:flex-row">
         <div class="w-full  sm:w-3/4 lg:w-3/5 lg:text-left p-4">
-            <h2 class="font-header text-center text-4xl font-semibold uppercase text-gray-900 sm:text-5xl lg:text-6xl">
+            <h2 class="font-header text-center md:text-left text-4xl font-semibold uppercase text-gray-900 sm:text-5xl lg:text-6xl">
                 Who am I?
             </h2>
-            <h4 class="pt-6 font-header text-center text-xl font-medium text-black sm:text-xl lg:text-2xl">
+            <h4 class="pt-6 font-header text-center md:text-left text-xl font-medium text-black sm:text-xl lg:text-2xl">
                 I'm {{ $profile->name }}, a {{ $profile->title }}
             </h4>
             <p class="pt-6 font-body leading-relaxed text-justify text-grey-20 px-4 md:px-0">
