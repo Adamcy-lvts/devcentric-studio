@@ -67,8 +67,8 @@ return [
          * The default configurations to be used by the opengraph generator.
          */
         'defaults' => [
-            'title'       => 'Over 9000 Thousand!', // set false to total remove
-            'description' => 'For those who helped create the Genki Dama', // set false to total remove
+            'title'       => 'Devcentric Studio', // set false to total remove
+            'description' => 'Devcentric Studio is a leading provider of web development, web design, maintenance and support, graphic design, digital marketing, IT consulting, technology consulting, and digital transformation services. We specialize in delivering high-quality solutions tailored to meet the unique needs of our clients. With our expertise in HTML, CSS, JavaScript, PHP, and Laravel, we create custom web applications, responsive web designs, and e-commerce solutions. Our team of experienced professionals ensures that your website is visually appealing, user-friendly, and optimized for search engines. Partner with us to transform your digital presence and achieve your business goals.', // set false to total remove
             'url'         => false, // Set null for using Url::current(), set false to total remove
             'type'        => false,
             'site_name'   => false,
@@ -89,8 +89,8 @@ return [
          * The default configurations to be used by the json-ld generator.
          */
         'defaults' => [
-            'title'       => 'Over 9000 Thousand!', // set false to total remove
-            'description' => 'For those who helped create the Genki Dama', // set false to total remove
+            'title'       => 'Devcentric Studio', // set false to total remove
+            'description' => 'Devcentric Studio is a leading provider of web development, web design, maintenance and support, graphic design, digital marketing, IT consulting, technology consulting, and digital transformation services. We specialize in delivering high-quality solutions tailored to meet the unique needs of our clients. With our expertise in HTML, CSS, JavaScript, PHP, and Laravel, we create custom web applications, responsive web designs, and e-commerce solutions. Our team of experienced professionals ensures that your website is visually appealing, user-friendly, and optimized for search engines. Partner with us to transform your digital presence and achieve your business goals.', // set false to total remove
             'url'         => false, // Set to null or 'full' to use Url::full(), set to 'current' to use Url::current(), set false to total remove
             'type'        => 'WebPage',
             'images'      => [],
