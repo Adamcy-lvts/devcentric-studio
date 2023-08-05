@@ -148,7 +148,7 @@
                         <img src="/img/sms.png" class="w-full shadow" alt="portfolio image" />
                     </a>
                     <a href="/" class="mx-auto transform transition-all hover:scale-105 md:mx-0">
-                        <img src="/img/portfolio-fedex.jpeg" class="w-full shadow" alt="portfolio image" />
+                        <img src="/img/dashboard.png" class="w-full shadow" alt="portfolio image" />
                     </a>
                     <a href="/" class="mx-auto transform transition-all hover:scale-105 md:mx-0">
                         <img src="/img/portfolio-microsoft.jpeg" class="w-full shadow" alt="portfolio image" />
