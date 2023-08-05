@@ -21,7 +21,7 @@
     <link href="https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css" rel="stylesheet" />
     <link crossorigin="anonymous" href="{{ asset('css/main.min.css') }}" media="screen" rel="stylesheet" />
     <link href="{{ asset('css/skillbar.css') }}" media="screen" rel="stylesheet" />
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css">
 
     @livewireStyles
 </head>
@@ -139,7 +139,7 @@
                     Here's what I have done with the past
                 </h3>
 
-                <div
+                {{-- <div
                     class="mx-auto grid w-full grid-cols-1 gap-8 pt-12 sm:w-3/4 md:gap-10 lg:w-full lg:grid-cols-2">
                     <a href="/" class="mx-auto transform transition-all hover:scale-105 md:mx-0">
                         <img src="/img/fegocomosa.png" class="w-full shadow" alt="portfolio image" />
@@ -153,7 +153,23 @@
                     <a href="/" class="mx-auto transform transition-all hover:scale-105 md:mx-0">
                         <img src="/img/portfolio-microsoft.jpeg" class="w-full shadow" alt="portfolio image" />
                     </a>
+                </div> --}}
+
+                <div class="mx-auto grid w-full grid-cols-1 gap-8 pt-12 sm:w-3/4 md:gap-10 lg:w-full lg:grid-cols-2">
+                    <a href="/img/fegocomosa.png" data-lightbox="portfolio" class="mx-auto transform transition-all hover:scale-105 md:mx-0">
+                        <img src="/img/fegocomosa.png" class="w-full shadow" alt="portfolio image" />
+                    </a>
+                    <a href="/img/sms.png" data-lightbox="portfolio" class="mx-auto transform transition-all hover:scale-105 md:mx-0">
+                        <img src="/img/sms.png" class="w-full shadow" alt="portfolio image" />
+                    </a>
+                    <a href="/img/dashboard.png" data-lightbox="portfolio" class="mx-auto transform transition-all hover:scale-105 md:mx-0">
+                        <img src="/img/dashboard.png" class="w-full shadow" alt="portfolio image" />
+                    </a>
+                    <a href="/img/portfolio-microsoft.jpeg" data-lightbox="portfolio" class="mx-auto transform transition-all hover:scale-105 md:mx-0">
+                        <img src="/img/portfolio-microsoft.jpeg" class="w-full shadow" alt="portfolio image" />
+                    </a>
                 </div>
+                
             </div>
 
             @include('sections.blog-section', ['posts' => $posts])
@@ -171,6 +187,7 @@
     @livewireScripts
 
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox.min.js"></script>
 
 
 </body>
