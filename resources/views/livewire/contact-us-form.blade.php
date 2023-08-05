@@ -84,7 +84,7 @@
                             </g>
                         </svg>
                         <p class="text-gray-600 mb-2">
-                            Email: decventric.studio@gmail.com
+                            Email: devcentric.studio@gmail.com
                         </p>
                     </div>
                     <div class="flex gap-4 mb-5">
@@ -108,7 +108,7 @@
                             </g>
                         </svg>
                         <p class="text-gray-600 mb-2">
-                            Website: decventricstudio.com
+                            Website: www.devcentric.com
                         </p>
                     </div>
                 </div>
