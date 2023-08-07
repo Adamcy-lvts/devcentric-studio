@@ -51,12 +51,14 @@
                     </div>
                     {{-- Desktop Navigation Menu --}}
                     <div>
-                        @include('partials.desktop-navigation')
+                        {{-- @include('partials.desktop-navigation') --}}
+                        <x-nav-desktop></x-nav-desktop>
                     </div>
 
                 </div>
                 <div>
-                    @include('partials.mobile-navigation')
+                    {{-- @include('partials.mobile-navigation') --}}
+                    <x-nav-mobile></x-nav-mobile>
                 </div>
             </div>
 
