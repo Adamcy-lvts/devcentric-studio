@@ -20,25 +20,11 @@ class ProfileSeeder extends Seeder
                 'title' => 'Software Developer | Graphic Designer | Electrical and Electronics Engineer',
 
                 'about_me' => '
-                <p>As the founder of DevCentric Studio, I am not only a web developer and graphic designer but also hold a B.Eng in Electrical and Electronics Engineering. 
-                This combination of technical expertise and creative skills allows me to bring a unique perspective to each project.
-
-                Being a tech enthusiast, I am always eager to learn and expand my knowledge in web development and design. 
-                I find joy in coding and staying up-to-date with the latest trends and technologies in the industry.</p>
-                
-                <p>
-                   Passionate about technology and its endless possibilities, 
-                   I am a true tech enthusiast who finds joy in crafting elegant and functional web solutions. 
-                   From creating visually stunning websites to developing intuitive user interfaces, 
-                   I thrive on the challenges that come with pushing the boundaries of digital design.
-                </p>
-
-                <p>
-                With a keen eye for aesthetics and attention to detail, I bring a touch of creativity to all my projects.
-                Whether it\'s designing captivating graphics, creating intuitive user experiences, or optimizing websites for optimal performance,
-                I strive to deliver visually appealing and engaging digital experiences that leave a lasting impression.
-                </p>
-                ',
+                <p>As the founder of DevCentric Studio, I bring a multifaceted skill set to the table. With a bachelor\'s degree in Electrical and Electronics Engineering, I\'ve cultivated a deep technical foundation that synergizes harmoniously with my roles as a web developer and graphic designer.</p>
+                <p>My journey is one of perpetual growth and exploration. In a rapidly evolving landscape, I remain dedicated to continuous learning, perpetually seeking to expand my horizons within the realms of web development and design. Each project is a fresh canvas for me to paint upon, as I integrate innovative technologies and design paradigms to deliver solutions that resonate both aesthetically and functionally.</p>
+                <p>At heart, I am an advocate for the boundless potential of technology. My passion emanates from the belief that elegant solutions lie at the intersection of creativity and precision. From weaving visually captivating websites to sculpting seamless user interfaces, I thrive amidst the challenges that arise from pushing the frontiers of digital craftsmanship.</p>
+                <p>My discerning eye for aesthetics, coupled with an unwavering commitment to meticulousness, imparts a distinct touch of creativity to every endeavor. My goal is not just to create, but to create impact—be it through evocative graphics, intuitive user experiences, or finely tuned performance optimization. My commitment to delivering captivating, immersive digital experiences remains unwavering, leaving a trail of lasting impressions in my wake.</p>
+            ',
                 'facebook' => 'https://web.facebook.com/adam.muhammed.eden',
                 'twitter' => 'https://twitter.com/Adams__Mohammed',
                 'instagram' => 'https://www.instagram.com/adam_eden_mo/',
