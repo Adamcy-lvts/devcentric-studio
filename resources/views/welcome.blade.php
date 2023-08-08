@@ -171,7 +171,7 @@
                 <section class="customer-logos slider">
                     <div class="slide"><img src="{{ asset('/img/wedding_invite_1.jpg') }}">
                     </div>
-                    <div class="slide"><img src="{{ asset('/img/bakery-Logo-2.jpg') }}">
+                    <div class="slide"><img src="{{ asset('/img/logo_1.jpg') }}">
                     </div>
                     <div class="slide"><img src="{{ asset('/img/infographics_1.jpg') }}">
                     </div>
@@ -187,7 +187,7 @@
                     </div>
                     <div class="slide"><img src="{{ asset('/img/flyer_2.jpg') }}">
                     </div>
-                    <div class="slide"><img src="{{ asset('/img/Logo-2.jpg') }}">
+                    <div class="slide"><img src="{{ asset('/img/logo_2.jpg') }}">
                     </div>
                     <div class="slide"><img src="{{ asset('/img/wedding_invite_3.jpg') }}">
                     </div>
