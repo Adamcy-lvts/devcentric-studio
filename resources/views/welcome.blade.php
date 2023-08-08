@@ -21,7 +21,7 @@
     <link href="https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css" rel="stylesheet" />
     <link crossorigin="anonymous" href="{{ asset('css/main.min.css') }}" media="screen" rel="stylesheet" />
     <link href="{{ asset('css/skillbar.css') }}" media="screen" rel="stylesheet" />
-    {{-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css"> --}}
+    <link href="{{ asset('css/carousel.css') }}" media="screen" rel="stylesheet" />
 
     @livewireStyles
 </head>
@@ -132,47 +132,73 @@
             </div>
 
             {{-- Portfolio Section  --}}
-            <div class="container py-16 md:py-20" id="portfolio">
+            <div class="mx-auto mx-auto sm:w-10/12 px-6 py-8 md:py-20" id="portfolio">
                 <h2
-                    class="text-center font-header text-4xl font-semibold uppercase text-gray-900 sm:text-5xl lg:text-6xl">
+                    class="text-center font-header text-3xl font-semibold uppercase text-gray-900 sm:text-4xl lg:text-5xl">
                     Check out my Portfolio
                 </h2>
                 <h3 class="pt-6 text-center font-header text-xl font-medium text-black sm:text-2xl lg:text-3xl">
                     Here's what I have done with the past
                 </h3>
 
-                {{-- <div
-                    class="mx-auto grid w-full grid-cols-1 gap-8 pt-12 sm:w-3/4 md:gap-10 lg:w-full lg:grid-cols-2">
-                    <a href="/" class="mx-auto transform transition-all hover:scale-105 md:mx-0">
+                <div class="mx-auto grid w-full grid-cols-1 gap-8 pt-12 md:gap-10 lg:w-full lg:grid-cols-2">
+                    <a href="/img/fegocomosa.png" data-lightbox="portfolio"
+                        class="mx-auto transform transition-all hover:scale-105 md:mx-0">
                         <img src="/img/fegocomosa.png" class="w-full shadow" alt="portfolio image" />
                     </a>
-                    <a href="/" class="mx-auto transform transition-all hover:scale-105 md:mx-0">
+                    <a href="/img/sms.png" data-lightbox="portfolio"
+                        class="mx-auto transform transition-all hover:scale-105 md:mx-0">
                         <img src="/img/sms.png" class="w-full shadow" alt="portfolio image" />
                     </a>
-                    <a href="/" class="mx-auto transform transition-all hover:scale-105 md:mx-0">
+                    <a href="/img/dashboard.png" data-lightbox="portfolio"
+                        class="mx-auto transform transition-all hover:scale-105 md:mx-0">
                         <img src="/img/dashboard.png" class="w-full shadow" alt="portfolio image" />
                     </a>
-                    <a href="/" class="mx-auto transform transition-all hover:scale-105 md:mx-0">
-                        <img src="/img/portfolio-microsoft.jpeg" class="w-full shadow" alt="portfolio image" />
-                    </a>
-                </div> --}}
-
-                <div class="mx-auto grid w-full grid-cols-1 gap-8 pt-12 sm:w-3/4 md:gap-10 lg:w-full lg:grid-cols-2">
-                    <a href="/img/fegocomosa.png" data-lightbox="portfolio" class="mx-auto transform transition-all hover:scale-105 md:mx-0">
-                        <img src="/img/fegocomosa.png" class="w-full shadow" alt="portfolio image" />
-                    </a>
-                    <a href="/img/sms.png" data-lightbox="portfolio" class="mx-auto transform transition-all hover:scale-105 md:mx-0">
-                        <img src="/img/sms.png" class="w-full shadow" alt="portfolio image" />
-                    </a>
-                    <a href="/img/dashboard.png" data-lightbox="portfolio" class="mx-auto transform transition-all hover:scale-105 md:mx-0">
-                        <img src="/img/dashboard.png" class="w-full shadow" alt="portfolio image" />
-                    </a>
-                    <a href="/img/portfolio-microsoft.jpeg" data-lightbox="portfolio" class="mx-auto transform transition-all hover:scale-105 md:mx-0">
+                    <a href="/img/portfolio-microsoft.jpeg" data-lightbox="portfolio"
+                        class="mx-auto transform transition-all hover:scale-105 md:mx-0">
                         <img src="/img/portfolio-microsoft.jpeg" class="w-full shadow" alt="portfolio image" />
                     </a>
                 </div>
-                
+
             </div>
+
+
+            <div class="mx-auto sm:w-10/12">
+
+                <h3 class="pt-6 mb-4 text-center font-header text-xl font-medium text-black sm:text-2xl lg:text-3xl">
+                    My Designs
+                </h3>
+                <section class="customer-logos slider">
+                    <div class="slide"><img src="{{ asset('/img/wedding_invite_1.jpg') }}">
+                    </div>
+                    <div class="slide"><img src="{{ asset('/img/bakery-Logo-2.jpg') }}">
+                    </div>
+                    <div class="slide"><img src="{{ asset('/img/infographics_1.jpg') }}">
+                    </div>
+                    <div class="slide"><img src="{{ asset('/img/flyer_1.jpg') }}">
+                    </div>
+                    <div class="slide"><img src="{{ asset('/img/certificate_1.jpg') }}"></div>
+                    <div class="slide"><img
+                            src="https://image.freepik.com/free-vector/football-logo-background_1195-244.jpg"></div>
+                    <div class="slide"><img src="{{ asset('/img/wedding_invite_2.jpg') }}">
+                    </div>
+                    <div class="slide"><img src="{{ asset('/img/certificate_2.jpg') }}"></div>
+                    <div class="slide"><img src="{{ asset('/img/infographics_2.jpg') }}">
+                    </div>
+                    <div class="slide"><img src="{{ asset('/img/flyer_2.jpg') }}">
+                    </div>
+                    <div class="slide"><img src="{{ asset('/img/Logo-2.jpg') }}">
+                    </div>
+                    <div class="slide"><img src="{{ asset('/img/wedding_invite_3.jpg') }}">
+                    </div>
+                    
+
+                </section>
+            </div>
+
+
+
+
 
             @include('sections.blog-section', ['posts' => $posts])
 
@@ -189,8 +215,10 @@
     @livewireScripts
 
 
-    {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox.min.js"></script> --}}
 
+    <script src="https://code.jquery.com/jquery-2.2.0.min.js" type="text/javascript"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.js"></script>
+    <script src="{{ asset('js/carousel.js') }}" type="text/javascript"></script>
 
 </body>
 
