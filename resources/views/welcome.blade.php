@@ -16,6 +16,20 @@
     {{-- <script src="https://unpkg.com/@alpine-collective/toolkit@1.0.0/dist/cdn.min.js"></script> --}}
     <script src="{{ asset('js/alpinetoolkit.js') }}"></script>
 
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-JWJHF5L25Q"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+
+        gtag('config', 'G-JWJHF5L25Q');
+    </script>
+
+
     <!-- Styles -->
     <link href="{{ asset('css/main.css') }}" media="screen" rel="stylesheet" />
     <link href="https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css" rel="stylesheet" />
@@ -191,7 +205,7 @@
                     </div>
                     <div class="slide"><img src="{{ asset('/img/wedding_invite_3.jpg') }}">
                     </div>
-                    
+
 
                 </section>
             </div>
