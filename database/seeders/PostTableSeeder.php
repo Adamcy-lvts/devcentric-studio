@@ -119,7 +119,7 @@ class PostTableSeeder extends Seeder
                 
                 <p>So, let\'s continue our journey into the world of HTML, CSS, and JavaScript and unlock the potential of modern web development!</p>',
                 'keywords' => "HTML, CSS, JavaScript, web development, advanced techniques, HTML5, responsive design, CSS animations, DOM manipulation, asynchronous programming, JavaScript frameworks",
-                'cover_image' => 'post_images/stranger_things.png',
+                'cover_image' => 'post_images/stranger_things.jpg',
                 'view_count' => $faker->numberBetween(100, 1000),
                 'total_duration' => $faker->numberBetween(10, 60),
                 'category_id' => $categoryIds[0], // Web Development category
