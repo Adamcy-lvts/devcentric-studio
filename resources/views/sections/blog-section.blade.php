@@ -55,13 +55,12 @@
                              class="group relative h-72 bg-cover bg-center bg-no-repeat sm:h-84 lg:h-64 xl:h-72 overflow-hidden transform transition-transform hover:scale-110">
                              <span
                                  class="absolute inset-0 block bg-gradient-to-b from-blog-gradient-from to-blog-gradient-to bg-cover bg-center bg-no-repeat opacity-10 transition-opacity group-hover:opacity-50"></span>
-                             <span
-                                 class="absolute right-0 bottom-0 mr-4 mb-4 block rounded-full border-2 border-white px-6 py-2 text-center font-body text-sm font-bold uppercase text-white md:text-base transition-opacity duration-300 group-hover:opacity-100">Read
-                                 More</span>
+
+                                 
                          </div>
                          <div class="bg-white py-6 px-5 xl:py-8">
                              <span class="block font-body text-md font-semibold text-black">{{ $post->title }}</span>
-                             <span class="block pt-2 font-body text-gray-500">{!! \Str::words($post->content, 10) !!}</span>
+                             {{-- <span class="block pt-2 font-body text-gray-500">{{ $post->description }}</span> --}}
                          </div>
                      </a>
                  @endforeach
