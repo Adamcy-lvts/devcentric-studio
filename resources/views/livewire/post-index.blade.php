@@ -58,8 +58,8 @@
                                 <x-button href="{{ route('post.show', $post->slug) }}" xs outline teal
                                     label="Read More" />
                             </div>
-                            <p class="text-gray-600 text-sm mt-2">
-                                Published on {{ $post->created_at->format('M d, Y') }} by {{ $post->user->name }}
+                            <p class=" text-gray-600 text-xs sm:text-sm mt-2">
+                                {{ $post->created_at->format('M d, Y') }} by {{ $post->user->name }}
                             </p>
                         </div>
                     </div>
