@@ -19,7 +19,7 @@ class UserSeeder extends Seeder
             User::create([
                'name'          => 'Adamcy',
                'email'             => 'lv4mj1@gmail.com',
-               'profile_photo_path'=> 'img/ceo_image.jpg',
+               'profile_photo_path'=> 'img/profile_image.jpg',
                'password'          => Hash::make('@Midnight22'),
                'remember_token'    => Str::random(60),
 
