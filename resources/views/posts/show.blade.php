@@ -1,7 +1,7 @@
 <x-guest-layout>
 
     <div>
-        <div class="mt-10 flex justify-between p-5 sm:p-0 sm:w-7/12 sm:mx-auto">
+        <div class="mt-10 flex justify-between container sm:w-7/12 sm:mx-auto">
             <a href="{{ route('posts') }}" class="block text-primary font-semibold hover:underline">Back
                 to Posts</a>
             <a href="/" class="block text-primary font-semibold hover:underline">
