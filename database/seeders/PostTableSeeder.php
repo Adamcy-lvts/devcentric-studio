@@ -84,7 +84,7 @@ class PostTableSeeder extends Seeder
                     <p>In essence, the synergy between front-end and back-end development, along with the proper utilization of databases, is what enables web applications to deliver rich, interactive, and user-centered experiences. This collaborative effort results in websites that combine aesthetics with functionality.</p>
                 ',
                 'keywords' => 'web development, front-end development, back-end development, HTML, CSS, JavaScript, databases, user experience',
-                'cover_image' => 'images/guide_covers/photo_by_Fotis_Fotopoulos.jpg',
+                'cover_image' => 'post_images/photo_by_Fotis_Fotopoulos.jpg',
                 'category_id' => $categoryIds[0], // Update this with the appropriate category ID
                 'user_id' => 1, // Update this with the appropriate user ID as the author
                 'created_at' => Carbon::now(),
@@ -112,7 +112,7 @@ class PostTableSeeder extends Seeder
                     <p>In the symphony of web design, aesthetics and functionality intertwine to create digital symphonies that resonate with users. It\'s the perfect blend of artistic ingenuity and user-centric methodology that ensures websites not only capture attention but also provide seamless, memorable, and meaningful experiences. As we continue our exploration, the subsequent sections will peel back the layers of collaboration between web development and design.</p>
                 ',
                 'keywords' => 'web design, UI design, UX design, interaction design, aesthetics, user experience',
-                'cover_image' => 'images/guide_covers/photo_by_kelly-sikkema.jpg',
+                'cover_image' => 'post_images/photo_by_kelly-sikkema.jpg',
                 'category_id' => $categoryIds[0], // Update this with the appropriate category ID
                 'user_id' => 1, // Update this with the appropriate user ID as the author
                 'created_at' => Carbon::now(),
