@@ -36,9 +36,9 @@
                         </div>
                     </div>
                 </div>
-                <div class="m-5">
-                    <img src="{{ asset('storage/' . $post->cover_image) }}" alt="">
-                </div>
+                {{-- <div class="m-5">
+                    <img class="sm:w-3/4" src="{{ asset('storage/' . $post->cover_image) }}" alt="">
+                </div> --}}
                 <div class="prose max-w-none p-8">
                     {!! $post->content !!}
                 </div>
