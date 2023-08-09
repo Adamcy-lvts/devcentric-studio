@@ -24,7 +24,7 @@
                     </h1>
                     <div class="flex items-center pt-5 md:pt-10 ml-8">
                         <div>
-                            <img src="{{ asset('storage/' . $post->user->profile_photo_path) }}"
+                            <img src="{{ asset($post->user->profile_photo_path) }}"
                                 class="h-20 w-20 rounded-full border-2 border-grey-70 shadow" alt="author image" />
                         </div>
                         <div class="pl-5">
