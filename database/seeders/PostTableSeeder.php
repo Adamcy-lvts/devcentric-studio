@@ -64,7 +64,7 @@ class PostTableSeeder extends Seeder
                 'slug' => 'comprehensive-guide-to-web-development-and-web-design-part-2',
                 'description' => 'Explore the technical aspects of web development in this comprehensive guide. Learn about front-end and back-end development, HTML, CSS, JavaScript, and more.',
                 'content' => '
-                    <h2>A Comprehensive Guide to Web Development and Web Design: Part 2: Understanding Web Development</h2>
+                    <h2>Understanding Web Development</h2>
                     <p>Web development is the backbone of the digital world, encompassing the technical processes that bring websites and web applications to life. This section provides a comprehensive overview of the key aspects of web development, ranging from the fundamentals of front-end and back-end development to the critical role of databases.</p>
                     <h3>What is Web Development?</h3>
                     <p>At its core, web development involves creating, building, and maintaining online platforms that users access through web browsers. It encompasses both the technical implementation of functionalities and the visual aspects that users interact with. Web development acts as the bridge between design concepts and functional, user-friendly digital experiences.</p>
@@ -95,7 +95,7 @@ class PostTableSeeder extends Seeder
                 'slug' => 'comprehensive-guide-to-web-development-and-web-design-part-3',
                 'description' => 'Explore the creative and artistic aspects of web design in this comprehensive guide. Learn about UI design, UX design, interaction design, and the significance of visual appeal.',
                 'content' => '
-                    <h2>A Comprehensive Guide to Web Development and Web Design: Part 3: The Art of Web Design</h2>
+                    <h2>The Art of Web Design</h2>
                     <p>In the realm of the digital canvas, web design stands as the artistic expression that transforms code into captivating visual experiences. This section unveils the artistry and methodologies behind web design, showcasing how it elevates websites from mere functionality to immersive journeys.</p>
                     <h3>Subsection 2.1: What is Web Design?</h3>
                     <p><strong>Aesthetic Mastery Unveiled:</strong> Web design is the creative process of conceptualizing, planning, and crafting the visual elements that make up a website or web application. It encompasses the harmonious blend of aesthetics, usability, and user experience to create interfaces that captivate, engage, and guide users.</p>
