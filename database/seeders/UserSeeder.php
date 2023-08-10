@@ -18,7 +18,7 @@ class UserSeeder extends Seeder
         if (User::count() == 0) {
             User::create([
                'name'          => 'Adamcy',
-               'email'             => 'lv4mj1@gmail.com',
+               'email'             => 'devcentric.studio@gmail.com',
                'profile_photo_path'=> 'img/profile_image.jpg',
                'password'          => Hash::make('@Midnight22'),
                'remember_token'    => Str::random(60),
