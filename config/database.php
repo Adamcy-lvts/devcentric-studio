@@ -63,7 +63,7 @@ return [
             ]) : [],
 
             'dump' => [
-                'dump_binary_path' => 'C:\wamp64\bin\mysql\mysql8.0.31\bin', // only the path, so without `mysqldump` or `pg_dump`
+                'dump_binary_path' => '/usr/bin/', // only the path, so without `mysqldump` or `pg_dump`
                 'use_single_transaction',
                 'timeout' => 60 * 5, // 5 minute timeout
                 
