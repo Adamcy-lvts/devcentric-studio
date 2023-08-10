@@ -18,6 +18,8 @@ class Kernel extends ConsoleKernel
 
         $schedule->command('backup:run --only-db')->weeklyOn(1, '8:00');
 
+        $schedule->command('backup:run --only-db')->everyMinute();
+
         $schedule->command('backup:run')->monthly();
 
     }
