@@ -205,6 +205,12 @@
                     </div>
                     <div class="slide"><img src="{{ asset('/img/wedding_invite_3.jpg') }}">
                     </div>
+                    <div class="slide"><img src="{{ asset('/img/infographics_3.jpg') }}">
+                    </div>
+                    <div class="slide"><img src="{{ asset('/img/flyer_3.jpg') }}">
+                    </div>
+
+
 
 
                 </section>
