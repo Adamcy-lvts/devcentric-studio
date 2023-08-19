@@ -57,21 +57,22 @@
                 <div class="container flex items-center justify-between">
                     <div class="hidden sm:block">
                         <a href="/">
-
-                            <h1 class="font-sans font-bold text-3xl md:text-5xl text-white mb-3 uppercase">DEVCENTRIC
-                            </h1>
-                            <h2 class=" studio text-white text-3xl md:text-5xl">Studio</h2>
+                            {{-- <img src="{{asset('img/offical_logo.png')}}" alt="Company Logo" class="mr-2" width="40" height="40"> --}}
+                            <div>
+                                <h1 class="font-sans font-bold text-3xl md:text-5xl text-white mb-1 uppercase">DEVCENTRIC</h1>
+                                <h2 class="studio text-white text-3xl md:text-5xl">Studio</h2>
+                            </div>
                         </a>
                     </div>
                     {{-- Desktop Navigation Menu --}}
                     <div>
-                        {{-- @include('partials.desktop-navigation') --}}
+                        
                         <x-nav-desktop></x-nav-desktop>
                     </div>
 
                 </div>
                 <div>
-                    {{-- @include('partials.mobile-navigation') --}}
+                    
                     <x-nav-mobile></x-nav-mobile>
                 </div>
             </div>

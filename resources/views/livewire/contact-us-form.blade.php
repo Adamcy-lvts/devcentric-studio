@@ -13,7 +13,7 @@
             <div class="flex flex-col md:flex-row justify-center items-center gap-8 ">
                 <div class=" w-full px-5 md:px-0 md:w-1/3">
                     <h3 class="text-xl  font-semibold text-gray-800 mb-4">Contact Information</h3>
-                    <div class="flex gap-4 mb-5">
+                    {{-- <div class="flex gap-4 mb-5">
                         <svg class="w-10 md:w-12" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 75.38 110">
                             <defs>
                                 <style>
@@ -38,7 +38,7 @@
                             Bama Road Opp Federal Government College Maiduguri, Maiduguri, Borno State. Nigeria.
                         </p>
 
-                    </div>
+                    </div> --}}
 
 
                     <div class="flex gap-4 mb-5">
@@ -108,7 +108,7 @@
                             </g>
                         </svg>
                         <p class="text-gray-600 mb-2">
-                            Website: www.devcentric.com
+                            <a href="/">Website: www.devcentricstudio.com</a>
                         </p>
                     </div>
                 </div>
