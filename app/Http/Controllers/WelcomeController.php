@@ -11,7 +11,7 @@ class WelcomeController extends Controller
     public function profile() {
         
         $profile = Profile::first();
-        $posts = Post::take(3)->get();
+        $posts = Post::latest()->take(3)->get();
 
         return view('welcome', [
             'profile' => $profile,
