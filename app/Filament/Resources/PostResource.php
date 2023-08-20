@@ -2,9 +2,11 @@
 
 namespace App\Filament\Resources;
 
+use Closure;
 use Filament\Forms;
 use App\Models\Post;
 use Filament\Tables;
+use Illuminate\Support\Str;
 use Filament\Resources\Form;
 use Filament\Resources\Table;
 use Filament\Resources\Resource;
@@ -32,7 +34,13 @@ class PostResource extends Resource
     {
         return $form
             ->schema([
-                TextInput::make('title'),
+                // TextInput::make('title'),
+                TextInput::make('title')
+                ->reactive()
+                ->afterStateUpdated(function (Closure $set, $state) {
+                    $set('slug', Str::slug($state));
+                })->required(),
+                TextInput::make('slug')->required(),
                 TextInput::make('description'),
                 Select::make('category_id')->relationship('category', 'name'),
                 Select::make('user_id')->relationship('user', 'name'),
@@ -65,14 +73,14 @@ class PostResource extends Resource
                 Tables\Actions\DeleteBulkAction::make(),
             ]);
     }
-    
+
     public static function getRelations(): array
     {
         return [
             //
         ];
     }
-    
+
     public static function getPages(): array
     {
         return [
@@ -80,5 +88,5 @@ class PostResource extends Resource
             'create' => Pages\CreatePost::route('/create'),
             'edit' => Pages\EditPost::route('/{record}/edit'),
         ];
-    }    
+    }
 }

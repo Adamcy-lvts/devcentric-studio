@@ -14,7 +14,7 @@
 
                 <div class="hidden md:block w-full px-5 md:px-0 md:w-1/3">
 
-                    <svg class="w-48 mx-auto mb-3" xmlns="http://www.w3.org/2000/svg" xml:space="preserve"
+                    <svg class="w-48 mx-auto md:mx-0 mb-3" xmlns="http://www.w3.org/2000/svg" xml:space="preserve"
                        viewBox="0 0 1016.7 1018.5">
                        
                         <path fill="#3a4145"
