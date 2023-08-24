@@ -36,15 +36,19 @@ class PostIndex extends Component
         JsonLd::setTitle('Blog Posts');
         JsonLd::setDescription('Explore the latest tech-related articles and blog posts on Devcentric Studio. Stay updated with industry trends and insights.');
         
-        $posts = Post::when($this->search, function ($query) {
-            $query->where('title', 'like', '%'.$this->search.'%')
+        $posts = Post::where('is_visible', 1)->when($this->search, function ($query) {
+            $query->where(function ($q) {
+                $q->where('title', 'like', '%'.$this->search.'%')
                   ->orWhere('content', 'like', '%'.$this->search.'%');
+            });
         })
             ->when($this->category, function ($query) {
                 $query->where('category_id', $this->category);
             })
+            
             ->latest()
             ->paginate(10);
+
 
         $categories = Category::all();
 
