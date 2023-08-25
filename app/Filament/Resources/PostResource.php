@@ -20,6 +20,7 @@ use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\RichEditor;
 use Filament\Tables\Columns\ToggleColumn;
 use Illuminate\Database\Eloquent\Builder;
+use Filament\Forms\Components\DateTimePicker;
 use App\Filament\Resources\PostResource\Pages;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use App\Filament\Resources\PostResource\RelationManagers;
@@ -45,7 +46,8 @@ class PostResource extends Resource
                 TextInput::make('slug')->required(),
                 TextInput::make('description'),
                 Select::make('category_id')->relationship('category', 'name'),
-                Select::make('user_id')->relationship('user', 'name'),
+                Select::make('user_id')->relationship('user', 'name')->label('Author'),
+                DateTimePicker::make('created_at'),
                 Toggle::make('is_visible'),
                 FileUpload::make('cover_image')->columnSpan(2)->label('Cover Image')->preserveFilenames()->disk('public')->directory('post_images')->required(),
                 RichEditor::make('content')->columnSpan(2),
