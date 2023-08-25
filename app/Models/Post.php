@@ -23,6 +23,7 @@ class Post extends Model
         'category_id',
         'user_id',
         'is_visible',
+        'created_at'
     ];
 
     public function category()
