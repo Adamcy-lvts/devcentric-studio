@@ -59,7 +59,7 @@ class PostController extends Controller
         $category = $post->category;
 
         $similarPosts = Post::where('category_id', $category->id)
-            ->where('id', '!=', $post->id)
+            ->where('id', '!=', $post->id)->where('is_visible', 1)
             ->inRandomOrder()
             ->limit(3)
             ->get();
