@@ -25,7 +25,7 @@
                     </h1>
                     <div class="flex items-center pt-5 md:pt-10 ml-8">
                         <div>
-                            <img src="{{ asset('storage/'.$post->user->profile_photo_path) }}"
+                            <img src="{{ asset('storage/' . $post->user->profile_photo_path) }}"
                                 class="h-16 w-16 rounded-full border-2 border-grey-70 shadow" alt="author image" />
                         </div>
                         <div class="pl-5">
@@ -70,18 +70,21 @@
                         class="pt-10 font-body pl-2 text-2xl font-semibold text-primary sm:text-3xl md:text-4xl xl:text-4xl ">
                         Similar Posts</h2>
                     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 mt-8 px-4 sm:px-0">
-                        @foreach ($similarPosts as $similarPost)
-                            <div class="bg-white rounded-lg shadow-lg">
-                                <img src="{{ asset('storage/' . $similarPost->cover_image) }}"
-                                    alt="{{ $similarPost->title }}" class="h-64 w-full object-cover">
-                                <div class="p-6">
-                                    <h3 class="sm:text-md font-semibold text-primary">{{ $similarPost->title }}</h3>
-                                    <p class="text-gray-500">{{ $similarPost->created_at->format('M d, Y') }}</p>
-                                    <a href="{{ route('post.show', $similarPost->slug) }}"
-                                        class="mt-4 block text-primary font-semibold hover:underline">Read More</a>
+                        @if ($similarPosts)
+                            @foreach ($similarPosts as $similarPost)
+                                <div class="bg-white rounded-lg shadow-lg">
+                                    <img src="{{ asset('storage/' . $similarPost->cover_image) }}"
+                                        alt="{{ $similarPost->title }}" class="h-64 w-full object-cover">
+                                    <div class="p-6">
+                                        <h3 class="sm:text-md font-semibold text-primary">{{ $similarPost->title }}</h3>
+                                        <p class="text-gray-500">{{ $similarPost->created_at->format('M d, Y') }}</p>
+                                        <a href="{{ route('post.show', $similarPost->slug) }}"
+                                            class="mt-4 block text-primary font-semibold hover:underline">Read More</a>
+                                    </div>
                                 </div>
-                            </div>
-                        @endforeach
+                            @endforeach
+                        @endif
+
                     </div>
                 </div>
 
