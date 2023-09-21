@@ -15,7 +15,7 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     {{-- <script src="https://unpkg.com/@alpine-collective/toolkit@1.0.0/dist/cdn.min.js"></script> --}}
     <script src="{{ asset('js/alpinetoolkit.js') }}"></script>
-
+    <meta name="robots" content="noimageindex">
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-JWJHF5L25Q"></script>
     <script>
@@ -59,20 +59,21 @@
                         <a href="/">
                             {{-- <img src="{{asset('img/offical_logo.png')}}" alt="Company Logo" class="mr-2" width="40" height="40"> --}}
                             <div>
-                                <h1 class="font-sans font-bold text-3xl md:text-5xl text-white mb-1 uppercase">DEVCENTRIC</h1>
+                                <h1 class="font-sans font-bold text-3xl md:text-5xl text-white mb-1 uppercase">
+                                    DEVCENTRIC</h1>
                                 <h2 class="studio text-white text-3xl md:text-5xl">Studio</h2>
                             </div>
                         </a>
                     </div>
                     {{-- Desktop Navigation Menu --}}
                     <div>
-                        
+
                         <x-nav-desktop></x-nav-desktop>
                     </div>
 
                 </div>
                 <div>
-                    
+
                     <x-nav-mobile></x-nav-mobile>
                 </div>
             </div>
@@ -86,7 +87,7 @@
                     <div class="container relative z-30 pt-20 pb-12 sm:pt-56 sm:pb-48 lg:pt-64 lg:pb-48">
                         <div class="flex flex-col items-center justify-center lg:flex-row">
                             <div class="rounded-full border-4 border-white animate__animated animate__bounceIn">
-                                <img src="{{ asset('storage/'.$profile->user->profile_photo_path) }}"
+                                <img src="{{ asset('storage/' . $profile->user->profile_photo_path) }}"
                                     class="h-48 rounded-full sm:h-56" alt="author" />
 
                             </div>
