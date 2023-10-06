@@ -24,7 +24,7 @@ class AppServiceProvider extends ServiceProvider
         Schema::defaultStringLength(191);
 
         Filament::serving(function () {
-            // Using Vite
+           
             Filament::registerViteTheme('resources/css/filament.css');
         });
     }
