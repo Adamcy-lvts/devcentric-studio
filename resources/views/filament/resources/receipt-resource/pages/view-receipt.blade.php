@@ -48,7 +48,7 @@
             </div>
             <!-- Amount -->
             <div class="flex justify-between items-center bg-gray-300 p-5 rounded-lg text-xl font-bold mb-8 shadow-md">
-                <p>Amount:</p>
+                <p>Total Amount:</p>
                 <span>{{ formatNaira($receipt->amount) }}</span>
             </div>
 

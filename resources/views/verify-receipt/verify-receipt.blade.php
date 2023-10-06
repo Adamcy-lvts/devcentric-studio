@@ -41,7 +41,7 @@
 
         <!-- Amount in Words -->
         <div class="mb-4">
-            <p class="font-semibold text-gray-600">Amount (in words): {{$amountInWords}}</p>
+            <p class="font-semibold text-gray-600">Total Amount (in words): {{$amountInWords}}</p>
         </div>
         <!-- Amount -->
         <div class="flex justify-between items-center bg-gray-300 p-5 rounded-lg text-xl font-bold mb-8 shadow-md">
