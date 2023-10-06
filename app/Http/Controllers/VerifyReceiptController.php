@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Receipt;
 use Illuminate\Http\Request;
+use NumberToWords\NumberToWords;
 use Filament\Notifications\Notification;
 use SimpleSoftwareIO\QrCode\Facades\QrCode;
 
@@ -21,12 +22,23 @@ class VerifyReceiptController extends Controller
                 ->send();
         }
 
+        $numberToWords = new NumberToWords();
+        $numberTransformer = $numberToWords->getCurrencyTransformer('en');
+
+        $amount = $receipt->amount * 100;
+
+        // Convert a number to words
+        $amountInWords = $numberTransformer->toWords($amount, 'NGN');
+
+        $amountInWords = str_replace('Nairas', 'Naira', $amountInWords);
+
         $url = route('verify.receipt', ['id' => $receipt->id]);
         $qrCode = QrCode::size(100)->generate($url);
 
         return view('verify-receipt.verify-receipt', [
             'receipt' => $receipt,
-            'qrCode' => $qrCode
+            'qrCode' => $qrCode,
+            'amountInWords' => $amountInWords
  
         ]);
     }

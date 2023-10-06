@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Exception;
 use App\Models\Receipt;
 use Illuminate\Http\Request;
+use NumberToWords\NumberToWords;
 use Illuminate\Support\Facades\Log;
 use Spatie\Browsershot\Browsershot;
 use Filament\Notifications\Notification;
@@ -26,12 +27,23 @@ class DownloadReceiptController extends Controller
                     ->send();
             }
 
+            $numberToWords = new NumberToWords();
+            $numberTransformer = $numberToWords->getCurrencyTransformer('en');
+
+            $amount = $receipt->amount * 100;
+
+            // Convert a number to words
+            $amountInWords = $numberTransformer->toWords($amount, 'NGN');
+
+            $amountInWords = str_replace('Nairas', 'Naira', $amountInWords);
+
             $url = route('transaction.receipt', ['id' => $receipt->id]);
             $qrCode = QrCode::size(100)->generate($url);
 
             $html = view('pdf-view.digital-receipt', [ 
                 'receipt' => $receipt,
                 'qrCode' => $qrCode,
+                'amountInWords' => $amountInWords,
             ])->render();
 
             $pdfName = $receipt->received_from . '-' . $receipt->receipt_number . '_receipt.pdf';
