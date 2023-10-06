@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('receipts', function (Blueprint $table) {
             $table->id();
-            $table->string('number')->unique();  // Receipt number
+            $table->string('receipt_number')->unique();  // Receipt number
             $table->string('received_from');     // Name of the person/business who made the payment
             $table->date('date');               // Date of receipt
             $table->decimal('amount', 8, 2);    // Amount paid

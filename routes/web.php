@@ -5,6 +5,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\WelcomeController;
+use App\Http\Controllers\VerifyReceiptController;
+use App\Http\Controllers\DownloadReceiptController;
 
 /*
 |--------------------------------------------------------------------------
@@ -44,3 +46,6 @@ Route::get('/post/{slug}', [PostController::class, 'show'])->name('post.show');
 Route::get('/posts', PostIndex::class)->name('posts');
 
 
+Route::get('/verify-receipt/{id}', [VerifyReceiptController::class, 'verifyReceipt'])->name('verify.receipt');
+
+Route::get('/download-receipt/{transaction_id}', [DownloadReceiptController::class, 'downloadReceipt'])->name('download.receipt');
