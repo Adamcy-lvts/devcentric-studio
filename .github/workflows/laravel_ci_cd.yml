@@ -1,28 +1,30 @@
-name: Laravel CI/CD
+
+name: Deploy to DigitalOcean
 
 on:
   push:
-    branches:
-      - main
+    branches: [ main ]  # Adjust the branch name as needed
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v3
-    - name: Set up SSH
-      uses: appleboy/ssh-action@master
-      with:
-        ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
-        passphrase: ${{ secrets.SSH_PASSPHRASE }} # Add this line
-    - name: Deploy to DigitalOcean
-      run: |
-        ssh -o StrictHostKeyChecking=no forge@157.230.2.144 << 'EOF'
-          cd /var/www/devcentricstudio.com
-          git pull origin main
-          composer install --no-dev --prefer-dist
-          php artisan migrate --force
-          php artisan config:cache
-          php artisan route:cache
-          php artisan view:cache
-        EOF
+      - uses: actions/checkout@v3
+
+      - name: Deploy to DigitalOcean
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.DO_HOST }}  # Your Digital Ocean Droplet IP
+          username: ${{ secrets.DO_USER }} # Your droplet's username
+          key: ${{ secrets.SSH_PRIVATE_KEY }}  
+          passphrase: ${{ secrets.SSH_PASSPHRASE }}
+          port: 22 
+          script: |
+            cd /var/www/devcentricstudio.com  # Path to your app on the droplet
+            git pull origin main
+            composer install --optimize-autoloader --no-dev 
+            php artisan migrate --force
+            php artisan optimize:clear
+
+
+        
