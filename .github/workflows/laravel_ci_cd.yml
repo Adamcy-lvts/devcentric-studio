@@ -18,7 +18,7 @@ jobs:
     - name: Deploy to DigitalOcean
       run: |
         ssh -o StrictHostKeyChecking=no forge@157.230.2.144 << 'EOF'
-          cd /var/www/myapp
+          cd /var/www/devcentricstudio.com
           git pull origin main
           composer install --no-dev --prefer-dist
           php artisan migrate --force
