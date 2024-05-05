@@ -1,0 +1,65 @@
+version: '3'
+services:
+  app:
+    build:
+      context: .
+    volumes:
+      - .:/var/www/html
+    working_dir: /var/www/html
+    networks:
+      - centric
+    depends_on:
+      - db
+
+  nginx:
+    image: nginx:latest
+    ports:
+      - "8085:80"
+    volumes:
+      - ./:/var/www/html
+      - ./xconfig/nginx/default.conf:/etc/nginx/conf.d/default.conf
+    networks:
+      - centric
+    depends_on:
+      - app
+
+  db:
+    image: mysql:8.0
+    environment:
+      MYSQL_DATABASE: devcentric
+      MYSQL_USER: centric
+      MYSQL_PASSWORD: centric
+      MYSQL_ROOT_PASSWORD: centric
+    ports:
+      - "3308:3306"
+    volumes:
+      - devdbdata:/var/lib/mysql
+    networks:
+      - centric
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    environment:
+      PMA_HOST: db
+      PMA_PORT: 3306
+      MYSQL_ROOT_PASSWORD: centric  # Use the same root password here as you set for the MySQL service
+    ports:
+      - "8086:80"  # This will expose phpMyAdmin on http://localhost:8080 on your host machine
+    depends_on:
+      - db  # This should be the name of your MySQL service
+    networks:
+      - centric 
+  
+  redis:
+    image: redis:latest
+    ports:
+      - "6379:6379"
+    networks:
+      - centric 
+
+networks:
+  centric:
+
+volumes:
+  devdbdata:
+
