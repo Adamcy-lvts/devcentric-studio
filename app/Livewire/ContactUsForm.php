@@ -7,7 +7,7 @@ use Livewire\Component;
 use App\Mail\ContactUsMail;
 use Illuminate\Support\Facades\Mail;
 
-class ContactForm extends Component
+class ContactUsForm extends Component
 {
     public $full_name;
     public $email;
