@@ -75,7 +75,7 @@
 
                     <!-- Logo -->
                     <div class="flex-shrink-0">
-                        <a href="#_" class="inline-block">
+                        <a href="/" class="inline-block">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 789.06 229.54" class="h-12 w-auto">
                                 <defs>
                                     <clipPath id="clip-path">
@@ -624,7 +624,7 @@
 
     <footer class="text-gray-700 bg-white body-font">
         <div class="container flex flex-col items-center px-8 py-8 mx-auto max-w-7xl sm:flex-row">
-            <a href="#_" class="text-xl font-black leading-none text-gray-900 select-none logo">
+            <a href="/" class="text-xl font-black leading-none text-gray-900 select-none logo">
                 <img src="{{ asset('img/devcentric_logo_1.png') }}" alt="EHR System Entity-Relationship Diagram"
                     class=" h-12">
             </a>
