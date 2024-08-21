@@ -39,7 +39,7 @@ Route::middleware([
 
 Route::get('/', [WelcomeController::class, 'profile'])->name('profile');
 
-Route::get('/', [WelcomeController::class, 'downloadQrCode'])->name('downloadQrCode');
+Route::get('/download-qrcode', [WelcomeController::class, 'downloadQrCode'])->name('downloadQrCode');
 
 // Route::get('/posts', [PostController::class, 'index'])->name('posts');
 Route::post('/store-duration', [PostController::class, 'update'])->name('update');
