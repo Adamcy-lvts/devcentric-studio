@@ -33,7 +33,7 @@ class ContactUsMail extends Mailable
     public function content(): Content
     {
         return new Content(
-            markdown: 'emails.contact-us',
+            markdown: 'emails.contact-us-mail',
         );
     }
 }
