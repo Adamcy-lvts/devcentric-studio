@@ -16,7 +16,7 @@
                 </div>
             @endif
 
-            <x-card padding="px-8 py-8" class="contact-form-card">
+            {{-- <x-card padding="px-8 py-8" class="contact-form-card"> --}}
                 <form wire:submit.prevent="submitInquiry" class="space-y-6">
                     <x-input wire:model="full_name" label="Full Name" name="full_name" placeholder="your full name"
                         class="form-element" />
@@ -72,7 +72,7 @@
                         <x-button rounded type="submit" label="Submit Inquiry" primary />
                     </div>
                 </form>
-            </x-card>
+            {{-- </x-card> --}}
         </div>
     </section>
 
