@@ -58,6 +58,7 @@ class WelcomeController extends Controller
                         ->errorCorrection('H')
                         ->margin(1)
                         ->color(0, 0, 0)
+                        ->backgroundColor(255, 255, 255, 0) 
                         ->merge($logoPath, 0.3, true)
                         ->generate($url);
         
