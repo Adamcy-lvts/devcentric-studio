@@ -46,6 +46,6 @@ class ContactForm extends Component
 
     public function render()
     {
-        return view('livewire.contact-form');
+        return view('livewire.contact-us-form');
     }
 }
