@@ -1,7 +1,7 @@
 <div>
 
 
-    <section class="py-12 bg-gray-50" id="contact-form-section">
+    <section class="py-12 bg-gray-100" id="contact-form-section">
         <div class="max-w-6xl mx-auto px-8 sm:px-6 lg:px-8">
             <div class="text-center mb-8 contact-form-header">
                 <p class="text-sm font-semibold text-blue-600 uppercase tracking-wide">Contact Us</p>
