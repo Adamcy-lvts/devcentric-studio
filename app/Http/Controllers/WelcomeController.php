@@ -46,29 +46,29 @@ class WelcomeController extends Controller
         ]);
     }
 
-    public function downloadQrCode()
-    {
-        $url = URL::to('/');  // Get the base URL of your application
+    // public function downloadQrCode()
+    // {
+    //     $url = URL::to('/');  // Get the base URL of your application
     
-        // Get the absolute path to the image file
-        $logoPath = public_path('img/devcentric_logo_2.png');
+    //     // Get the absolute path to the image file
+    //     $logoPath = public_path('img/devcentric_logo_2.png');
     
-        $qrCode = QrCode::format('png')
-                        ->size(300)
-                        ->errorCorrection('H')
-                        ->margin(1)
-                        ->color(0, 0, 0)
-                        ->backgroundColor(255, 255, 255)
-                        ->merge($logoPath, 0.3, true)
-                        ->generate($url);
+    //     $qrCode = QrCode::format('png')
+    //                     ->size(300)
+    //                     ->errorCorrection('H')
+    //                     ->margin(1)
+    //                     ->color(0, 0, 0)
+    //                     ->backgroundColor(255, 255, 255)
+    //                     ->merge($logoPath, 0.3, true)
+    //                     ->generate($url);
         
-        $headers = [
-            'Content-Type' => 'image/png',
-            'Content-Disposition' => 'attachment; filename="devcentric_qr.png"',
-        ];
+    //     $headers = [
+    //         'Content-Type' => 'image/png',
+    //         'Content-Disposition' => 'attachment; filename="devcentric_qr.png"',
+    //     ];
     
-        return response($qrCode)->withHeaders($headers);
+    //     return response($qrCode)->withHeaders($headers);
 
-        return response($qrCode)->withHeaders($headers);
-    }
+    //     return response($qrCode)->withHeaders($headers);
+    // }
 }
