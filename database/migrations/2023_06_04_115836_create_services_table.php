@@ -13,10 +13,9 @@ return new class extends Migration
     {
         Schema::create('services', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->text('details');
-            $table->longText('detail_info')->nullable();
-            $table->mediumText('svg_code')->nullable();
+            $table->string('title');
+            $table->text('description');
+            $table->text('icon'); // Changed this line
             $table->timestamps();
         });
     }

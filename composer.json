@@ -2,33 +2,37 @@
     "name": "laravel/laravel",
     "type": "project",
     "description": "The Laravel Framework.",
-    "keywords": ["framework", "laravel"],
+    "keywords": [
+        "framework",
+        "laravel"
+    ],
     "license": "MIT",
     "require": {
-        "php": "^8.1",
+        "php": "^8.2",
         "artesaos/seotools": "^1.2",
-        "filament/filament": "^2.0",
-        "filament/notifications": "^2.0",
+        "filament/filament": "^3.2",
+        "filament/notifications": "^3.2",
         "guzzlehttp/guzzle": "^7.2",
         "kwn/number-to-words": "^2.7",
-        "laravel/framework": "^10.10",
-        "laravel/jetstream": "^3.2",
-        "laravel/sanctum": "^3.2",
+        "laravel/framework": "^11.0",
+        "laravel/jetstream": "^5.0",
+        "laravel/sanctum": "^4.0",
         "laravel/tinker": "^2.8",
         "league/flysystem-aws-s3-v3": "^3.0",
-        "livewire/livewire": "^2.11",
+        "livewire/livewire": "^3.4",
         "simplesoftwareio/simple-qrcode": "~4",
-        "spatie/browsershot": "^3.58",
+        "spatie/browsershot": "^4",
         "spatie/laravel-backup": "^8.1",
-        "spatie/laravel-settings": "^3.2",
-        "wireui/wireui": "^1.17"
+        "spatie/laravel-settings": "^3.3",
+        "wireui/wireui": "^1.7"
     },
     "require-dev": {
         "fakerphp/faker": "^1.9.1",
+        "filament/upgrade": "^3.2",
         "laravel/pint": "^1.0",
         "laravel/sail": "^1.18",
         "mockery/mockery": "^1.4.4",
-        "nunomaduro/collision": "^7.0",
+        "nunomaduro/collision": "^8.1",
         "phpunit/phpunit": "^10.1",
         "spatie/laravel-ignition": "^2.0"
     },
@@ -50,7 +54,8 @@
     "scripts": {
         "post-autoload-dump": [
             "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
-            "@php artisan package:discover --ansi"
+            "@php artisan package:discover --ansi",
+            "@php artisan filament:upgrade"
         ],
         "post-update-cmd": [
             "@php artisan vendor:publish --tag=laravel-assets --ansi --force"

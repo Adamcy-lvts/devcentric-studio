@@ -3,6 +3,11 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+
+use App\Models\Approach;
+use App\Models\IndustrySolution;
+use App\Models\SuccessStory;
+use App\Models\WhyChooseUs;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -19,10 +24,15 @@ class DatabaseSeeder extends Seeder
         //     'email' => 'test@example.com',
         // ]);
 
-        $this->call(ServicesSeeder::class);
+        $this->call(ServiceSeeder::class);
         $this->call(UserSeeder::class);
-        $this->call(ProfileSeeder::class);
-        $this->call(SkillSeeder::class);
-        $this->call(PostTableSeeder::class);
+        $this->call(HeroSeeder::class);
+        $this->call(IndustrySolutionSeeder::class);
+        $this->call(SuccessStorySeeder::class);
+        $this->call(ApproachSeeder::class);
+        $this->call(WhyChooseUsSeeder::class);
+        $this->call(OurMissionSeeder::class);
+        $this->call(AboutUsSeeder::class);
+
     }
 }

@@ -5,8 +5,8 @@ namespace App\Filament\Resources;
 use Filament\Forms;
 use Filament\Tables;
 use App\Models\Profile;
-use Filament\Resources\Form;
-use Filament\Resources\Table;
+use Filament\Forms\Form;
+use Filament\Tables\Table;
 use Filament\Resources\Resource;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\Textarea;
@@ -22,12 +22,15 @@ class ProfileResource extends Resource
 {
     protected static ?string $model = Profile::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-collection';
+    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+
+
 
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
+                Forms\Components\TextInput::make('name'),
                 Select::make('user')->relationship('user', 'name'),
                 TextInput::make('name'),
                 TextInput::make('title'),
@@ -37,7 +40,6 @@ class ProfileResource extends Resource
                 TextInput::make('linkedin'),
                 TextInput::make('whatsapp'),
                 RichEditor::make('about_me')->columnSpan(2),
-
             ]);
     }
 
@@ -55,7 +57,7 @@ class ProfileResource extends Resource
             ->actions([
                 Tables\Actions\EditAction::make(),
             ])
-            ->bulkActions([
+            ->groupedBulkActions([
                 Tables\Actions\DeleteBulkAction::make(),
             ]);
     }

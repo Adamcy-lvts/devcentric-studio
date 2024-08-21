@@ -6,9 +6,9 @@ use Closure;
 use Filament\Forms;
 use App\Models\Post;
 use Filament\Tables;
+use Filament\Forms\Form;
+use Filament\Tables\Table;
 use Illuminate\Support\Str;
-use Filament\Resources\Form;
-use Filament\Resources\Table;
 use Filament\Resources\Resource;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\Toggle;
@@ -31,7 +31,7 @@ class PostResource extends Resource
 
     protected static ?string $navigationGroup = 'Post';
 
-    protected static ?string $navigationIcon = 'heroicon-o-collection';
+    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
     public static function form(Form $form): Form
     {
@@ -40,7 +40,7 @@ class PostResource extends Resource
                 // TextInput::make('title'),
                 TextInput::make('title')
                 ->reactive()
-                ->afterStateUpdated(function (Closure $set, $state) {
+                ->afterStateUpdated(function (\Filament\Forms\Set $set, $state) {
                     $set('slug', Str::slug($state));
                 })->required(),
                 TextInput::make('slug')->required(),
@@ -73,7 +73,7 @@ class PostResource extends Resource
             ->actions([
                 Tables\Actions\EditAction::make(),
             ])
-            ->bulkActions([
+            ->groupedBulkActions([
                 Tables\Actions\DeleteBulkAction::make(),
             ]);
     }

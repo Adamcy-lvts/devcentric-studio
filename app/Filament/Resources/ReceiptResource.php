@@ -5,8 +5,8 @@ namespace App\Filament\Resources;
 use Filament\Forms;
 use Filament\Tables;
 use App\Models\Receipt;
-use Filament\Resources\Form;
-use Filament\Resources\Table;
+use Filament\Forms\Form;
+use Filament\Tables\Table;
 use Filament\Resources\Resource;
 use Filament\Tables\Actions\Action;
 use Filament\Forms\Components\Radio;
@@ -24,7 +24,7 @@ class ReceiptResource extends Resource
 {
     protected static ?string $model = Receipt::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-collection';
+    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
     public static function form(Form $form): Form
     {
@@ -33,36 +33,36 @@ class ReceiptResource extends Resource
                 TextInput::make('received_from')->required(),
                 TextInput::make('payment_for')->required(),
                 // TextInput::make('amount')->numeric(),
-                TextInput::make('amount')->required()->mask(
-                    fn (Mask $mask) => $mask
-                        ->patternBlocks([
-                            'money' => fn (Mask $mask) => $mask
-                                ->numeric()
-                                ->thousandsSeparator(',')
-                                ->decimalSeparator('.'),
-                        ])
-                        ->pattern('₦money'),
-                ),
-                TextInput::make('deposit')->mask(
-                    fn (Mask $mask) => $mask
-                        ->patternBlocks([
-                            'money' => fn (Mask $mask) => $mask
-                                ->numeric()
-                                ->thousandsSeparator(',')
-                                ->decimalSeparator('.'),
-                        ])
-                        ->pattern('₦money'),
-                ),
-                TextInput::make('balance_due')->mask(
-                    fn (Mask $mask) => $mask
-                        ->patternBlocks([
-                            'money' => fn (Mask $mask) => $mask
-                                ->numeric()
-                                ->thousandsSeparator(',')
-                                ->decimalSeparator('.'),
-                        ])
-                        ->pattern('₦money'),
-                ),
+                // TextInput::make('amount')->required()->mask(
+                //     fn (Mask $mask) => $mask
+                //         ->patternBlocks([
+                //             'money' => fn (Mask $mask) => $mask
+                //                 ->numeric()
+                //                 ->thousandsSeparator(',')
+                //                 ->decimalSeparator('.'),
+                //         ])
+                //         ->pattern('₦money'),
+                // ),
+                // TextInput::make('deposit')->mask(
+                //     fn (Mask $mask) => $mask
+                //         ->patternBlocks([
+                //             'money' => fn (Mask $mask) => $mask
+                //                 ->numeric()
+                //                 ->thousandsSeparator(',')
+                //                 ->decimalSeparator('.'),
+                //         ])
+                //         ->pattern('₦money'),
+                // ),
+                // TextInput::make('balance_due')->mask(
+                //     fn (Mask $mask) => $mask
+                //         ->patternBlocks([
+                //             'money' => fn (Mask $mask) => $mask
+                //                 ->numeric()
+                //                 ->thousandsSeparator(',')
+                //                 ->decimalSeparator('.'),
+                //         ])
+                //         ->pattern('₦money'),
+                // ),
                 DateTimePicker::make('date')->required(),
                 Radio::make('payment_method')
                     ->options(Receipt::PAYMENT_METHODS)
@@ -95,7 +95,7 @@ class ReceiptResource extends Resource
                 ->url(fn (Receipt $record): string => route('filament.resources.receipts.view', $record)),
                 Tables\Actions\EditAction::make(),
             ])
-            ->bulkActions([
+            ->groupedBulkActions([
                 Tables\Actions\DeleteBulkAction::make(),
             ]);
     }

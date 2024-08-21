@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Livewire\PostIndex;
+use App\Livewire\PostIndex;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProfileController;
@@ -38,6 +38,8 @@ Route::middleware([
 });
 
 Route::get('/', [WelcomeController::class, 'profile'])->name('profile');
+
+Route::get('/', [WelcomeController::class, 'downloadQrCode'])->name('downloadQrCode');
 
 // Route::get('/posts', [PostController::class, 'index'])->name('posts');
 Route::post('/store-duration', [PostController::class, 'update'])->name('update');
