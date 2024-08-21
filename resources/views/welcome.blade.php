@@ -62,7 +62,7 @@
 
 
     <section class="relative  h-full bg-bottom bg-no-repeat bg-cover" x-data="{ showMenu: false }"
-        style="background-image: url('img/hero_wallpaper_1.png');">
+        style="background-image: url('img/hero_wallpaper_1.jpg');">
         <div class="absolute inset-0 z-0 h-full bg-black opacity-80"></div>
 
         <!-- Insert the new transparent navigation here -->
@@ -234,7 +234,8 @@
 
                     <!-- Login Link -->
                     <div class="hidden md:block">
-                        <a href="#_" class="text-white hover:text-blue-400 transition duration-300">Login</a>
+                        <a href="{{ route('filament.admin.auth.login') }}"
+                            class="text-white hover:text-blue-400 transition duration-300">Login</a>
                     </div>
 
                     <!-- Mobile Menu Button -->
@@ -273,11 +274,20 @@
                     <a href="#aboutus"
                         class="block px-3 py-2 text-base font-medium text-white hover:text-blue-400 transition duration-300">About
                         Us</a>
-                    <a href="#"
-                        class="block px-3 py-2 text-base font-medium text-white hover:text-blue-400 transition duration-300">Blog</a>
-                    <a href="#contact-form"
+                        <a href="#why-choose-us-section"
+                        class="block px-3 py-2 text-base font-medium text-white hover:text-blue-400 transition duration-300">Why Choose uUs
+                        Us</a>
+                        <a href="#approach-section"
+                        class="block px-3 py-2 text-base font-medium text-white hover:text-blue-400 transition duration-300">Our Approach
+                        Us</a>
+                        <a href="#industry-solutions-section"
+                        class="block px-3 py-2 text-base font-medium text-white hover:text-blue-400 transition duration-300">Industry Solutions
+                        Us</a>
+                    {{-- <a href="#"
+                        class="block px-3 py-2 text-base font-medium text-white hover:text-blue-400 transition duration-300">Blog</a> --}}
+                    <a href="#contact-form-section"
                         class="block px-3 py-2 text-base font-medium text-white hover:text-blue-400 transition duration-300">Contact</a>
-                    <a href="#"
+                    <a href="{{ route('filament.admin.auth.login') }}"
                         class="block px-3 py-2 text-base font-medium text-white hover:text-blue-400 transition duration-300">Login
                     </a>
                 </div>
