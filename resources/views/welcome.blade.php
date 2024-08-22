@@ -14,6 +14,8 @@
     @wireUiScripts
     @livewireStyles
     @vite(['resources/css/app.css', 'resources/js/app.js'])
+    <link rel="icon" href="{{ asset('img/favicon.ico') }}" type="image/x-icon">
+
 
     <meta name="robots" content="noimageindex">
     <!-- Google tag (gtag.js) -->
@@ -274,14 +276,17 @@
                     <a href="#aboutus"
                         class="block px-3 py-2 text-base font-medium text-white hover:text-blue-400 transition duration-300">About
                         Us</a>
-                        <a href="#why-choose-us-section"
-                        class="block px-3 py-2 text-base font-medium text-white hover:text-blue-400 transition duration-300">Why Choose uUs
+                    <a href="#why-choose-us-section"
+                        class="block px-3 py-2 text-base font-medium text-white hover:text-blue-400 transition duration-300">Why
+                        Choose uUs
                         Us</a>
-                        <a href="#approach-section"
-                        class="block px-3 py-2 text-base font-medium text-white hover:text-blue-400 transition duration-300">Our Approach
+                    <a href="#approach-section"
+                        class="block px-3 py-2 text-base font-medium text-white hover:text-blue-400 transition duration-300">Our
+                        Approach
                         Us</a>
-                        <a href="#industry-solutions-section"
-                        class="block px-3 py-2 text-base font-medium text-white hover:text-blue-400 transition duration-300">Industry Solutions
+                    <a href="#industry-solutions-section"
+                        class="block px-3 py-2 text-base font-medium text-white hover:text-blue-400 transition duration-300">Industry
+                        Solutions
                         Us</a>
                     {{-- <a href="#"
                         class="block px-3 py-2 text-base font-medium text-white hover:text-blue-400 transition duration-300">Blog</a> --}}
@@ -413,8 +418,9 @@
         <div class="flex flex-col px-12 py-20 mx-auto max-w-7xl lg:flex-row">
             <div class="relative w-full mb-10 lg:text-left sm:text-center lg:w-1/2 xl:w-7/12 lg:mb-0">
                 <h2 class="text-5xl font-bold sm:text-6xl mt-7 why-choose-us-title">{{ $whyChooseUs->title }}</h2>
-                <p class="text-gray-600 lg:max-w-sm mt-9 why-choose-us-description">At Devcentric, we specialize in
-                    crafting unique solutions designed to boost your organization's productivity and foster growth.</p>
+                <div class="text-gray-600 lg:max-w-sm mt-9 why-choose-us-description">At Devcentric, we specialize in
+                    crafting unique solutions designed to boost your organization's productivity and foster growth.
+                </div>
 
                 <ul class="relative max-w-md mx-auto lg:mx-0 why-choose-us-list">
                     @foreach (json_decode($whyChooseUs->items) as $index => $item)
@@ -431,13 +437,9 @@
                         </li>
                     @endforeach
                 </ul>
-                {{-- <a href="#_"
-                    class="inline-block px-5 py-3 mt-8 text-sm text-white bg-gray-900 rounded-md hover:bg-gray-800 why-choose-us-cta">
-                    <span class="font-medium">Get Started</span> - <span class="font-light">it's free</span>
-                </a> --}}
             </div>
 
-            <div class="flex flex-col rounded-3xl items-center p-4 bg-gray-100">
+            <div class="flex flex-col rounded-3xl items-center p-4 bg-gray-100 why-choose-us-diagram">
                 <h2 class="text-xl font-bold mb-4">EHR System Entity-Relationship Diagram</h2>
                 <img src="{{ asset('img/schema_EHR.png') }}" alt="EHR System Entity-Relationship Diagram"
                     class="max-w-full h-auto rounded-2xl shadow-lg">
@@ -489,17 +491,20 @@
             <div class="lg:text-center md:px-0 px-10 approach-header">
                 <h2 class="text-3xl font-extrabold text-black lg:text-7xl tracking-tighter">{{ $approach->title }}
                 </h2>
-                <p class="max-w-2xl lg:mx-auto mt-4 text-lg leading-7 tracking-tight text-neutral-600">
-                    {{ $approach->description }}</p>
+                <div
+                    class="approach-description max-w-2xl lg:mx-auto mt-4 text-lg leading-7 tracking-tight text-neutral-600">
+                    {{ $approach->description }}
+                </div>
             </div>
             <div
                 class="grid items-start grid-cols-1 mt-10 lg:mt-12 gap-16 md:grid-cols-2 bg-neutral-50 md:rounded-2xl lg:rounded-[4rem] p-10 lg:p-20">
                 <div class="relative approach-content">
                     <h3 class="text-3xl font-extrabold text-black lg:text-5xl tracking-tighter">Tailored <br />
                         Solutions</h3>
-                    <p class="text-neutral-500 text-lg max-w-2xl mt-4">Our step-by-step process ensures that we deliver
+                    <div class="approach-text text-neutral-500 text-lg max-w-2xl mt-4">Our step-by-step process ensures
+                        that we deliver
                         solutions perfectly aligned with your organization's needs and goals, regardless of your
-                        industry or sector.</p>
+                        industry or sector.</div>
                     <ul class="list-none mt-6 space-y-4" role="list">
                         @foreach (json_decode($approach->steps) as $step)
                             <li class="approach-step" data-index="{{ $loop->index }}">

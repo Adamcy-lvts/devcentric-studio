@@ -232,64 +232,60 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    const section = document.querySelector('#why-choose-us-section');
+    const whyChooseUsSection = document.querySelector('#why-choose-us-section');
 
-    if (!section) return;
+    if (whyChooseUsSection) {
+        gsap.registerPlugin(ScrollTrigger);
 
-    const tl = gsap.timeline({
-        scrollTrigger: {
-            trigger: section,
-            start: "top 80%",
-            end: "bottom 20%",
-            toggleActions: "play none none reverse"
-        }
-    });
+        const tl = gsap.timeline({
+            scrollTrigger: {
+                trigger: whyChooseUsSection,
+                start: "top 80%",
+                end: "bottom 20%",
+                toggleActions: "play none none none"
+            }
+        });
 
-    tl.from('.why-choose-us-title', {
-        y: 50,
-        opacity: 0,
-        duration: 0.6,
-        ease: "power3.out"
-    })
-        .from('.why-choose-us-description', {
-            y: 30,
+        tl.from('.why-choose-us-title', {
+            y: 50,
             opacity: 0,
             duration: 0.6,
             ease: "power3.out"
-        }, "-=0.3")
-        .from('.why-choose-us-item', {
-            x: -30,
+        })
+            .from('.why-choose-us-description', {
+                y: 30,
+                opacity: 0,
+                duration: 0.6,
+                ease: "power3.out"
+            }, "-=0.3")
+            .from('.why-choose-us-item', {
+                x: -30,
+                opacity: 0,
+                stagger: 0.1,
+                duration: 0.4,
+                ease: "power2.out"
+            }, "-=0.3")
+            .from('.why-choose-us-diagram', {
+                scale: 0.9,
+                opacity: 0,
+                duration: 0.6,
+                ease: "back.out(1.7)"
+            }, "-=0.4");
+
+        // Animate individual diagram elements
+        gsap.from('.why-choose-us-diagram > *', {
+            y: 20,
             opacity: 0,
             stagger: 0.1,
             duration: 0.4,
-            ease: "power2.out"
-        }, "-=0.3")
-        .from('.why-choose-us-cta', {
-            y: 20,
-            opacity: 0,
-            duration: 0.4,
-            ease: "power2.out"
-        }, "-=0.2")
-        .from('.why-choose-us-diagram', {
-            scale: 0.9,
-            opacity: 0,
-            duration: 0.6,
-            ease: "back.out(1.7)"
-        }, "-=0.4");
-
-    // Animate individual diagram elements
-    gsap.from('.why-choose-us-diagram > *', {
-        y: 20,
-        opacity: 0,
-        stagger: 0.1,
-        duration: 0.4,
-        ease: "power2.out",
-        scrollTrigger: {
-            trigger: '.why-choose-us-diagram',
-            start: "top 70%",
-            toggleActions: "play none none reverse"
-        }
-    });
+            ease: "power2.out",
+            scrollTrigger: {
+                trigger: '.why-choose-us-diagram',
+                start: "top 70%",
+                toggleActions: "play none none none"
+            }
+        });
+    }
 
     const successSection = document.querySelector('#success-stories-section');
 
@@ -349,64 +345,80 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const approachSection = document.querySelector('#approach-section');
 
-    if (!approachSection) return;
+    if (approachSection) {
+        gsap.registerPlugin(ScrollTrigger);
 
-    // Animate header
-    gsap.from('.approach-header', {
-        opacity: 0,
-        y: 50,
-        duration: 1,
-        ease: "power3.out",
-        scrollTrigger: {
-            trigger: approachSection,
-            start: "top 80%",
-            toggleActions: "play none none reverse"
-        }
-    });
+        // Animate header
+        gsap.from('.approach-header', {
+            opacity: 0,
+            y: 50,
+            duration: 1,
+            ease: "power3.out",
+            scrollTrigger: {
+                trigger: approachSection,
+                start: "top 80%",
+                end: "top 20%",
+                toggleActions: "play none none none"
+            }
+        });
 
-    // Animate content
-    const contentTl = gsap.timeline({
-        scrollTrigger: {
-            trigger: '.approach-content',
-            start: "top 80%",
-            toggleActions: "play none none reverse"
-        }
-    });
-
-    contentTl
-        .from('.approach-content h3', {
+        // Animate heading
+        gsap.from('.approach-content h3', {
             opacity: 0,
             y: 30,
             duration: 0.8,
-            ease: "power3.out"
-        })
-        .from('.approach-content > p', {
+            ease: "power3.out",
+            scrollTrigger: {
+                trigger: '.approach-content',
+                start: "top 80%",
+                end: "bottom 20%",
+                toggleActions: "play none none none"
+            }
+        });
+
+        // Animate description text - now targeting the new div
+        gsap.from('.approach-text', {
             opacity: 0,
             y: 20,
             duration: 0.8,
-            ease: "power3.out"
-        }, "-=0.4")
-        .from('.approach-step', {
+            ease: "power3.out",
+            scrollTrigger: {
+                trigger: '.approach-content',
+                start: "top 70%",
+                end: "bottom 20%",
+                toggleActions: "play none none none"
+            }
+        });
+
+        // Animate steps
+        gsap.from('.approach-step', {
             opacity: 0,
             x: -30,
             stagger: 0.2,
             duration: 0.6,
-            ease: "power3.out"
-        }, "-=0.4");
+            ease: "power3.out",
+            scrollTrigger: {
+                trigger: '.approach-content',
+                start: "top 60%",
+                end: "bottom 20%",
+                toggleActions: "play none none none"
+            }
+        });
 
-    // Animate image
-    gsap.from('.approach-image', {
-        opacity: 0,
-        scale: 0.8,
-        duration: 1,
-        ease: "power3.out",
-        scrollTrigger: {
-            trigger: '.approach-image',
-            start: "top 80%",
-            toggleActions: "play none none reverse"
-        }
-    });
-
+        // Animate image
+        gsap.from('.approach-image', {
+            opacity: 0,
+            scale: 0.9,
+            duration: 1,
+            ease: "power3.out",
+            scrollTrigger: {
+                trigger: '.approach-image',
+                start: "top 80%",
+                end: "bottom 20%",
+                toggleActions: "play none none none"
+            }
+        });
+    }
     const industrySection = document.querySelector('#industry-solutions-section');
 
     if (!industrySection) return;
