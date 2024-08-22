@@ -55,6 +55,16 @@
             --devcentric-blue: #517abd;
             --devcentric-orange: #f37321;
         }
+
+        .hero-section {
+            background-image: url('img/hero_wallpaper_1.jpg');
+        }
+
+        @media (max-width: 767px) {
+            .hero-section {
+                background-image: url('img/hero_wallpaper_1_mobile.jpg');
+            }
+        }
     </style>
 
     @livewireStyles
@@ -63,8 +73,7 @@
 <body>
 
 
-    <section class="relative  h-full bg-bottom bg-no-repeat bg-cover" x-data="{ showMenu: false }"
-        style="background-image: url('img/hero_wallpaper_1.jpg');">
+    <section class="hero-section relative h-full bg-bottom bg-no-repeat bg-cover" x-data="{ showMenu: false }">
         <div class="absolute inset-0 z-0 h-full bg-black opacity-80"></div>
 
         <!-- Insert the new transparent navigation here -->
