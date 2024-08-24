@@ -12,6 +12,7 @@ class IndustrySolution extends Model
     protected $fillable = [
         'industry',
         'description',
+        'benefits',
         'icon',
         'sample_image',
         'features',
