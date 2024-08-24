@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('industry');
             $table->text('description');
+            $table->string('benefits');
             $table->text('icon');
             $table->string('sample_image');
             $table->json('features');
