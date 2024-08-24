@@ -31,8 +31,6 @@ class IndustrySolutionSeeder extends Seeder
                             'Customizable templates for different specialties',
                             'Real-time collaborative editing',
                             'Automatic saving and version control',
-                            'Structured data entry for improved analytics',
-                            'Integration with other EHR modules for comprehensive patient records'
                         ],
                     ],
                     [
