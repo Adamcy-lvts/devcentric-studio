@@ -13,6 +13,18 @@ class IndustrySolution extends Model
         'industry',
         'description',
         'icon',
+        'sample_image',
+        'features',
+        'key_benefits',
+        'our_offerings',
+        'why_choose_us',
+        'call_to_action',
+    ];
+
+    protected $casts = [
+        'features' => 'array',
+        'key_benefits' => 'array',
+        'our_offerings' => 'array',
     ];
 
     public function getColorClass()

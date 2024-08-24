@@ -7,6 +7,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\WelcomeController;
 use App\Http\Controllers\VerifyReceiptController;
 use App\Http\Controllers\DownloadReceiptController;
+use App\Http\Controllers\IndustrySolutionsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,6 +26,10 @@ use App\Http\Controllers\DownloadReceiptController;
 
 Route::get('/landing', function () {
     return view('landingpage');
+});
+
+Route::get('/healthcare', function () {
+    return view('healthcare_solutions');
 });
 
 Route::middleware([
@@ -51,3 +56,8 @@ Route::get('/posts', PostIndex::class)->name('posts');
 Route::get('/verify-receipt/{id}', [VerifyReceiptController::class, 'verifyReceipt'])->name('verify.receipt');
 
 Route::get('/download-receipt/{transaction_id}', [DownloadReceiptController::class, 'downloadReceipt'])->name('download.receipt');
+
+Route::get('/healthcare-solutions', App\Livewire\HealthcareSolutions::class)->name('healthcare.soultions');
+
+Route::get('/industry-solutions/{industry}', [IndustrySolutionsController::class, 'show'])
+    ->name('industry.show');

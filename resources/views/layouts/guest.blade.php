@@ -17,10 +17,8 @@
             dataLayer.push(arguments);
         }
         gtag('js', new Date());
-
         gtag('config', 'G-JWJHF5L25Q');
     </script>
-
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
@@ -30,16 +28,15 @@
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 
+    @yield('styles')
 </head>
 
 <body>
-
     <div class="font-sans text-gray-900 antialiased">
-        {{ $slot }}
+        @yield('content')
     </div>
-    {{-- @include('components.footer',['profile' => $profile]) --}}
     @stack('duration')
-
+    @yield('scripts')
 </body>
 
 </html>

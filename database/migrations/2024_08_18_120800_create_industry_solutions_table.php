@@ -16,6 +16,12 @@ return new class extends Migration
             $table->string('industry');
             $table->text('description');
             $table->text('icon');
+            $table->string('sample_image');
+            $table->json('features');
+            $table->json('key_benefits');
+            $table->json('our_offerings');
+            $table->text('why_choose_us');
+            $table->text('call_to_action');
             $table->timestamps();
         });
     }

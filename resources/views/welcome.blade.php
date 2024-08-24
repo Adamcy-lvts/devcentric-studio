@@ -547,7 +547,7 @@
     </section>
 
 
-    <section class="bg-gray-100 py-24" id="industry-solutions-section">
+    {{-- <section class="bg-gray-100 py-24" id="industry-solutions-section">
         <div class="container mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16 industry-solutions-header">
                 <h2 class="text-4xl font-extrabold text-gray-900 sm:text-5xl mb-4">Tailored Software Solutions for
@@ -570,6 +570,37 @@
                             <p class="text-gray-600">{{ $solution->description }}</p>
                         </div>
                     </div>
+                @endforeach
+            </div>
+        </div>
+    </section> --}}
+
+    <section class="bg-gray-100 py-24" id="industry-solutions-section">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 industry-solutions-header">
+                <h2 class="text-4xl font-extrabold text-gray-900 sm:text-5xl mb-4">Tailored Software Solutions for
+                    Every Industry</h2>
+                <p class="max-w-3xl mx-auto text-xl text-gray-600">We craft cutting-edge software solutions tailored to
+                    the unique needs of various industries. Explore how our expertise can transform your sector and
+                    drive innovation.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                @foreach ($industrySolutions as $index => $solution)
+                    <a href="{{ route('industry.show', ['industry' => Str::slug($solution->industry)]) }}"
+                        class="block">
+                        <div class="bg-white rounded-md shadow-lg transition duration-300 ease-in-out hover:shadow-2xl industry-solution-card"
+                            data-index="{{ $index }}">
+                            <div class="p-8 text-center">
+                                <div
+                                    class="w-24 h-24 mx-auto flex items-center justify-center bg-{{ $solution->getColorClass() }}-100 text-{{ $solution->getColorClass() }}-500 rounded-md mb-6 industry-solution-icon">
+                                    {!! $solution->icon !!}
+                                </div>
+                                <h3 class="text-2xl font-semibold text-gray-900 mb-3">{{ $solution->industry }}</h3>
+                                <p class="text-gray-600">{{ $solution->description }}</p>
+                            </div>
+                        </div>
+                    </a>
                 @endforeach
             </div>
         </div>
