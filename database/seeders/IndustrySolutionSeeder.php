@@ -18,22 +18,40 @@ class IndustrySolutionSeeder extends Seeder
                 'sample_image' => 'healthcare_dashboard.png',
                 'features' => json_encode([
                     [
-                        'name' => 'Electronic Health Records',
-                        'icon' => '<svg class="w-8 h-8 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>',
-                        'description' => 'Comprehensive digital patient records for improved care coordination.',
-                        'benefits' => ['Centralized patient information', 'Reduced medical errors', 'Improved patient care'],
+                        'name' => 'Patient Management',
+                        'icon' => '<svg class="w-8 h-8 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>',
+                        'description' => 'Comprehensive patient information management and tracking.',
+                        'benefits' => ['Centralized patient profiles', 'Medical history tracking', 'Appointment scheduling'],
                     ],
                     [
-                        'name' => 'Telemedicine Platform',
-                        'icon' => '<svg class="w-8 h-8 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>',
-                        'description' => 'Remote consultation and patient monitoring capabilities.',
-                        'benefits' => ['Increased accessibility', 'Reduced healthcare costs', 'Improved patient engagement'],
+                        'name' => 'Clinical Documentation',
+                        'icon' => '<svg class="w-8 h-8 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>',
+                        'description' => 'Efficient and accurate clinical documentation tools.',
+                        'benefits' => ['Customizable templates', 'Voice-to-text functionality', 'Integrated coding assistance'],
                     ],
                     [
-                        'name' => 'AI-powered Diagnostics',
-                        'icon' => '<svg class="w-8 h-8 text-purple-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>',
-                        'description' => 'Advanced algorithms for accurate and rapid disease detection.',
-                        'benefits' => ['Early disease detection', 'Improved diagnostic accuracy', 'Faster treatment initiation'],
+                        'name' => 'E-Prescribing',
+                        'icon' => '<svg class="w-8 h-8 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path></svg>',
+                        'description' => 'Secure electronic prescription management system.',
+                        'benefits' => ['Drug interaction checks', 'Pharmacy integration', 'Prescription history tracking'],
+                    ],
+                    [
+                        'name' => 'Lab Integration',
+                        'icon' => '<svg class="w-8 h-8 text-yellow-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"></path></svg>',
+                        'description' => 'Seamless integration with laboratory information systems.',
+                        'benefits' => ['Direct lab order entry', 'Automated result reporting', 'Trend analysis of lab results'],
+                    ],
+                    [
+                        'name' => 'Medical Billing',
+                        'icon' => '<svg class="w-8 h-8 text-purple-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"></path></svg>',
+                        'description' => 'Integrated medical billing and claims management.',
+                        'benefits' => ['Automated claim submission', 'Real-time eligibility checks', 'Payment tracking and reconciliation'],
+                    ],
+                    [
+                        'name' => 'Telehealth Module',
+                        'icon' => '<svg class="w-8 h-8 text-indigo-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>',
+                        'description' => 'Integrated telehealth capabilities for remote patient care.',
+                        'benefits' => ['Secure video consultations', 'Remote patient monitoring', 'Digital intake forms'],
                     ],
                 ]),
                 'key_benefits' => json_encode([
@@ -188,7 +206,7 @@ class IndustrySolutionSeeder extends Seeder
                 'call_to_action' => "Ready to revolutionize your manufacturing processes? Schedule a consultation today to discover how our advanced solutions can optimize your operations, enhance quality, and drive innovation. Our team of industry experts is ready to provide a tailored solution that meets your specific manufacturing needs. Don't let outdated systems limit your production potential - step into the future of manufacturing with us!",
             ],
 
-         
+
             [
                 'industry' => 'Retail',
                 'description' => 'E-commerce platforms, inventory management systems, and customer relationship management (CRM) tools.',
@@ -286,4 +304,3 @@ class IndustrySolutionSeeder extends Seeder
         }
     }
 }
-
