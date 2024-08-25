@@ -75,7 +75,8 @@ class IndustrySolutionSeeder extends Seeder
                     'Continuous improvement based on user feedback',
                 ]),
                 'why_choose_us' => "With over a decade of experience in healthcare technology, we understand the unique challenges faced by medical professionals. Our solutions are designed by healthcare experts and software engineers working together to create intuitive, efficient, and secure systems. We prioritize patient data security, system reliability, and user-friendly interfaces to ensure that your healthcare facility can focus on what matters most - providing excellent patient care.",
-                'call_to_action' => "Ready to revolutionize your healthcare operations? Request a personalized demo today and see how our tailored solutions can transform your facility. Our team of experts is standing by to answer your questions and provide a custom quote based on your specific needs. Don't let outdated systems hold you back - embrace the future of healthcare technology now!",
+                'call_to_action' => "Ready to enhance your healthcare operations with cutting-edge technology? Request a personalized quote today and discover how our tailored EHR solutions can transform your facility. Our team of experts will assess your specific needs and provide a detailed quote outlining how our system can improve your efficiency, patient care, and bottom line. Take the first step towards modernizing your healthcare practice – request your custom EHR solution quote now!",
+
             ],
             [
                 'industry' => 'Finance',
@@ -119,7 +120,7 @@ class IndustrySolutionSeeder extends Seeder
                     'Ongoing support and system updates',
                 ]),
                 'why_choose_us' => "With a team of financial experts and cutting-edge technologists, we deliver solutions that address the complex needs of the finance industry. Our track record of successful implementations for leading financial institutions speaks to our expertise and reliability. We stay ahead of industry trends, ensuring that our clients are always equipped with the latest tools to maintain a competitive edge in the fast-paced world of finance.",
-                'call_to_action' => "Ready to revolutionize your financial operations? Schedule a demo today to see how our advanced solutions can streamline your processes, enhance security, and drive growth. Our team of financial technology experts is ready to provide a tailored solution that meets your specific needs. Don't let outdated systems limit your potential - step into the future of finance with us!",
+                'call_to_action' => "Interested in improving your financial technology systems? We offer customized solutions for various financial institutions. Contact us for a quote tailored to your specific needs and challenges. Our team is ready to discuss how our services can potentially benefit your operations.",
             ],
             [
                 'industry' => 'Education',
@@ -163,7 +164,7 @@ class IndustrySolutionSeeder extends Seeder
                     'Professional development and training for educators',
                 ]),
                 'why_choose_us' => "With years of experience in educational technology, we understand the unique challenges faced by institutions in the digital age. Our team of educators and technologists work together to create solutions that not only meet current needs but anticipate future trends in education. We're committed to fostering innovation in learning, empowering educators, and helping students achieve their full potential.",
-                'call_to_action' => "Ready to transform your educational institution for the digital age? Request a demo today to see how our cutting-edge solutions can enhance learning experiences, streamline operations, and drive student success. Our team of edtech experts is ready to craft a tailored solution that meets your institution's unique needs. Don't let outdated systems hold your students back - embrace the future of education with us!",
+                'call_to_action' => "Looking to enhance your educational technology? We offer customized solutions for various educational institutions. Contact us to discuss how our services might support your learning and administrative goals.",
             ],
             [
                 'industry' => 'Manufacturing',
@@ -207,7 +208,7 @@ class IndustrySolutionSeeder extends Seeder
                     'Manufacturing execution systems (MES)',
                 ]),
                 'why_choose_us' => "With a deep understanding of manufacturing processes and cutting-edge technology, we deliver solutions that drive the future of industry. Our team of manufacturing experts and software engineers work together to create robust, scalable systems that address the complex challenges of modern production environments. We're committed to helping manufacturers embrace Industry 4.0 and maintain a competitive edge in a rapidly evolving global market.",
-                'call_to_action' => "Ready to revolutionize your manufacturing processes? Schedule a consultation today to discover how our advanced solutions can optimize your operations, enhance quality, and drive innovation. Our team of industry experts is ready to provide a tailored solution that meets your specific manufacturing needs. Don't let outdated systems limit your production potential - step into the future of manufacturing with us!",
+                'call_to_action' => "Interested in optimizing your manufacturing processes? We provide tailored technology solutions for the manufacturing sector. Reach out to explore how our services could potentially improve your operations.",
             ],
 
 
@@ -253,7 +254,7 @@ class IndustrySolutionSeeder extends Seeder
                     'Mobile commerce applications',
                 ]),
                 'why_choose_us' => "With a deep understanding of the retail landscape and cutting-edge technology, we deliver solutions that drive the future of commerce. Our team of retail experts and software engineers work together to create robust, scalable systems that address the complex challenges of modern retail environments. We're committed to helping retailers embrace digital transformation and maintain a competitive edge in a rapidly evolving global market.",
-                'call_to_action' => "Ready to transform your retail business? Schedule a consultation today to discover how our advanced solutions can optimize your operations, enhance customer experiences, and drive sales growth. Our team of industry experts is ready to provide a tailored solution that meets your specific retail needs. Don't let outdated systems limit your potential - step into the future of retail with us!",
+                'call_to_action' => "Seeking to upgrade your retail technology? We specialize in solutions for the evolving retail landscape. Contact us to learn more about how our services might benefit your business.",
             ],
 
             [
@@ -298,7 +299,7 @@ class IndustrySolutionSeeder extends Seeder
                     'IoT solutions for smart buildings',
                 ]),
                 'why_choose_us' => "With extensive experience in real estate technology, we understand the unique challenges faced by property managers, agents, and investors. Our team of real estate experts and software engineers collaborate to create innovative solutions that address the complexities of the modern real estate market. We're committed to helping real estate professionals leverage cutting-edge technology to streamline operations, enhance customer experiences, and maximize returns on investment.",
-                'call_to_action' => "Ready to revolutionize your real estate business? Schedule a demo today to see how our advanced solutions can transform your property management, enhance market analysis, and drive growth. Our team of real estate tech experts is ready to provide a tailored solution that meets your specific needs. Don't let outdated systems hold you back - embrace the future of real estate with us!",
+                'call_to_action' => "Want to streamline your real estate operations? We offer technology solutions designed for the property sector. Get in touch to discuss how our services could potentially enhance your real estate business."
             ],
 
         ];

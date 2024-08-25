@@ -42,7 +42,7 @@ Route::middleware([
     })->name('dashboard');
 });
 
-Route::get('/', [WelcomeController::class, 'profile'])->name('profile');
+Route::get('/', [WelcomeController::class, 'profile'])->name('welcome');
 
 Route::get('/download-qrcode', [WelcomeController::class, 'downloadQrCode'])->name('downloadQrCode');
 

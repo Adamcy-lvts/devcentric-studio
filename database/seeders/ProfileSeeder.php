@@ -26,10 +26,10 @@ class ProfileSeeder extends Seeder
                 <p>My discerning eye for aesthetics, coupled with an unwavering commitment to meticulousness, imparts a distinct touch of creativity to every endeavor. My goal is not just to create, but to create impact—be it through evocative graphics, intuitive user experiences, or finely tuned performance optimization. My commitment to delivering captivating, immersive digital experiences remains unwavering, leaving a trail of lasting impressions in my wake.</p>
             ',
                 'facebook' => 'https://web.facebook.com/adam.muhammed.eden',
-                'twitter' => 'https://twitter.com/Adams__Mohammed',
+                'twitter' => 'https://twitter.com/adam_devcentric',
                 'instagram' => 'https://www.instagram.com/adam_eden_mo/',
                 'linkedin' => 'https://www.linkedin.com/in/adam-mohammmed-1507b8139/',
-                'whatsapp' => 'https://wa.me/+2347060741999',
+                'whatsapp' => 'https://wa.me/+2348081816703',
 
                 'created_at' => now(),
                 'updated_at' => now(),
