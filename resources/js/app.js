@@ -31,10 +31,56 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
     const headlines = document.querySelectorAll('.headline');
+    const headlineContainer = document.querySelector('.headline-container');
     const industryDataElement = document.getElementById('industry-data');
     const descriptionElement = document.getElementById('hero-description');
 
-    if (!descriptionElement || headlines.length === 0) return;  // Exit if elements don't exist
+
+
+    if (!headlineContainer || headlines.length === 0) return;  // Exit if elements don't exist
+
+
+    // Function to get a random direction
+    const getRandomDirection = () => Math.random() < 0.5 ? "left" : "right";
+
+    // Set initial positions
+    gsap.set(headlines, {
+        x: "100%",
+        visibility: "hidden"
+    });
+    gsap.set(headlines[0], {
+        x: "0%",
+        visibility: "visible"
+    });
+
+    // Ensure the container height matches the first headline
+    gsap.set(headlineContainer, { height: headlines[0].offsetHeight });
+
+    // Headline animation
+    const headlineTl = gsap.timeline({ repeat: -1 });
+
+    headlines.forEach((headline, index) => {
+        const nextIndex = (index + 1) % headlines.length;
+        const direction = getRandomDirection();
+        const currentExit = direction === "left" ? "-100%" : "100%";
+        const nextEntry = direction === "left" ? "100%" : "-100%";
+
+        headlineTl
+            .to(headline, {
+                x: currentExit,
+                duration: 1.5,
+                ease: "power2.inOut"
+            })
+            .set(headline, { visibility: "hidden" })
+            .set(headlines[nextIndex], { visibility: "visible", x: nextEntry }, "<")
+            .to(headlines[nextIndex], {
+                x: "0%",
+                duration: 1.5,
+                ease: "power2.inOut"
+            }, "<")
+            .to({}, { duration: 3 });  // Pause between transitions
+    });
+    // if (!descriptionElement || headlines.length === 0) return;  // Exit if elements don't exist
 
     let industries = [];
     if (industryDataElement && industryDataElement.dataset.industries) {
@@ -48,29 +94,29 @@ document.addEventListener('DOMContentLoaded', () => {
         return;  // Exit if no industries
     }
 
-    // Set initial positions
-    gsap.set(headlines, { x: "100%" });
-    gsap.set(headlines[0], { x: "0%" });
+    // // Set initial positions
+    // gsap.set(headlines, { x: "100%" });
+    // gsap.set(headlines[0], { x: "0%" });
 
-    // Headline animation
-    const headlineTl = gsap.timeline({ repeat: -1 });
+    // // Headline animation
+    // const headlineTl = gsap.timeline({ repeat: -1 });
 
-    headlines.forEach((headline, index) => {
-        const nextIndex = (index + 1) % headlines.length;
+    // headlines.forEach((headline, index) => {
+    //     const nextIndex = (index + 1) % headlines.length;
 
-        headlineTl
-            .to(headline, {
-                x: "-100%",
-                duration: 1.5,
-                ease: "power2.inOut"
-            })
-            .to(headlines[nextIndex], {
-                x: "0%",
-                duration: 1.5,
-                ease: "power2.inOut"
-            }, "-=1.5")  // Start at the same time as the previous animation
-            .to({}, { duration: 3 });  // Pause between transitions
-    });
+    //     headlineTl
+    //         .to(headline, {
+    //             x: "-100%",
+    //             duration: 1.5,
+    //             ease: "power2.inOut"
+    //         })
+    //         .to(headlines[nextIndex], {
+    //             x: "0%",
+    //             duration: 1.5,
+    //             ease: "power2.inOut"
+    //         }, "-=1.5")  // Start at the same time as the previous animation
+    //         .to({}, { duration: 3 });  // Pause between transitions
+    // });
 
     // Create a span for the industry text if it doesn't exist
     let industrySpan = descriptionElement.querySelector('.industry-text');

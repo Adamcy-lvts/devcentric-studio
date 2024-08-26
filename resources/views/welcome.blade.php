@@ -65,6 +65,14 @@
                 background-image: url('img/hero_wallpaper_1_mobile.jpg');
             }
         }
+
+        .headline {
+            visibility: hidden;
+        }
+
+        .headline:first-child {
+            visibility: visible;
+        }
     </style>
 
     @livewireStyles
@@ -352,9 +360,9 @@
                     <div
                         class="absolute inset-0 bg-gradient-to-r from-indigo-500 to-purple-500 opacity-0 group-hover:opacity-10 transition-opacity duration-300">
                     </div>
-                    <h3 class="text-lg font-medium text-gray-900">{{ $service->title }}</h3>
+                    <h3 class="text-xl font-bold text-gray-900">{{ $service->title }}</h3>
                     <div class="flex flex-col items-center justify-center h-full">
-                        <div class="w-20 h-20 mb-6 flex items-center justify-center service-icon">
+                        <div class="w-14 h-14 mb-6 flex items-center justify-center service-icon">
                             {!! $service->icon !!}
                         </div>
                         <p class="text-sm text-gray-600 mb-4">{{ $service->description }}</p>
@@ -553,7 +561,7 @@
                                     {!! $solution->icon !!}
                                 </div>
                                 <h3 class="text-2xl font-semibold text-gray-900 mb-3">{{ $solution->industry }}</h3>
-                                <p class="text-gray-600">{{ $solution->description }}</p>
+                                <p class="text-sm text-gray-600">{{ $solution->description }}</p>
                             </div>
                         </div>
                     </a>
