@@ -16,7 +16,7 @@ class HeroSeeder extends Seeder
         Hero::create([
             'description' => 'We craft cutting-edge software solutions for various industries, revolutionizing operations and driving growth.',
             'cta_text' => 'Start Your Project',
-            'cta_link' => '#',
+            'cta_link' => '#contact-form-section',
             'image' => 'img/bg-hero-2.jpg',
             'headlines' => [
                 [
