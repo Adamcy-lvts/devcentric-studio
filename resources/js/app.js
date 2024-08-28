@@ -609,12 +609,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 duration: 0.8,
                 ease: "power3.out"
             })
-            .from('.contact-form-card', {
-                opacity: 0,
-                y: 50,
-                duration: 0.8,
-                ease: "power3.out"
-            }, "-=0.4");
+            // .from('.contact-form-card', {
+            //     opacity: 0,
+            //     y: 50,
+            //     duration: 0.8,
+            //     ease: "power3.out"
+            // }, "-=0.4");
 
         // Animate form elements
         gsap.utils.toArray('.form-element').forEach((element, index) => {
