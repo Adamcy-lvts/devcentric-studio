@@ -94,29 +94,6 @@ document.addEventListener('DOMContentLoaded', () => {
         return;  // Exit if no industries
     }
 
-    // // Set initial positions
-    // gsap.set(headlines, { x: "100%" });
-    // gsap.set(headlines[0], { x: "0%" });
-
-    // // Headline animation
-    // const headlineTl = gsap.timeline({ repeat: -1 });
-
-    // headlines.forEach((headline, index) => {
-    //     const nextIndex = (index + 1) % headlines.length;
-
-    //     headlineTl
-    //         .to(headline, {
-    //             x: "-100%",
-    //             duration: 1.5,
-    //             ease: "power2.inOut"
-    //         })
-    //         .to(headlines[nextIndex], {
-    //             x: "0%",
-    //             duration: 1.5,
-    //             ease: "power2.inOut"
-    //         }, "-=1.5")  // Start at the same time as the previous animation
-    //         .to({}, { duration: 3 });  // Pause between transitions
-    // });
 
     // Create a span for the industry text if it doesn't exist
     let industrySpan = descriptionElement.querySelector('.industry-text');
