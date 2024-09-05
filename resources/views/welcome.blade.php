@@ -322,10 +322,10 @@
                     <!-- Adjust height as needed -->
                     @foreach ($hero->headlines as $index => $headline)
                         <h1
-                            class="headline absolute w-full mt-1 text-5xl font-black text-left text-white sm:w-auto md:text-6xl lg:text-7xl xl:text-8xl md:text-center">
-                            <span class="block" id="h1-line1-{{ $index + 1 }}">{{ $headline['line1'] }}</span>
-                            <span class="block" id="h1-line2-{{ $index + 1 }}">{{ $headline['line2'] }}</span>
-                            <span class="block text-3xl md:text-4xl lg:text-5xl mt-4"
+                            class="headline absolute w-full mt-1 font-black text-center text-2xl md:text-4xl lg:text-5xl xl:text-7xl text-white sm:w-auto  md:text-center">
+                            <span class="block " id="h1-line1-{{ $index + 1 }}">{{ $headline['line1'] }}</span>
+                            <span class="block " id="h1-line2-{{ $index + 1 }}">{{ $headline['line2'] }}</span>
+                            <span class="block text-3xl md:text-3xl lg:text-4xl mt-4"
                                 id="h1-line3-{{ $index + 1 }}">{{ $headline['line3'] }}</span>
                         </h1>
                     @endforeach
