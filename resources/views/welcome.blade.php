@@ -318,17 +318,17 @@
 
         <div class="flex items-center justify-center h-auto py-32 mx-auto md:py-40 lg:py-48 xl:py-56 2xl:py-64">
             <div class="z-10 flex flex-col items-start px-8 md:items-center xl:px-0">
-                <div class="headline-container relative w-full overflow-hidden" style="height: 280px;">
+                <div class="headline-container relative w-full overflow-hidden" style="height: 240px;">
                     @foreach ($hero->headlines as $index => $headline)
                         <h1
                             class="headline absolute w-full mt-1 font-black text-center text-white sm:w-auto md:text-center">
-                            <span class="block text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl leading-tight"
+                            <span class="block text-3xl sm:text-3xl md:text-3xl lg:text-4xl xl:text-5xl leading-tight"
                                 id="h1-line1-{{ $index + 1 }}">{{ $headline['line1'] }}</span>
                             <span
-                                class="block text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl leading-tight mt-2"
+                                class="block text-xl sm:text-2xl md:text-2xl lg:text-3xl xl:text-4xl leading-tight mt-1"
                                 id="h1-line2-{{ $index + 1 }}">{{ $headline['line2'] }}</span>
                             <span
-                                class="block text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl leading-tight mt-3 text-blue-300"
+                                class="block text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl leading-tight mt-2 text-blue-300"
                                 id="h1-line3-{{ $index + 1 }}">{{ $headline['line3'] }}</span>
                         </h1>
                     @endforeach
