@@ -66,7 +66,7 @@ class User extends Authenticatable implements FilamentUser
     {
         if ($panel->getId() === 'admin') {
 
-            return ($this->email === 'lv4mj1@gmail.com');
+            return ($this->email === 'devcentric.studio@gmail.com');
         }
 
         return true;
