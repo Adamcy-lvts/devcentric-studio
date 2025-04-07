@@ -27,7 +27,7 @@ class WelcomeController extends Controller
         $industrySolutions = IndustrySolution::all();
         $services = Service::all();
         $whyChooseUs = WhyChooseUs::first();
-        $successStories = SuccessStory::all();
+        $successStories = SuccessStory::where('is_visible', true)->get();
         $approach = Approach::first();
         $aboutUs = AboutUs::first();
         $ourMission = OurMission::first();

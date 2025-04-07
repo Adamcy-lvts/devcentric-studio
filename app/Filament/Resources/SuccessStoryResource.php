@@ -47,6 +47,12 @@ class SuccessStoryResource extends Resource
                 Tables\Columns\TextColumn::make('subtitle')
                     ->searchable(),
                 Tables\Columns\ImageColumn::make('image'),
+
+                // let's add is_visible column use toggle column
+                Tables\Columns\ToggleColumn::make('is_visible')
+                    ->label('Visible')
+                    ->sortable(),
+                  
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()
