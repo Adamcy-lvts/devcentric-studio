@@ -1,5 +1,4 @@
-{{-- verify-receipt view --}}
-<x-guest-layout>
+
     {{-- Enhanced debugging information --}}
     <div class="bg-yellow-100 text-yellow-800 p-4 mb-4 rounded-md">
         <h3 class="font-bold">Debug Info:</h3>
@@ -208,4 +207,4 @@
             margin-bottom: 2rem;
         }
     </style>
-</x-guest-layout>
+
