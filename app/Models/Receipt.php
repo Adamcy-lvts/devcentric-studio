@@ -67,13 +67,11 @@ class Receipt extends Model
 
     public function getReceiptUrlAttribute()
     {
-        return route('verify.receipt', $this->id);
+        return url(route('verify.receipt', $this->id, false));
     }
 
     public function getQrCodeSvgAttribute()
     {
-        return QrCode::size(50)->generate($this->receiptUrl);
+        return QrCode::size(100)->errorCorrection('H')->generate($this->receiptUrl);
     }
-
-
 }

@@ -14,7 +14,10 @@ class VerifyReceiptController extends Controller
     public function verifyReceipt($id)
     {
         try {
+            Log::info("Verifying receipt with ID: {$id}");
+            
             $receipt = Receipt::findOrFail($id);
+            Log::info("Receipt found: " . $receipt->receipt_number);
             
             // Convert amount to words
             $amountInWords = $this->convertAmountToWords($receipt->amount);
@@ -23,10 +26,15 @@ class VerifyReceiptController extends Controller
                 'receipt' => $receipt,
                 'amountInWords' => $amountInWords
             ]);
-        } catch (\Exception $e) {
+        } catch (\Throwable $e) {
             Log::error("Error verifying receipt: {$e->getMessage()}");
+            Log::error($e->getTraceAsString());
             
-            return back()->with('error', 'Could not verify receipt. It may not exist or has been deleted.');
+            // Return a user-friendly error page
+            return response()->view('verify-receipt.error', [
+                'message' => 'We could not verify this receipt. It may not exist or has been deleted.',
+                'error' => $e->getMessage()
+            ], 404);
         }
     }
     
