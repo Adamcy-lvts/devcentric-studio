@@ -1,6 +1,8 @@
 {{-- verify-receipt view --}}
 <x-guest-layout>
     <div>
+    {{dd($receipt)}}
+        <!-- Receipt -->
         <!-- Receipt -->
         <div id="receipt-container"
             class="bg-gradient-to-r from-slate-50 to-slate-100 p-6 md:p-10 shadow-2xl rounded-lg border border-gray-200 max-w-5xl mx-auto relative overflow-hidden">
@@ -23,30 +25,9 @@
             <div class="flex flex-col md:flex-row justify-between items-center md:items-start mb-8 gap-4">
                 <!-- Logo & Company Name -->
                 <div class="flex items-center space-x-4">
-                    @php
-                        $logoPath = public_path('img/devcentric_logo.png');
-                        $logoExists = file_exists($logoPath);
-                        
-                        if (!$logoExists) {
-                            // Try alternative path
-                            $altPath = public_path('img/devcentric_logo.png');
-                            $logoExists = file_exists($altPath);
-                            $logoPath = $logoExists ? $altPath : '';
-                        }
-                    @endphp
-                    
-                    @if($logoExists)
-                        <img src="{{ asset(str_replace(public_path(), '', $logoPath)) }}" alt="Company Logo" class="w-36 drop-shadow-md">
-                    @else
-                        <!-- Fallback logo -->
-                        <div class="w-16 h-16 bg-indigo-50 rounded-full flex items-center justify-center shadow-md">
-                            <span class="text-xl font-bold text-indigo-600">DS</span>
-                        </div>
-                    @endif
-                    <div>
-                        <h1 class="font-serif font-bold text-xl md:text-2xl text-gray-700">Devcentric Studio</h1>
-                        <p class="not-italic font-semibold text-sm">RC: 6875953</p>
-                    </div>
+                    <img src="{{ asset('img/devcentric_logo.png') }}" alt="Company Logo" class="w-36 drop-shadow-md">
+                    <br>
+                    <p class="not-italic font-semibold text-sm">RC: 6875953</p>
                 </div>
 
                 <!-- Contact Details -->
@@ -54,6 +35,7 @@
                     <p>Tel: 07060741999 | 07071940611</p>
                     <p>devcentric.studio@gmail.com</p>
                     <p>www.devcentricstudio.com</p>
+
                 </div>
 
                 <!-- Receipt Number -->
@@ -172,41 +154,17 @@
             <!-- Footer -->
             <div class="mt-10 pt-6 border-t border-gray-200 text-center text-gray-500 text-sm italic">
                 <p>Thank you for your business!</p>
-                <p class="mt-1">This receipt was generated electronically and is valid without a physical signature.</p>
+                <p class="mt-1">This receipt was generated electronically and is valid without a physical signature.
+                </p>
             </div>
         </div>
-        
-        <!-- Download Link -->
-        <div class="mt-6 text-center">
-            <a href="{{ route('download.receipt', $receipt->id) }}" class="inline-flex items-center px-4 py-3 bg-indigo-600 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-indigo-500 active:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 transition ease-in-out duration-150 shadow-md">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
-                    <path fill-rule="evenodd" d="M6 2a2 2 0 00-2 2v12a2 2 0 002 2h8a2 2 0 002-2V7.414A2 2 0 0015.414 6L12 2.586A2 2 0 0010.586 2H6zm5 6a1 1 0 10-2 0v3.586l-1.293-1.293a1 1 0 10-1.414 1.414l3 3a1 1 0 001.414 0l3-3a1 1 0 00-1.414-1.414L11 11.586V8z" clip-rule="evenodd" />
-                </svg>
-                Download Receipt
-            </a>
-        </div>
-    </div>
 
-    <style>
-        .pattern-diagonal-lines {
-            background-image: repeating-linear-gradient(45deg, currentColor 0, currentColor 1px, transparent 0, transparent 50%);
-            background-size: 10px 10px;
-        }
-        
-        @media print {
-            body * {
-                visibility: hidden;
+        <style>
+            .pattern-diagonal-lines {
+                background-image: repeating-linear-gradient(45deg, currentColor 0, currentColor 1px, transparent 0, transparent 50%);
+                background-size: 10px 10px;
             }
-            #receipt-container, #receipt-container * {
-                visibility: visible;
-            }
-            #receipt-container {
-                position: absolute;
-                left: 0;
-                top: 0;
-                width: 100%;
-                box-shadow: none !important;
-            }
-        }
-    </style>
+
+           
+        </style>
 </x-guest-layout>
