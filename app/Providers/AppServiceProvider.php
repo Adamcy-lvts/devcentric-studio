@@ -13,7 +13,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        //
+        // Explicitly require the FormatNaira helper
+        require_once app_path('Helpers/FormatNaira.php');
     }
 
     /**

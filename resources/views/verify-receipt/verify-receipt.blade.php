@@ -1,10 +1,23 @@
 {{-- verify-receipt view --}}
 <x-guest-layout>
+    {{-- Add a fallback formatter for the case where formatNaira isn't loaded --}}
+    @php
+        if (!function_exists('formatNaira')) {
+            function formatNaira($amount) {
+                $amount = floatval($amount);
+                $fractionalPart = $amount - floor($amount);
+                if ($fractionalPart > 0) {
+                    return '₦' . number_format($amount, 2, '.', ',');
+                }
+                return '₦' . number_format($amount);
+            }
+        }
+    @endphp
+
     <div>
 
         <!-- Receipt -->
-        <!-- Receipt -->
-        <div id="receipt-container"
+        <div 
             class="bg-gradient-to-r from-slate-50 to-slate-100 p-6 md:p-10 shadow-2xl rounded-lg border border-gray-200 max-w-5xl mx-auto relative overflow-hidden">
             <!-- Premium subtle background pattern -->
             <div
