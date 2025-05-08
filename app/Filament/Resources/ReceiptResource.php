@@ -7,6 +7,7 @@ use Filament\Tables;
 use App\Models\Receipt;
 use Filament\Forms\Form;
 use Filament\Tables\Table;
+use Filament\Support\RawJs;
 use Filament\Resources\Resource;
 use Filament\Tables\Actions\Action;
 use Filament\Forms\Components\Radio;
@@ -32,37 +33,22 @@ class ReceiptResource extends Resource
             ->schema([
                 TextInput::make('received_from')->required(),
                 TextInput::make('payment_for')->required(),
-                // TextInput::make('amount')->numeric(),
-                // TextInput::make('amount')->required()->mask(
-                //     fn (Mask $mask) => $mask
-                //         ->patternBlocks([
-                //             'money' => fn (Mask $mask) => $mask
-                //                 ->numeric()
-                //                 ->thousandsSeparator(',')
-                //                 ->decimalSeparator('.'),
-                //         ])
-                //         ->pattern('₦money'),
-                // ),
-                // TextInput::make('deposit')->mask(
-                //     fn (Mask $mask) => $mask
-                //         ->patternBlocks([
-                //             'money' => fn (Mask $mask) => $mask
-                //                 ->numeric()
-                //                 ->thousandsSeparator(',')
-                //                 ->decimalSeparator('.'),
-                //         ])
-                //         ->pattern('₦money'),
-                // ),
-                // TextInput::make('balance_due')->mask(
-                //     fn (Mask $mask) => $mask
-                //         ->patternBlocks([
-                //             'money' => fn (Mask $mask) => $mask
-                //                 ->numeric()
-                //                 ->thousandsSeparator(',')
-                //                 ->decimalSeparator('.'),
-                //         ])
-                //         ->pattern('₦money'),
-                // ),
+                TextInput::make('amount')
+                    ->required()
+                    ->mask(RawJs::make('$money($input)'))
+                    ->prefix('₦')
+                    ->numeric()
+                    ->stripCharacters(','),
+                TextInput::make('deposit')
+                    ->mask(RawJs::make('$money($input)'))
+                    ->prefix('₦')
+                    ->numeric()
+                    ->stripCharacters(','),
+                TextInput::make('balance_due')
+                    ->mask(RawJs::make('$money($input)'))
+                    ->prefix('₦')
+                    ->numeric()
+                    ->stripCharacters(','),
                 DateTimePicker::make('date')->required(),
                 Radio::make('payment_method')
                     ->options(Receipt::PAYMENT_METHODS)
@@ -90,10 +76,16 @@ class ReceiptResource extends Resource
                 //
             ])
             ->actions([
-            Action::make('view receipt')
-                ->label('Receipt')
-                ->url(fn (Receipt $record): string => route('filament.resources.receipts.view', $record)),
+            // Action::make('view receipt')
+            //     ->label('Receipt')
+            //     ->url(fn (Receipt $record): string => route('filament.resources.receipts.view', $record)),
                 Tables\Actions\EditAction::make(),
+                // Action::make('download_pdf')
+                //     ->label('Download PDF')
+                //     ->url(fn (Receipt $record): string => route('filament.resources.receipts.download-pdf', $record)),
+                // Action::make('download_png')
+                //     ->label('Download PNG')
+                //     ->url(fn (Receipt $record): string => route('filament.resources.receipts.download-png', $record)),
             ])
             ->groupedBulkActions([
                 Tables\Actions\DeleteBulkAction::make(),

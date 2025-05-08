@@ -24,6 +24,6 @@
     "dependencies": {
         "animate.css": "^4.1.1",
         "gsap": "^3.12.5",
-        "puppeteer": "^23.1.0"
+        "puppeteer": "^23.11.1"
     }
 }

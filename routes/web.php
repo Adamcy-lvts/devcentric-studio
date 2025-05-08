@@ -56,6 +56,7 @@ Route::get('/posts', PostIndex::class)->name('posts');
 Route::get('/verify-receipt/{id}', [VerifyReceiptController::class, 'verifyReceipt'])->name('verify.receipt');
 
 Route::get('/download-receipt/{transaction_id}', [DownloadReceiptController::class, 'downloadReceipt'])->name('download.receipt');
+Route::get('/download-receipt-png/{receipt_id}', [DownloadReceiptController::class, 'downloadReceiptPng'])->name('download.receipt.png');
 
 Route::get('/healthcare-solutions', App\Livewire\HealthcareSolutions::class)->name('healthcare.soultions');
 

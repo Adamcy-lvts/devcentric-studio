@@ -1,222 +1,179 @@
+{{-- view -receipt view --}}
 <x-filament::page>
-    <div class="bg-gradient-to-r from-gray-100 to-gray-200 p-10 shadow-xl rounded-lg">
+    <div>
+        <!-- Download Actions Buttons -->
+        <div class="flex flex-wrap justify-end gap-4 mb-6">
+            <x-filament::button color="primary" wire:click="downloadPdf" icon="heroicon-o-document-arrow-down"
+                class="filament-page-button-action">
+                Download PDF
+            </x-filament::button>
 
-        <!-- Header -->
-        <div class="flex justify-between items-start mb-8">
-            <!-- Logo & Company Name -->
-            <div class="flex items-center space-x-4">
-                <img src="{{ asset('img/offical_logo_black.png') }}" alt="Company Logo"
-                    class="w-16 h-16 shadow-md rounded-full">
-                <h1 class="font-serif font-bold text-2xl text-gray-700">Devcentric Studio</h1>
-            </div>
-
-            <!-- Contact Details -->
-            <div class="space-y-1 text-gray-600 italic">
-                <p>Tel: 07060741999</p>
-                <p>devcentric.studio@gmail.com</p>
-                <p>www.devcentricstudio.com</p>
-            </div>
-
-
-
-            <!-- Receipt Number -->
-            <div class="text-gray-600">
-                <p class="font-bold text-xl">Receipt No: {{ $receipt->receipt_number }}</p>
-            </div>
+            <x-filament::button color="success" wire:click="downloadPng" icon="heroicon-o-photo"
+                class="filament-page-button-action">
+                Download PNG
+            </x-filament::button>
         </div>
 
-        <!-- Body -->
-        <div class="mb-6">
+        <!-- Receipt -->
+        <div id="receipt-container"
+            class="bg-gradient-to-r from-slate-50 to-slate-100 p-6 md:p-10 shadow-2xl rounded-lg border border-gray-200 max-w-5xl mx-auto relative overflow-hidden">
+            <!-- Premium subtle background pattern -->
+            <div
+                class="absolute inset-0 opacity-5 pattern-diagonal-lines pattern-gray-700 pattern-size-2 pattern-bg-transparent">
+            </div>
 
-            <!-- Received From & Date -->
-            <div class="flex justify-between items-center mb-6">
-                <div class="relative w-1/2">
-                    <p class="font-semibold text-gray-600">Received from: {{ $receipt->received_from }}</p>
-                    <div class="border-b-2 border-dotted"></div>
+            <!-- Watermark/seal effect -->
+            <div class="absolute right-10 bottom-10 opacity-5 transform rotate-12">
+                <svg class="w-56 h-56" viewBox="0 0 100 100">
+                    <circle cx="50" cy="50" r="45" fill="none" stroke="currentColor" stroke-width="2">
+                    </circle>
+                    <text x="50" y="50" text-anchor="middle" dominant-baseline="middle" font-family="serif"
+                        font-size="12">DEVCENTRIC</text>
+                </svg>
+            </div>
+
+            <!-- Header -->
+            <div class="flex flex-col md:flex-row justify-between items-center md:items-start mb-8 gap-4">
+                <!-- Logo & Company Name -->
+                <div class="flex items-center space-x-4">
+                    <img src="{{ asset('img/devcentric_logo.png') }}" alt="Company Logo" class="w-36 drop-shadow-md">
+                   <br> <p class="not-italic font-semibold text-sm">RC: 6875953</p>
                 </div>
 
-                <div class="relative w-1/2 text-right">
-                    <p class="font-semibold text-gray-600">Date:
-                        {{ \Carbon\Carbon::parse($receipt->date)->format('d-m-Y') }}</p>
-                    <div class="border-b-2 border-dotted"></div>
+                <!-- Contact Details -->
+                <div class="space-y-1 text-gray-600 italic text-sm md:text-base text-center md:text-right">
+                    <p>Tel: 07060741999 | 07071940611</p>
+                    <p>devcentric.studio@gmail.com</p>
+                    <p>www.devcentricstudio.com</p>
+
+                </div>
+
+                <!-- Receipt Number -->
+                <div
+                    class="text-gray-700 bg-gray-100 px-4 py-2 rounded-md shadow-sm border border-gray-200 text-center md:text-right">
+                    <p class="font-bold text-lg md:text-xl">Receipt No: {{ $receipt->receipt_number }}</p>
                 </div>
             </div>
 
-            <!-- Amount in Words -->
-            <div class="mb-4">
-                <p class="font-semibold text-gray-600">Amount (in words): {{$amountInWords}}</p>
-            </div>
-            <!-- Amount -->
-            <div class="flex justify-between items-center bg-gray-300 p-5 rounded-lg text-xl font-bold mb-8 shadow-md">
-                <p>Total Amount:</p>
-                <span>{{ formatNaira($receipt->amount) }}</span>
-            </div>
+            <!-- Body -->
+            <div class="mb-8">
+                <!-- Received From & Date -->
+                <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-6 gap-4">
+                    <div class="relative w-full md:w-1/2">
+                        <p class="font-semibold text-gray-700">Received from: <span
+                                class="font-normal">{{ $receipt->received_from }}</span></p>
+                        <div class="border-b-2 border-dotted border-gray-300 mt-1"></div>
+                    </div>
 
-            <!-- Payment For -->
-            <div class="flex items-center mb-10">
-                <span class="font-semibold text-gray-600 mr-4">Payment For:</span>
-                <div class="relative flex-grow">
-                    <p class="text-center">{{ $receipt->payment_for }}</p>
-                    <div class="border-b-2 border-dotted w-full"></div>
+                    <div class="relative w-full md:w-1/2 text-left md:text-right">
+                        <p class="font-semibold text-gray-700">Date:
+                            <span
+                                class="font-normal">{{ \Carbon\Carbon::parse($receipt->date)->format('d-m-Y') }}</span>
+                        </p>
+                        <div class="border-b-2 border-dotted border-gray-300 mt-1"></div>
+                    </div>
+                </div>
+
+                <!-- Amount in Words -->
+                <div class="mb-6 bg-gray-50 p-4 rounded-md border-l-4 border-indigo-500 shadow-sm">
+                    <p class="font-semibold text-gray-700">Amount (in words): <span
+                            class="font-normal italic">{{ $amountInWords }}</span></p>
+                </div>
+
+                <!-- Amount -->
+                <div
+                    class="flex justify-between items-center bg-gradient-to-r from-indigo-50 to-blue-50 p-5 rounded-lg text-xl font-bold mb-8 shadow-md border border-indigo-100">
+                    <p class="text-gray-700">Total Amount:</p>
+                    <span class="text-indigo-700">{{ formatNaira($receipt->amount) }}</span>
+                </div>
+
+                <!-- Payment For -->
+                <div class="flex flex-col md:flex-row items-start md:items-center mb-10 gap-2">
+                    <span class="font-semibold text-gray-700 md:mr-4 whitespace-nowrap">Payment For:</span>
+                    <div class="relative flex-grow w-full">
+                        <p class="text-left md:text-center p-2 bg-gray-50 rounded-md">{{ $receipt->payment_for }}</p>
+                        <div class="border-b-2 border-dotted border-gray-300 w-full"></div>
+                    </div>
                 </div>
             </div>
 
-        </div>
-
-        <!-- Deposit & Balance Due Section -->
-        <div class="flex flex-col mb-8">
-            <div class="flex items-center space-x-8 mb-8">
-                <!-- Deposit -->
-                <div class="w-1/2 flex items-center relative">
-                    <span class="font-semibold text-gray-600 mr-2">Deposit:</span>
-                    <span class="ml-2">{{ formatNaira($receipt->deposit) }}</span>
-                    <div class="border-b-2 border-dotted absolute bottom-0 left-0 right-0"></div>
-                </div>
-
-                <!-- Balance Due -->
-                <div class="w-1/2 flex items-center relative">
-                    <span class="font-semibold text-gray-600 mr-2">Balance Due:</span>
-                    <span class="text-center ml-2">{{ formatNaira($receipt->balance_due) }}</span>
-                    <div class="border-b-2 border-dotted absolute bottom-0 left-0 right-0"></div>
-                </div>
-            </div>
-
-            <!-- Payment Methods & Authorized Signature -->
-            <div class="flex justify-between">
-                <!-- Payment Methods -->
-                <div class="flex space-x-4 items-center">
-                    <label class="flex items-center space-x-2 text-gray-600">
-                        <input type="checkbox" class="form-checkbox h-5 w-5 text-blue-600" value="cash"
-                            @if ($receipt->payment_method == 'cash') checked @endif>
-                        <span>Cash</span>
-                    </label>
-
-                    <label class="flex items-center space-x-2 text-gray-600">
-                        <input type="checkbox" class="form-checkbox h-5 w-5 text-blue-600" value="pos"
-                            @if ($receipt->payment_method == 'pos') checked @endif>
-                        <span>POS</span>
-                    </label>
-
-                    <label class="flex items-center space-x-2 text-gray-600">
-                        <input type="checkbox" class="form-checkbox h-5 w-5 text-blue-600" value="bank_transfer"
-                            @if ($receipt->payment_method == 'bank transfer') checked @endif>
-                        <span>Bank Transfer</span>
-                    </label>
-                </div>
-
-                <!-- Authorized Signature -->
-                <div class="flex-1 flex flex-col items-end">
-                    <div class="flex flex-col items-center">
-                        <div class="mb-2">
-                            {!! $receipt->qrCodeSvg !!}
+            <!-- Deposit & Balance Due Section -->
+            <div class="flex flex-col mb-8">
+                <div class="flex flex-col md:flex-row md:items-center gap-6 mb-8">
+                    <!-- Deposit -->
+                    <div class="w-full md:w-1/2 flex flex-col md:flex-row md:items-center relative">
+                        <span class="font-semibold text-gray-700 mb-1 md:mb-0 md:mr-2">Deposit:</span>
+                        <span
+                            class="md:ml-2 p-2 bg-gray-50 rounded-md w-full md:w-auto text-center">{{ formatNaira($receipt->deposit) }}</span>
+                        <div
+                            class="border-b-2 border-dotted border-gray-300 absolute bottom-0 left-0 right-0 md:hidden">
                         </div>
-                        <div class="border-b-2 border-dotted w-48 mb-2"></div>
-                        <p class="font-semibold text-gray-600">Authorized Signature</p>
+                    </div>
+
+                    <!-- Balance Due -->
+                    <div class="w-full md:w-1/2 flex flex-col md:flex-row md:items-center relative mt-4 md:mt-0">
+                        <span class="font-semibold text-gray-700 mb-1 md:mb-0 md:mr-2">Balance Due:</span>
+                        <span
+                            class="md:ml-2 p-2 bg-gray-50 rounded-md w-full md:w-auto text-center text-red-600">{{ formatNaira($receipt->balance_due) }}</span>
+                        <div
+                            class="border-b-2 border-dotted border-gray-300 absolute bottom-0 left-0 right-0 md:hidden">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Payment Methods & Authorized Signature -->
+                <div class="flex flex-col md:flex-row justify-between gap-8">
+                    <!-- Payment Methods -->
+                    <div class="flex flex-wrap gap-4 items-center">
+                        <p class="font-semibold text-gray-700 w-full md:w-auto">Payment Method:</p>
+                        <label
+                            class="flex items-center space-x-2 text-gray-600 bg-white px-3 py-2 rounded-md shadow-sm border border-gray-200">
+                            <input type="checkbox" class="form-checkbox h-5 w-5 text-indigo-600" value="cash"
+                                @if ($receipt->payment_method == 'cash') checked @endif>
+                            <span>Cash</span>
+                        </label>
+
+                        <label
+                            class="flex items-center space-x-2 text-gray-600 bg-white px-3 py-2 rounded-md shadow-sm border border-gray-200">
+                            <input type="checkbox" class="form-checkbox h-5 w-5 text-indigo-600" value="pos"
+                                @if ($receipt->payment_method == 'pos') checked @endif>
+                            <span>POS</span>
+                        </label>
+
+                        <label
+                            class="flex items-center space-x-2 text-gray-600 bg-white px-3 py-2 rounded-md shadow-sm border border-gray-200">
+                            <input type="checkbox" class="form-checkbox h-5 w-5 text-indigo-600" value="bank_transfer"
+                                @if ($receipt->payment_method == 'bank_transfer') checked @endif>
+                            <span>Bank Transfer</span>
+                        </label>
+                    </div>
+
+                    <!-- Authorized Signature -->
+                    <div class="flex-1 flex flex-col items-center md:items-end">
+                        <div class="flex flex-col items-center">
+                            <div class="mb-2 bg-white p-1 rounded-md shadow-sm">
+                                {!! $receipt->qrCodeSvg !!}
+                            </div>
+                            <div class="border-b-2 border-gray-400 w-48 mb-2"></div>
+                            <p class="font-semibold text-gray-700">Authorized Signature</p>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
 
-{{-- <div style="background: linear-gradient(to right, #f7fafc, #edf2f7); padding: 10px; box-shadow: 0px 10px 15px -3px rgba(0, 0, 0, 0.1); border-radius: 10px;">
-
-    <!-- Header -->
-    <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 32px;">
-        <!-- Logo & Company Name -->
-        <div style="display: flex; align-items: center; gap: 16px;">
-            <img src="{{ asset('img/offical_logo_black.png') }}" alt="Company Logo"
-                 style="width: 64px; height: 64px; box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.1); border-radius: 50%;">
-            <h1 style="font-family: serif; font-weight: bold; font-size: 24px; color: #4a5568;">Devcentric Studio</h1>
-        </div>
-
-        <!-- Contact Details -->
-        <div style="gap: 8px; color: #a0aec0; font-style: italic;">
-            <p>Tel: 07060741999</p>
-            <p>devcentric.studio@gmail.com</p>
-            <p>www.devcentricstudio.com</p>
-        </div>
-
-        <!-- Receipt Number -->
-        <div style="color: #a0aec0;">
-            <p style="font-weight: bold; font-size: 20px;">Receipt No: {{ $receipt->receipt_number }}</p>
-        </div>
-    </div>
-
-    <!-- Body -->
-    <div style="margin-bottom: 24px;">
-        <!-- Received From & Date -->
-        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px;">
-            <div style="position: relative; width: 50%;">
-                <p style="font-weight: 600; color: #718096;">Received from: {{ $receipt->received_from }}</p>
-                <div style="border-bottom: 2px dotted;"></div>
-            </div>
-            <div style="position: relative; width: 50%; text-align: right;">
-                <p style="font-weight: 600; color: #718096;">Date:
-                    {{ \Carbon\Carbon::parse($receipt->date)->format('d-m-Y') }}</p>
-                <div style="border-bottom: 2px dotted;"></div>
-            </div>
-        </div>
-
-        <!-- Amount in Words -->
-        <div style="margin-bottom: 16px;">
-            <p style="font-weight: 600; color: #718096;">Amount (in words): {{$amountInWords}}</p>
-        </div>
-
-        <!-- Amount -->
-        <div style="display: flex; justify-content: space-between; align-items: center; background-color: #e2e8f0; padding: 5px; border-radius: 10px; font-size: 20px; font-weight: bold; margin-bottom: 32px; box-shadow: 0px 4px 6px -1px rgba(0, 0, 0, 0.1);">
-            <p>Amount:</p>
-            <span>{{ formatNaira($receipt->amount) }}</span>
-        </div>
-
-        <!-- Payment For -->
-        <div style="display: flex; align-items: center; margin-bottom: 40px;">
-            <span style="font-weight: 600; color: #718096; margin-right: 16px;">Payment For:</span>
-            <div style="position: relative; flex: 1;">
-                <p style="text-align: center;">{{ $receipt->payment_for }}</p>
-                <div style="border-bottom: 2px dotted; width: 100%;"></div>
+            <!-- Footer -->
+            <div class="mt-10 pt-6 border-t border-gray-200 text-center text-gray-500 text-sm italic">
+                <p>Thank you for your business!</p>
+                <p class="mt-1">This receipt was generated electronically and is valid without a physical signature.
+                </p>
             </div>
         </div>
     </div>
 
-    <!-- Deposit & Balance Due Section -->
-    <div style="display: flex; flex-direction: column; margin-bottom: 32px;">
-        <div style="display: flex; align-items: center; gap: 32px; margin-bottom: 32px;">
-            <!-- Deposit -->
-            <div style="width: 50%; display: flex; align-items: center; position: relative;">
-                <span style="font-weight: 600; color: #718096; margin-right: 8px;">Deposit:</span>
-                <span style="margin-left: 8px;">{{ formatNaira($receipt->deposit) }}</span>
-                <div style="border-bottom: 2px dotted; position: absolute; bottom: 0; left: 0; right: 0;"></div>
-            </div>
-
-            <!-- Balance Due -->
-            <div style="width: 50%; display: flex; align-items: center; position: relative;">
-                <span style="font-weight: 600; color: #718096; margin-right: 8px;">Balance Due:</span>
-                <span style="text-align: center; margin-left: 8px;">{{ formatNaira($receipt->balance_due) }}</span>
-                <div style="border-bottom: 2px dotted; position: absolute; bottom: 0; left: 0; right: 0;"></div>
-            </div>
-        </div>
-
-        <!-- Payment Methods & Authorized Signature -->
-        <div style="display: flex; justify-content: space-between;">
-            <!-- Payment Methods -->
-            <div style="display: flex; gap: 16px; align-items: center;">
-                <!-- Here are the checkboxes. Note that the inline styling might not match exactly how Tailwind presents them. -->
-                <!-- ... -->
-            </div>
-
-            <!-- Authorized Signature -->
-            <div style="flex: 1; display: flex; flex-direction: column; align-items: end;">
-                <div style="display: flex; flex-direction: column; align-items: center;">
-                    <div style="margin-bottom: 8px;">
-                        {!! $receipt->qrCodeSvg !!}
-                    </div>
-                    <div style="border-bottom: 2px dotted; width: 192px; margin-bottom: 8px;"></div>
-                    <p style="font-weight: 600; color: #718096;">Authorized Signature</p>
-                </div>
-            </div>
-        </div>
-    </div>
-</div> --}}
-
-
+    <style>
+        .pattern-diagonal-lines {
+            background-image: repeating-linear-gradient(45deg, currentColor 0, currentColor 1px, transparent 0, transparent 50%);
+            background-size: 10px 10px;
+        }
+    </style>
 </x-filament::page>
