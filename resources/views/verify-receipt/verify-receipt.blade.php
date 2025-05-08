@@ -1,37 +1,32 @@
-
-    {{-- Enhanced debugging information --}}
-    <div class="bg-yellow-100 text-yellow-800 p-4 mb-4 rounded-md">
-        <h3 class="font-bold">Debug Info:</h3>
-        <p>Receipt ID: {{ $receipt->id ?? 'Not available' }}</p>
-        <p>Receipt Number: {{ $receipt->receipt_number ?? 'Not available' }}</p>
-        <p>Amount: {{ $receipt->amount ?? 'Not available' }}</p>
-        <p>Amount in Words: {{ $amountInWords ?? 'Not available' }}</p>
-        <p>Payment Method: {{ $receipt->payment_method ?? 'Not available' }}</p>
-        <p>FormatNaira function: {{ function_exists('formatNaira') ? 'Available' : 'Not available' }}</p>
-        
-        {{-- Add a test button to check if JavaScript is working --}}
-        <button onclick="document.getElementById('js-test').innerText = 'JavaScript is working!'" 
-                class="mt-2 px-2 py-1 bg-blue-500 text-white rounded hover:bg-blue-600">
-            Test JavaScript
-        </button>
-        <span id="js-test" class="ml-2">Click to test JS</span>
-    </div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Receipt Verification - {{ $receipt->receipt_number }}</title>
     
-    {{-- Add a fallback formatter for the case where formatNaira isn't loaded --}}
-    @php
-        if (!function_exists('formatNaira')) {
-            function formatNaira($amount) {
-                $amount = floatval($amount);
-                $fractionalPart = $amount - floor($amount);
-                if ($fractionalPart > 0) {
-                    return '₦' . number_format($amount, 2, '.', ',');
-                }
-                return '₦' . number_format($amount);
-            }
+    <!-- Scripts -->
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
+    
+    <style>
+        .pattern-diagonal-lines {
+            background-image: repeating-linear-gradient(45deg, currentColor 0, currentColor 1px, transparent 0, transparent 50%);
+            background-size: 10px 10px;
+            opacity: 0.5;
+            pointer-events: none;
         }
-    @endphp
-    
-    <div>
+        
+        body {
+            background-color: #f3f4f6;
+            min-height: 100vh;
+            padding: 2rem;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container mx-auto">
         <!-- Receipt -->
         <div 
             class="bg-gradient-to-r from-slate-50 to-slate-100 p-6 md:p-10 shadow-2xl rounded-lg border border-gray-200 max-w-5xl mx-auto relative overflow-hidden">
@@ -186,25 +181,6 @@
             </div>
         </div>
     </div>
-
-    <style>
-        .pattern-diagonal-lines {
-            background-image: repeating-linear-gradient(45deg, currentColor 0, currentColor 1px, transparent 0, transparent 50%);
-            background-size: 10px 10px;
-            opacity: 0.5; /* Ensure visibility */
-            pointer-events: none; /* Don't interfere with elements below */
-        }
-        
-        /* Ensure guest layout doesn't interfere with our styling */
-        body {
-            background-color: #f3f4f6;
-            min-height: 100vh;
-        }
-        
-        /* Ensure the container is properly visible */
-        .receipt-container {
-            margin-top: 2rem;
-            margin-bottom: 2rem;
-        }
-    </style>
+</body>
+</html>
 
