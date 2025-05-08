@@ -1,7 +1,7 @@
 {{-- verify-receipt view --}}
 <x-guest-layout>
     <div>
-    {{dd($receipt)}}
+
         <!-- Receipt -->
         <!-- Receipt -->
         <div id="receipt-container"
