@@ -1,14 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Receipt Verification - {{ $receipt->receipt_number }}</title>
-    
+
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
-    
+
     <style>
         .pattern-diagonal-lines {
             background-image: repeating-linear-gradient(45deg, currentColor 0, currentColor 1px, transparent 0, transparent 50%);
@@ -16,7 +17,7 @@
             opacity: 0.5;
             pointer-events: none;
         }
-        
+
         body {
             background-color: #f3f4f6;
             min-height: 100vh;
@@ -24,11 +25,13 @@
         }
     </style>
 </head>
+
 <body>
 
     <div class="container mx-auto">
         <!-- Receipt -->
-        <div 
+        <!-- Receipt -->
+        <div id="receipt-container"
             class="bg-gradient-to-r from-slate-50 to-slate-100 p-6 md:p-10 shadow-2xl rounded-lg border border-gray-200 max-w-5xl mx-auto relative overflow-hidden">
             <!-- Premium subtle background pattern -->
             <div
@@ -59,6 +62,7 @@
                     <p>Tel: 07060741999 | 07071940611</p>
                     <p>devcentric.studio@gmail.com</p>
                     <p>www.devcentricstudio.com</p>
+
                 </div>
 
                 <!-- Receipt Number -->
@@ -177,10 +181,17 @@
             <!-- Footer -->
             <div class="mt-10 pt-6 border-t border-gray-200 text-center text-gray-500 text-sm italic">
                 <p>Thank you for your business!</p>
-                <p class="mt-1">This receipt was generated electronically and is valid without a physical signature.</p>
+                <p class="mt-1">This receipt was generated electronically and is valid without a physical signature.
+                </p>
             </div>
         </div>
     </div>
+    <style>
+        .pattern-diagonal-lines {
+            background-image: repeating-linear-gradient(45deg, currentColor 0, currentColor 1px, transparent 0, transparent 50%);
+            background-size: 10px 10px;
+        }
+    </style>
 </body>
-</html>
 
+</html>

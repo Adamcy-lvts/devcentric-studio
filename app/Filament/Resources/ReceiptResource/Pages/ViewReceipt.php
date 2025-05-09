@@ -38,6 +38,7 @@ class ViewReceipt extends Page
         }
     }
 
+
     /**
      * Download receipt as PDF
      */
@@ -50,8 +51,7 @@ class ViewReceipt extends Page
             if (!File::exists($logoPath)) {
                 // Try alternative paths
                 $altPaths = [
-                    public_path('img/devcentric_logo.png'),
-                    public_path('images/devcentric_logo.png'),
+                    public_path('img/offical_logo_black.png'),
                     public_path('images/devcentric_logo.png'),
                     public_path('assets/img/devcentric_logo.png'),
                     public_path('assets/images/devcentric_logo.png')
@@ -82,18 +82,14 @@ class ViewReceipt extends Page
                 ]);
             } else {
                 Log::warning('Company logo file not found at any checked paths', [
-                    'primary_path' => public_path('img/offical_logo_black.png'),
+                    'primary_path' => public_path('img/devcentric_logo.png'),
                     'checked_paths' => $altPaths ?? []
                 ]);
-
-                // Create a fallback text-based logo
-                $companyLogo = "data:image/svg+xml;base64," . base64_encode('<svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 60 60"><rect width="60" height="60" rx="30" fill="#4f46e5" opacity="0.1"/><text x="30" y="35" font-family="Arial" font-size="20" font-weight="bold" text-anchor="middle" fill="#4f46e5">DS</text></svg>');
-                Log::info('Created fallback text-based logo');
             }
 
             // Generate QR code for verification URL
             $verifyUrl = route('verify.receipt', ['id' => $this->receipt->id]);
-            $qrCodeSvg = QrCode::size(100)->generate($verifyUrl);
+            $qrCodeSvg = QrCode::size(60)->generate($verifyUrl); // Reduced QR code size
 
             // Create a unique filename
             $fileName = sprintf(
@@ -120,11 +116,13 @@ class ViewReceipt extends Page
                     'isPdfMode' => true,
                 ])
                     ->format('a4')
+                    // Set orientation to landscape
+                    ->orientation(Orientation::Landscape)
                     ->withBrowsershot(function (Browsershot $browsershot) {
                         // Try to find installed browsers in the system
                         $chromePaths = [
                             config('app.chrome_path'), // First try the configured path
-                            '/usr/bin/chromium-browser', // Then try chromium
+                            '/usr/bin/chromium-browser',
                             '/usr/bin/chromium',
                             '/usr/bin/google-chrome',
                             '/usr/bin/google-chrome-stable'
@@ -138,17 +136,14 @@ class ViewReceipt extends Page
                             }
                         }
 
-                        if (!$chromePath) {
-                            Log::warning('Could not find Chrome or Chromium executable.');
-                        }
-
                         $browsershot->setChromePath($chromePath)
                             ->format('A4')
-                            ->margins(10, 10, 10, 10) // Add slightly larger margins
+                            ->landscape() // Ensure landscape mode is set
+                            ->margins(5, 5, 5, 5) // Minimal margins to maximize content area
                             ->showBackground()
-                            ->waitUntilNetworkIdle()
-                            ->scale(0.9) // Slightly scale down to ensure fitting on page
-                            ->preferCssPageSize(true)
+                            ->waitUntilNetworkIdle() // Wait for Tailwind to initialize
+                            ->userAgent('Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.212 Safari/537.36')
+                            ->deviceScaleFactor(1.5) // Higher resolution
                             ->timeout(120)
                             ->noSandbox();
                     });
@@ -216,8 +211,7 @@ class ViewReceipt extends Page
             if (!File::exists($logoPath)) {
                 // Try alternative paths
                 $altPaths = [
-                    public_path('img/devcentric_logo.png'),
-                    public_path('images/devcentric_logo.png'),
+                    public_path('img/offical_logo_black.png'),
                     public_path('images/devcentric_logo.png'),
                     public_path('assets/img/devcentric_logo.png'),
                     public_path('assets/images/devcentric_logo.png')
@@ -237,7 +231,7 @@ class ViewReceipt extends Page
             // Prepare company logo as base64
             $companyLogo = null;
             if (File::exists($logoPath)) {
-                // Convert to base64 for reliable PDF embedding
+                // Convert to base64 for reliable embedding
                 $logoData = base64_encode(File::get($logoPath));
                 $mimeType = File::mimeType($logoPath);
                 $companyLogo = "data:{$mimeType};base64,{$logoData}";
@@ -248,17 +242,14 @@ class ViewReceipt extends Page
                 ]);
             } else {
                 Log::warning('Company logo file not found at any checked paths', [
-                    'primary_path' => public_path('img/offical_logo_black.png'),
+                    'primary_path' => public_path('img/devcentric_logo.png'),
                     'checked_paths' => $altPaths ?? []
                 ]);
-
-                // Create a fallback text-based logo
-                $companyLogo = "data:image/svg+xml;base64," . base64_encode('<svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 60 60"><rect width="60" height="60" rx="30" fill="#4f46e5" opacity="0.1"/><text x="30" y="35" font-family="Arial" font-size="20" font-weight="bold" text-anchor="middle" fill="#4f46e5">DS</text></svg>');
-                Log::info('Created fallback text-based logo');
             }
+
             // Generate QR code for verification URL
             $verifyUrl = route('verify.receipt', ['id' => $this->receipt->id]);
-            $qrCodeSvg = QrCode::size(100)->generate($verifyUrl);
+            $qrCodeSvg = QrCode::size(60)->generate($verifyUrl); // Compact QR code
 
             // Create a unique filename
             $fileName = sprintf(
@@ -276,26 +267,59 @@ class ViewReceipt extends Page
             $filePath = $directory . '/' . $fileName;
 
             try {
-                // For PNG, we'll render HTML then use Browsershot directly
+                // Add CSS to ensure no extra space at the bottom
+                $customCss = '
+                <style>
+                    html, body {
+                        margin: 0;
+                        padding: 0;
+                        overflow: hidden;
+                        width: 100%;
+                    }
+                    #capture-area {
+                        display: inline-block;
+                        box-sizing: border-box;
+                        width: 100%;
+                        max-width: 1280px;
+                    }
+                    @media print {
+                        body {
+                            margin: 0;
+                            padding: 0;
+                        }
+                        #capture-area {
+                            page-break-inside: avoid;
+                        }
+                    }
+                </style>
+            ';
+
+                // Create HTML content with wrapper already prepared in the view
                 $html = view('pdf-view.digital-receipt', [
                     'receipt' => $this->receipt,
                     'qrCode' => $qrCodeSvg,
                     'amountInWords' => $this->amountInWords,
                     'companyLogo' => $companyLogo,
                     'isPngMode' => true,
+                    'customCss' => $customCss
                 ])->render();
 
                 // Configure Browsershot for PNG
                 $browsershot = Browsershot::html($html)
                     ->setChromePath(config('app.chrome_path'))
-                    ->windowSize(900, 1200) // More appropriate size for full receipt
-                    ->waitUntilNetworkIdle()
+                    ->windowSize(1280, 800) // Wider window for wider receipt
+                    ->waitUntilNetworkIdle() // Wait for Tailwind to initialize
                     ->showBackground()
-                    ->scale(0.9) // Slightly scale down to ensure complete capture
+                    ->userAgent('Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.212 Safari/537.36')
+                    ->deviceScaleFactor(2) // Higher resolution for better quality
                     ->timeout(120)
-                    ->noSandbox();
+                    ->noSandbox()
+                    ->waitForFunction('document.fonts.ready') // Wait for fonts to load properly
+                    // Use select to capture only the receipt itself
+                    ->select('#capture-area')
+                    ->ignoreHttpsErrors(); // Ignore SSL errors
 
-                // Save PNG 
+                // Save PNG without any extra whitespace
                 $browsershot->save($filePath);
 
                 if (!File::exists($filePath)) {

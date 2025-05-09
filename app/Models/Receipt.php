@@ -72,6 +72,6 @@ class Receipt extends Model
 
     public function getQrCodeSvgAttribute()
     {
-        return QrCode::size(100)->errorCorrection('H')->generate($this->receiptUrl);
+        return QrCode::size(80)->errorCorrection('H')->generate($this->receiptUrl);
     }
 }
