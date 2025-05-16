@@ -76,9 +76,9 @@ class ReceiptResource extends Resource
                 //
             ])
             ->actions([
-            // Action::make('view receipt')
-            //     ->label('Receipt')
-            //     ->url(fn (Receipt $record): string => route('filament.resources.receipts.view', $record)),
+            Action::make('view receipt')
+                ->label('Receipt')
+                ->url(fn (Receipt $record): string => route('filament.resources.receipts.view', $record)),
                 Tables\Actions\EditAction::make(),
                 // Action::make('download_pdf')
                 //     ->label('Download PDF')
