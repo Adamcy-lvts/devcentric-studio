@@ -34,9 +34,7 @@
         <div id="receipt-container"
             class="bg-gradient-to-r from-slate-50 to-slate-100 p-6 md:p-10 shadow-2xl rounded-lg border border-gray-200 max-w-5xl mx-auto relative overflow-hidden">
             <!-- Premium subtle background pattern -->
-            <div
-                class="absolute inset-0 opacity-5 pattern-diagonal-lines pattern-gray-700 pattern-size-2 pattern-bg-transparent">
-            </div>
+             <div class="absolute inset-0 opacity-5 pattern-diagonal-lines pattern-gray-700"></div>
 
             <!-- Watermark/seal effect -->
             <div class="absolute right-10 bottom-10 opacity-5 transform rotate-12">
