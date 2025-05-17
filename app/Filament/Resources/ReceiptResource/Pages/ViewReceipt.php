@@ -307,7 +307,7 @@ class ViewReceipt extends Page
                 // Configure Browsershot for PNG
                 $browsershot = Browsershot::html($html)
                     ->setChromePath(config('app.chrome_path'))
-                    ->windowSize(1280, 1000) // Wider window for wider receipt
+                    ->windowSize(900, 500) // Wider window for wider receipt
                     ->waitUntilNetworkIdle() // Wait for Tailwind to initialize
                     ->showBackground()
                     ->userAgent('Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.212 Safari/537.36')

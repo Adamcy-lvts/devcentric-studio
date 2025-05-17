@@ -25,10 +25,76 @@
             <!-- Watermark/seal effect -->
             <div class="absolute right-10 bottom-10 opacity-5 transform rotate-12">
                 <svg class="w-56 h-56" viewBox="0 0 100 100">
-                    <circle cx="50" cy="50" r="45" fill="none" stroke="currentColor" stroke-width="2">
-                    </circle>
-                    <text x="50" y="50" text-anchor="middle" dominant-baseline="middle" font-family="serif"
-                        font-size="12">DEVCENTRIC</text>
+                    <!-- Complex background pattern -->
+                    <defs>
+                        <pattern id="microtext" patternUnits="userSpaceOnUse" width="100" height="100">
+                            <text x="0" y="2" font-size="1.5" fill="currentColor" opacity="0.7">DEVCENTRIC STUDIO AUTHENTIC DOCUMENT DEVCENTRIC STUDIO AUTHENTIC DOCUMENT</text>
+                            <text x="0" y="4" font-size="1.5" fill="currentColor" opacity="0.7">SECURE RECEIPT RC:6875953 SECURE RECEIPT RC:6875953 SECURE RECEIPT</text>
+                            <text x="0" y="6" font-size="1.5" fill="currentColor" opacity="0.7">DEVCENTRIC STUDIO AUTHENTIC DOCUMENT DEVCENTRIC STUDIO AUTHENTIC DOCUMENT</text>
+                            <text x="0" y="8" font-size="1.5" fill="currentColor" opacity="0.7">SECURE RECEIPT RC:6875953 SECURE RECEIPT RC:6875953 SECURE RECEIPT</text>
+                        </pattern>
+                    </defs>
+                    
+                    <!-- Microtext background circle -->
+                    <circle cx="50" cy="50" r="42" fill="url(#microtext)" opacity="0.4"></circle>
+                    
+                    <!-- Outer circle with intricate pattern -->
+                    <circle cx="50" cy="50" r="45" fill="none" stroke="currentColor" stroke-width="2"></circle>
+                    <circle cx="50" cy="50" r="44" fill="none" stroke="currentColor" stroke-width="0.3"></circle>
+                    <circle cx="50" cy="50" r="43" fill="none" stroke="currentColor" stroke-width="0.2" stroke-dasharray="1,2"></circle>
+                    
+                    <!-- Middle decorative elements -->
+                    <circle cx="50" cy="50" r="40" fill="none" stroke="currentColor" stroke-width="1"></circle>
+                    <circle cx="50" cy="50" r="36" fill="none" stroke="currentColor" stroke-width="0.5" stroke-dasharray="3,2"></circle>
+                    <circle cx="50" cy="50" r="34" fill="none" stroke="currentColor" stroke-width="0.3" stroke-dasharray="1,1"></circle>
+                    
+                    <!-- Unique pattern elements - waves -->
+                    <path d="M30,50 Q40,45 50,50 Q60,55 70,50" fill="none" stroke="currentColor" stroke-width="0.3"></path>
+                    <path d="M30,52 Q40,57 50,52 Q60,47 70,52" fill="none" stroke="currentColor" stroke-width="0.3"></path>
+                    
+                    <!-- Geometric security elements -->
+                    <polygon points="50,28 52,30 50,32 48,30" fill="currentColor" opacity="0.7"></polygon>
+                    <polygon points="50,68 52,70 50,72 48,70" fill="currentColor" opacity="0.7"></polygon>
+                    <polygon points="28,50 30,52 28,54 26,52" fill="currentColor" opacity="0.7"></polygon>
+                    <polygon points="72,50 74,52 72,54 70,52" fill="currentColor" opacity="0.7"></polygon>
+                    
+                    <!-- Company name with subtle shadow effect -->
+                    <text x="50" y="42" text-anchor="middle" dominant-baseline="middle" font-family="Arial, sans-serif" font-size="9" font-weight="bold" fill="currentColor">DEVCENTRIC</text>
+                    <text x="50" y="42.3" text-anchor="middle" dominant-baseline="middle" font-family="Arial, sans-serif" font-size="9" font-weight="bold" fill="currentColor" opacity="0.3">DEVCENTRIC</text>
+                    <text x="50" y="52" text-anchor="middle" dominant-baseline="middle" font-family="Arial, sans-serif" font-size="7" font-weight="bold" fill="currentColor">STUDIO</text>
+                    <text x="50" y="52.3" text-anchor="middle" dominant-baseline="middle" font-family="Arial, sans-serif" font-size="7" font-weight="bold" fill="currentColor" opacity="0.3">STUDIO</text>
+                    
+                    <!-- Radial lines with varied lengths and thicknesses -->
+                    <g stroke="currentColor">
+                        <line x1="50" y1="10" x2="50" y2="22" stroke-width="0.6"></line>
+                        <line x1="50" y1="78" x2="50" y2="90" stroke-width="0.6"></line>
+                        <line x1="10" y1="50" x2="22" y2="50" stroke-width="0.6"></line>
+                        <line x1="78" y1="50" x2="90" y2="50" stroke-width="0.6"></line>
+                        
+                        <!-- Diagonal lines with varied lengths -->
+                        <line x1="25" y1="25" x2="34" y2="34" stroke-width="0.4"></line>
+                        <line x1="75" y1="25" x2="66" y2="34" stroke-width="0.4"></line>
+                        <line x1="25" y1="75" x2="34" y2="66" stroke-width="0.4"></line>
+                        <line x1="75" y1="75" x2="66" y2="66" stroke-width="0.4"></line>
+                        
+                        <!-- Additional diagonal security lines -->
+                        <line x1="36" y1="25" x2="40" y2="29" stroke-width="0.2"></line>
+                        <line x1="64" y1="25" x2="60" y2="29" stroke-width="0.2"></line>
+                        <line x1="36" y1="75" x2="40" y2="71" stroke-width="0.2"></line>
+                        <line x1="64" y1="75" x2="60" y2="71" stroke-width="0.2"></line>
+                    </g>
+                    
+                    <!-- Unique RC number in small print -->
+                    <text x="50" y="62" text-anchor="middle" font-family="monospace" font-size="2.5" font-weight="bold">RC: 6875953</text>
+                    
+                    <!-- Text curved around bottom semicircle -->
+                    <path id="curve" d="M20,65 A30,30 0 0,0 80,65" fill="none" stroke="none"></path>
+                    <text font-family="Arial, sans-serif" font-size="4" font-weight="bold">
+                        <textPath href="#curve" startOffset="50%" text-anchor="middle">OFFICIAL RECEIPT</textPath>
+                    </text>
+                    
+                    <!-- Establishment year -->
+                    <text x="50" y="75" text-anchor="middle" font-family="Arial, sans-serif" font-size="3.5" font-weight="bold">EST. 2023</text>
                 </svg>
             </div>
 
