@@ -104,7 +104,7 @@
                     <div class="w-full md:w-1/2 flex flex-col md:flex-row md:items-center relative">
                         <span class="font-semibold text-gray-700 mb-1 md:mb-0 md:mr-2">Deposit:</span>
                         <span
-                            class="md:ml-2 p-2 bg-gray-50 rounded-md w-full md:w-auto text-center">{{ formatNaira($receipt->deposit) }}</span>
+                            class="md:ml-2 p-2 bg-gray-50 rounded-md w-full md:w-auto text-green-600 font-semibold text-center">{{ formatNaira($receipt->deposit) }}</span>
                         <div
                             class="border-b-2 border-dotted border-gray-300 absolute bottom-0 left-0 right-0 md:hidden">
                         </div>
@@ -114,7 +114,7 @@
                     <div class="w-full md:w-1/2 flex flex-col md:flex-row md:items-center relative mt-4 md:mt-0">
                         <span class="font-semibold text-gray-700 mb-1 md:mb-0 md:mr-2">Balance Due:</span>
                         <span
-                            class="md:ml-2 p-2 bg-gray-50 rounded-md w-full md:w-auto text-center text-red-600">{{ formatNaira($receipt->balance_due) }}</span>
+                            class="md:ml-2 p-2 bg-gray-50 rounded-md w-full md:w-auto text-center font-semibold text-red-600">{{ formatNaira($receipt->balance_due) }}</span>
                         <div
                             class="border-b-2 border-dotted border-gray-300 absolute bottom-0 left-0 right-0 md:hidden">
                         </div>
