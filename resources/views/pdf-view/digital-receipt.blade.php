@@ -284,7 +284,7 @@
             <!-- Invoice Number -->
             <div class="text-gray-700 bg-gray-100 px-3 py-1 rounded shadow-sm border border-gray-200 text-right">
                 {{-- <p class="font-bold text-base">Invoice No: INV-250517001</p> --}}
-                <p class="font-bold text-base">Receipt No: {{ $receipt->receipt_number }}</p>
+                <p class="font-bold text-base">Invoice No: {{ $receipt->receipt_number }}</p>
             </div>
         </div>
 
