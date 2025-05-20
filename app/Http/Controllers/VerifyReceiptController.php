@@ -19,12 +19,14 @@ class VerifyReceiptController extends Controller
             $receipt = Receipt::findOrFail($id);
             Log::info("Receipt found: " . $receipt->receipt_number);
             
+            $companyLogo = public_path('img/devcentric_logo.png');
             // Convert amount to words
             $amountInWords = $this->convertAmountToWords($receipt->amount);
             
             return view('verify-receipt.verify-receipt', [
                 'receipt' => $receipt,
-                'amountInWords' => $amountInWords
+                'amountInWords' => $amountInWords,
+                'companyLogo' => $companyLogo,
             ]);
         } catch (\Throwable $e) {
             Log::error("Error verifying receipt: {$e->getMessage()}");
