@@ -40,6 +40,13 @@ Route::middleware([
     Route::get('/dashboard', function () {
         return view('dashboard');
     })->name('dashboard');
+    
+    // Invoice PDF and actions that aren't handled by Filament directly
+    Route::prefix('admin')->name('admin.')->group(function () {
+        Route::get('invoices/{invoice}/pdf', [App\Http\Controllers\InvoiceController::class, 'generatePDF'])->name('invoices.pdf');
+        Route::post('invoices/{invoice}/mark-paid', [App\Http\Controllers\InvoiceController::class, 'markAsPaid'])->name('invoices.mark-paid');
+        Route::post('invoices/{invoice}/send-email', [App\Http\Controllers\InvoiceController::class, 'sendEmail'])->name('invoices.send-email');
+    });
 });
 
 Route::get('/', [WelcomeController::class, 'profile'])->name('welcome');
@@ -56,10 +63,22 @@ Route::get('/verify-receipt/{id}', [VerifyReceiptController::class, 'verifyRecei
     ->name('verify.receipt')
     ->middleware('web');  // Explicitly add web middleware only
 
+Route::get('/verify-invoice/{id}', [App\Http\Controllers\InvoiceController::class, 'verify'])
+    ->name('verify.invoice')
+    ->middleware('web');
+
 Route::get('/download-receipt/{transaction_id}', [DownloadReceiptController::class, 'downloadReceipt'])->name('download.receipt');
 Route::get('/download-receipt-png/{receipt_id}', [DownloadReceiptController::class, 'downloadReceiptPng'])->name('download.receipt.png');
 
 Route::get('/healthcare-solutions', App\Livewire\HealthcareSolutions::class)->name('healthcare.soultions');
+
+// Invoice Frontend Routes
+Route::middleware(['auth'])->group(function () {
+    Route::get('/invoices', App\Livewire\InvoiceList::class)->name('invoices.index');
+    Route::get('/invoices/create', App\Livewire\InvoiceManager::class)->name('invoices.create');
+    Route::get('/invoices/{id}', App\Livewire\InvoiceManager::class)->name('invoices.show');
+    Route::get('/invoices/{id}/edit', App\Livewire\InvoiceManager::class)->name('invoices.edit');
+});
 
 Route::get('/industry-solutions/{industry}', [IndustrySolutionsController::class, 'show'])
     ->name('industry.show');

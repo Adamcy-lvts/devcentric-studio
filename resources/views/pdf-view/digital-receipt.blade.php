@@ -1,13 +1,11 @@
-{{-- pdf-receipt view --}}
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Receipt {{ $receipt->receipt_number }}</title>
+    <title>Invoice INV-250517001</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    {!! isset($customCss) ? $customCss : '' !!}
     <style>
         @page {
             margin: 0.3cm;
@@ -118,6 +116,44 @@
         .receipt-section {
             margin-bottom: 0.5rem;
         }
+
+        /* Table styles */
+        .invoice-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 1rem;
+        }
+
+        .invoice-table th,
+        .invoice-table td {
+            padding: 8px;
+            text-align: left;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .invoice-table th {
+            background-color: #f8fafc;
+            font-weight: bold;
+        }
+
+        .invoice-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .invoice-table .amount {
+            text-align: right;
+        }
+
+        .subtotal-row {
+            border-top: 2px solid #e2e8f0;
+            font-weight: 600;
+        }
+
+        .total-row {
+            border-top: 2px solid #4f46e5;
+            font-weight: bold;
+            background-color: #f5f7ff;
+        }
     </style>
 </head>
 
@@ -212,7 +248,7 @@
                 <!-- Text curved around bottom semicircle -->
                 <path id="curve" d="M20,65 A30,30 0 0,0 80,65" fill="none" stroke="none"></path>
                 <text font-family="Arial, sans-serif" font-size="4" font-weight="bold">
-                    <textPath href="#curve" startOffset="50%" text-anchor="middle">OFFICIAL RECEIPT</textPath>
+                    <textPath href="#curve" startOffset="50%" text-anchor="middle">OFFICIAL INVOICE</textPath>
                 </text>
 
                 <!-- Establishment year -->
@@ -232,6 +268,7 @@
                         <span class="text-base font-bold text-indigo-600">DS</span>
                     </div>
                 @endif
+
                 <div>
                     <p class="text-xs font-semibold mt-1">RC: 6875953</p>
                 </div>
@@ -244,8 +281,9 @@
                 <p>www.devcentricstudio.com</p>
             </div>
 
-            <!-- Receipt Number -->
+            <!-- Invoice Number -->
             <div class="text-gray-700 bg-gray-100 px-3 py-1 rounded shadow-sm border border-gray-200 text-right">
+                {{-- <p class="font-bold text-base">Invoice No: INV-250517001</p> --}}
                 <p class="font-bold text-base">Receipt No: {{ $receipt->receipt_number }}</p>
             </div>
         </div>
@@ -253,13 +291,14 @@
         <!-- Received From & Date -->
         <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-6 gap-4">
             <div class="relative w-full md:w-1/2">
-                <p class="font-semibold text-gray-700">Received from: <span
-                        class="font-normal">{{ $receipt->received_from }}</span></p>
+                <p class="font-semibold text-gray-700">To: <span class="font-normal">Chad Basin Development
+                        Authority</span></p>
                 <div class="border-b-2 border-dotted border-gray-300 mt-1"></div>
             </div>
 
             <div class="relative w-full md:w-1/2 text-left md:text-right">
                 <p class="font-semibold text-gray-700">Date:
+                    {{-- <span class="font-normal">17-05-2025</span> --}}
                     <span class="font-normal">{{ \Carbon\Carbon::parse($receipt->date)->format('d-m-Y') }}</span>
                 </p>
                 <div class="border-b-2 border-dotted border-gray-300 mt-1"></div>
@@ -268,26 +307,68 @@
 
         <!-- Amount in Words -->
         <div class="mb-6 bg-gray-50 p-4 rounded-md border-l-4 border-indigo-500 shadow-sm">
-            <p class="font-semibold text-gray-700">Amount (in words): <span
-                    class="font-normal italic">{{ $amountInWords }}</span></p>
+            <p class="font-semibold text-gray-700">Amount (in words): <span class="font-normal italic">Four million
+                    five hundred sixteen thousand one hundred sixty-two Naira only</span></p>
         </div>
 
+        <!-- Itemized Invoice Table -->
+        <div class="mb-4 bg-white rounded-md shadow-sm border border-gray-200 overflow-hidden">
+            <table class="invoice-table">
+                <thead>
+                    <tr>
+                        <th style="width: 70%;">Description</th>
+                        <th style="width: 30%;" class="amount">Amount (₦)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Website Development (One-time)</td>
+                        <td class="amount">462,428.00</td>
+                    </tr>
+                    <tr>
+                        <td>Annual Infrastructure & Hosting</td>
+                        <td class="amount">610,497.00</td>
+                    </tr>
+                    <tr>
+                        <td>Annual Maintenance & Support</td>
+                        <td class="amount">508,671.00</td>
+                    </tr>
+                    <tr>
+                        <td>Google Workspace (15 users)</td>
+                        <td class="amount">2,934,566.00</td>
+                    </tr>
+                    <tr class="subtotal-row">
+                        <td>Subtotal</td>
+                        <td class="amount">4,177,450.00</td>
+                    </tr>
+                    <tr>
+                        <td>VAT (7.5%)</td>
+                        <td class="amount">338,712.00</td>
+                    </tr>
+                    <tr class="total-row">
+                        <td>Total Amount</td>
+                        <td class="amount text-indigo-700">4,516,162.00</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
 
         <!-- Total Amount -->
-        <div
+        {{-- <div
             class="flex justify-between items-center bg-gradient-to-r from-indigo-50 to-blue-50 p-3 rounded text-lg font-bold receipt-section shadow-sm border border-indigo-100 relative z-10">
             <p class="text-gray-700">Total Amount:</p>
-            <span class="text-indigo-700">₦{{ number_format($receipt->amount, 2) }}</span>
+            <span class="text-indigo-700">₦4,516,162.00</span>
         </div>
 
         <!-- Payment For -->
         <div class="flex flex-col md:flex-row items-start md:items-center mb-10 gap-2">
             <span class="font-semibold text-gray-700 md:mr-4 whitespace-nowrap">Payment For:</span>
             <div class="relative flex-grow w-full">
-                <p class="text-left md:text-center p-2 bg-gray-50 rounded-md">{{ $receipt->payment_for }}</p>
+                <p class="text-left md:text-center p-2 bg-gray-50 rounded-md">Website Development and Google Workspace
+                    Official Email Setup & Training</p>
                 <div class="border-b-2 border-dotted border-gray-300 w-full"></div>
             </div>
-        </div>
+        </div> --}}
 
         <!-- Deposit & Balance Due Section -->
         <div class="flex flex-col mb-4">
@@ -296,7 +377,7 @@
                 <div class="w-full md:w-1/2 flex flex-col md:flex-row md:items-center relative">
                     <span class="font-semibold text-gray-700 mb-1 md:mb-0 md:mr-2">Deposit:</span>
                     <span
-                        class="md:ml-2 p-2 bg-gray-50 rounded-md w-full md:w-auto text-center text-green-600">{{ formatNaira($receipt->deposit) }}</span>
+                        class="md:ml-2 p-2 bg-gray-50 rounded-md w-full md:w-auto text-center text-green-600">₦0.00</span>
                     <div class="border-b-2 border-dotted border-gray-300 absolute bottom-0 left-0 right-0 md:hidden">
                     </div>
                 </div>
@@ -305,7 +386,7 @@
                 <div class="w-full md:w-1/2 flex flex-col md:flex-row md:items-center relative mt-4 md:mt-0">
                     <span class="font-semibold text-gray-700 mb-1 md:mb-0 md:mr-2">Balance Due:</span>
                     <span
-                        class="md:ml-2 p-2 bg-gray-50 rounded-md w-full md:w-auto text-center text-red-600">{{ formatNaira($receipt->balance_due) }}</span>
+                        class="md:ml-2 p-2 bg-gray-50 rounded-md w-full md:w-auto text-center text-red-600">₦0.00</span>
                     <div class="border-b-2 border-dotted border-gray-300 absolute bottom-0 left-0 right-0 md:hidden">
                     </div>
                 </div>
@@ -314,29 +395,27 @@
             <!-- Payment Methods & Authorized Signature -->
             <div class="flex flex-col md:flex-row justify-between gap-8">
                 <!-- Payment Methods -->
-                <div class="flex flex-wrap gap-4 items-center">
+                {{-- <div class="flex flex-wrap gap-4 items-center">
                     <p class="font-semibold text-gray-700 w-full md:w-auto">Payment Method:</p>
                     <label
                         class="flex items-center space-x-2 text-gray-600 bg-white px-2 py-1 rounded-md shadow-sm border border-gray-200">
-                        <input type="checkbox" class="form-checkbox h-3 w-3 text-indigo-600" value="cash"
-                            @if ($receipt->payment_method == 'cash') checked @endif>
+                        <input type="checkbox" class="form-checkbox h-3 w-3 text-indigo-600" value="cash">
                         <span>Cash</span>
                     </label>
 
                     <label
                         class="flex items-center space-x-2 text-gray-600 bg-white px-2 py-1 rounded-md shadow-sm border border-gray-200">
-                        <input type="checkbox" class="form-checkbox h-3 w-3 text-indigo-600" value="pos"
-                            @if ($receipt->payment_method == 'pos') checked @endif>
+                        <input type="checkbox" class="form-checkbox h-3 w-3 text-indigo-600" value="pos">
                         <span>POS</span>
                     </label>
 
                     <label
                         class="flex items-center space-x-2 text-gray-600 bg-white px-2 py-1 rounded-md shadow-sm border border-gray-200">
                         <input type="checkbox" class="form-checkbox h-3 w-3 text-indigo-600" value="bank_transfer"
-                            @if ($receipt->payment_method == 'bank_transfer') checked @endif>
+                            >
                         <span>Bank Transfer</span>
                     </label>
-                </div>
+                </div> --}}
 
                 <!-- Authorized Signature -->
                 <div class="flex-1 flex flex-col items-center md:items-end">
@@ -350,12 +429,230 @@
                 </div>
             </div>
         </div>
+
         <!-- Footer -->
         <div class="mt-2 pt-2 border-t border-gray-200 text-center text-gray-500 text-xs italic relative z-10">
             <p>Thank you for your business!</p>
-            <p>This receipt was generated electronically and is valid without a physical signature.</p>
+            <p>This invoice was generated electronically and is valid without a physical signature.</p>
         </div>
     </div>
+</body>
+
+</html>0.6"></line>
+<line x1="10" y1="50" x2="22" y2="50" stroke-width="0.6"></line>
+<line x1="78" y1="50" x2="90" y2="50" stroke-width="0.6"></line>
+
+<!-- Diagonal lines with varied lengths -->
+<line x1="25" y1="25" x2="34" y2="34" stroke-width="0.4"></line>
+<line x1="75" y1="25" x2="66" y2="34" stroke-width="0.4"></line>
+<line x1="25" y1="75" x2="34" y2="66" stroke-width="0.4"></line>
+<line x1="75" y1="75" x2="66" y2="66" stroke-width="0.4"></line>
+
+<!-- Additional diagonal security lines -->
+<line x1="36" y1="25" x2="40" y2="29" stroke-width="0.2"></line>
+<line x1="64" y1="25" x2="60" y2="29" stroke-width="0.2"></line>
+<line x1="36" y1="75" x2="40" y2="71" stroke-width="0.2"></line>
+<line x1="64" y1="75" x2="60" y2="71" stroke-width="0.2"></line>
+</g>
+
+<!-- Unique RC number in small print -->
+<text x="50" y="62" text-anchor="middle" font-family="monospace" font-size="2.5" font-weight="bold">RC:
+    6875953</text>
+
+<!-- Text curved around bottom semicircle -->
+<path id="curve" d="M20,65 A30,30 0 0,0 80,65" fill="none" stroke="none"></path>
+<text font-family="Arial, sans-serif" font-size="4" font-weight="bold">
+    <textPath href="#curve" startOffset="50%" text-anchor="middle">OFFICIAL INVOICE</textPath>
+</text>
+
+<!-- Establishment year -->
+<text x="50" y="75" text-anchor="middle" font-family="Arial, sans-serif" font-size="3.5" font-weight="bold">EST.
+    2023</text>
+</svg>
+</div>
+
+<!-- Header -->
+<div class="flex justify-between items-start relative z-10 mb-2 gap-4">
+    <!-- Logo & RC -->
+    <div class="flex items-center">
+        <div class="w-9 h-9 bg-indigo-50 rounded-full flex items-center justify-center mr-2">
+            <span class="text-base font-bold text-indigo-600">DS</span>
+        </div>
+        <div>
+            <p class="text-xs font-semibold mt-1">RC: 6875953</p>
+        </div>
+    </div>
+
+    <!-- Contact Details -->
+    <div class="text-gray-600 italic text-xs text-right">
+        <p>Tel: 07060741999 | 07071940611</p>
+        <p>devcentric.studio@gmail.com</p>
+        <p>www.devcentricstudio.com</p>
+    </div>
+
+    <!-- Invoice Number -->
+    <div class="text-gray-700 bg-gray-100 px-3 py-1 rounded shadow-sm border border-gray-200 text-right">
+        <p class="font-bold text-base">Invoice No: INV-250517001</p>
+    </div>
+</div>
+
+<!-- Received From & Date -->
+<div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-6 gap-4">
+    <div class="relative w-full md:w-1/2">
+        <p class="font-semibold text-gray-700">To: <span class="font-normal">Chad Basin Development Authority</span>
+        </p>
+        <div class="border-b-2 border-dotted border-gray-300 mt-1"></div>
+    </div>
+
+    <div class="relative w-full md:w-1/2 text-left md:text-right">
+        <p class="font-semibold text-gray-700">Date:
+            <span class="font-normal">17-05-2025</span>
+        </p>
+        <div class="border-b-2 border-dotted border-gray-300 mt-1"></div>
+    </div>
+</div>
+
+<!-- Amount in Words -->
+<div class="mb-6 bg-gray-50 p-4 rounded-md border-l-4 border-indigo-500 shadow-sm">
+    <p class="font-semibold text-gray-700">Amount (in words): <span class="font-normal italic">Four million five
+            hundred sixteen thousand one hundred sixty-two Naira only</span></p>
+</div>
+
+<!-- Itemized Invoice Table -->
+<div class="mb-4 bg-white rounded-md shadow-sm border border-gray-200 overflow-hidden">
+    <table class="invoice-table">
+        <thead>
+            <tr>
+                <th style="width: 70%;">Description</th>
+                <th style="width: 30%;" class="amount">Amount (₦)</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Website Development (One-time)</td>
+                <td class="amount">462,428.00</td>
+            </tr>
+            <tr>
+                <td>Annual Infrastructure & Hosting</td>
+                <td class="amount">610,497.00</td>
+            </tr>
+            <tr>
+                <td>Annual Maintenance & Support</td>
+                <td class="amount">508,671.00</td>
+            </tr>
+            <tr>
+                <td>Google Workspace (15 users)</td>
+                <td class="amount">2,934,566.00</td>
+            </tr>
+            <tr class="subtotal-row">
+                <td>Subtotal</td>
+                <td class="amount">4,177,450.00</td>
+            </tr>
+            <tr>
+                <td>VAT (7.5%)</td>
+                <td class="amount">338,712.00</td>
+            </tr>
+            <tr class="total-row">
+                <td>Total Amount</td>
+                <td class="amount text-indigo-700">4,516,162.00</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<!-- Total Amount -->
+<div
+    class="flex justify-between items-center bg-gradient-to-r from-indigo-50 to-blue-50 p-3 rounded text-lg font-bold receipt-section shadow-sm border border-indigo-100 relative z-10">
+    <p class="text-gray-700">Total Amount:</p>
+    <span class="text-indigo-700">₦4,516,162.00</span>
+</div>
+
+<!-- Payment For -->
+<div class="flex flex-col md:flex-row items-start md:items-center mb-10 gap-2">
+    <span class="font-semibold text-gray-700 md:mr-4 whitespace-nowrap">Payment For:</span>
+    <div class="relative flex-grow w-full">
+        <p class="text-left md:text-center p-2 bg-gray-50 rounded-md">Website Development and Google Workspace Official
+            Email Setup & Training</p>
+        <div class="border-b-2 border-dotted border-gray-300 w-full"></div>
+    </div>
+</div>
+
+<!-- Payment Terms -->
+<div class="mb-4 p-3 bg-gray-50 rounded-md border-l-4 border-gray-400 text-sm">
+    <p class="font-semibold mb-1">Payment Terms:</p>
+    <ul class="list-disc pl-5 text-gray-700">
+        <li>Payment terms: 50% advance, 50% upon completion</li>
+        <li>The WHT (5%) and Stamp Duty (1%) will be deducted by CBDA from the total amount</li>
+        <li>Please provide WHT credit note after deduction</li>
+        <li>Bank transfer preferred</li>
+    </ul>
+</div>
+
+<!-- Deposit & Balance Due Section -->
+<div class="flex flex-col mb-4">
+    <div class="flex flex-col md:flex-row md:items-center gap-6 mb-4">
+        <!-- Deposit -->
+        <div class="w-full md:w-1/2 flex flex-col md:flex-row md:items-center relative">
+            <span class="font-semibold text-gray-700 mb-1 md:mb-0 md:mr-2">Deposit:</span>
+            <span class="md:ml-2 p-2 bg-gray-50 rounded-md w-full md:w-auto text-center text-green-600">₦0.00</span>
+            <div class="border-b-2 border-dotted border-gray-300 absolute bottom-0 left-0 right-0 md:hidden">
+            </div>
+        </div>
+
+        <!-- Balance Due -->
+        <div class="w-full md:w-1/2 flex flex-col md:flex-row md:items-center relative mt-4 md:mt-0">
+            <span class="font-semibold text-gray-700 mb-1 md:mb-0 md:mr-2">Balance Due:</span>
+            <span class="md:ml-2 p-2 bg-gray-50 rounded-md w-full md:w-auto text-center text-red-600">₦0.00</span>
+            <div class="border-b-2 border-dotted border-gray-300 absolute bottom-0 left-0 right-0 md:hidden">
+            </div>
+        </div>
+    </div>
+
+    <!-- Payment Methods & Authorized Signature -->
+    <div class="flex flex-col md:flex-row justify-between gap-8">
+        <!-- Payment Methods -->
+        {{-- <div class="flex flex-wrap gap-4 items-center">
+            <p class="font-semibold text-gray-700 w-full md:w-auto">Payment Method:</p>
+            <label
+                class="flex items-center space-x-2 text-gray-600 bg-white px-2 py-1 rounded-md shadow-sm border border-gray-200">
+                <input type="checkbox" class="form-checkbox h-3 w-3 text-indigo-600" value="cash">
+                <span>Cash</span>
+            </label>
+
+            <label
+                class="flex items-center space-x-2 text-gray-600 bg-white px-2 py-1 rounded-md shadow-sm border border-gray-200">
+                <input type="checkbox" class="form-checkbox h-3 w-3 text-indigo-600" value="pos">
+                <span>POS</span>
+            </label>
+
+            <label
+                class="flex items-center space-x-2 text-gray-600 bg-white px-2 py-1 rounded-md shadow-sm border border-gray-200">
+                <input type="checkbox" class="form-checkbox h-3 w-3 text-indigo-600" value="bank_transfer" >
+                <span>Bank Transfer</span>
+            </label>
+        </div> --}}
+
+        <!-- Authorized Signature -->
+        <div class="flex-1 flex flex-col items-center md:items-end">
+            <div class="flex flex-col items-center">
+                <div class="mb-2 bg-white p-1 rounded-md shadow-sm">
+                    <!-- QR Code placeholder -->
+                    <img src="data:image/png;base64,{{ base64_encode($receipt->qrCodeSvg) }}" alt="QR Code"
+                        class="w-16 h-16">
+                </div>
+                <div class="border-b-2 border-gray-400 w-48 mb-2"></div>
+                <p class="font-semibold text-gray-700">Authorized Signature</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Footer -->
+<div class="mt-2 pt-2 border-t border-gray-200 text-center text-gray-500 text-xs italic relative z-10">
+    <p>Thank you for your business!</p>
+    <p>This invoice was generated electronically and is valid without a physical signature.</p>
+</div>
+</div>
 </body>
 
 </html>

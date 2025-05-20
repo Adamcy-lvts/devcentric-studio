@@ -8,6 +8,7 @@ use App\Models\Approach;
 use App\Models\IndustrySolution;
 use App\Models\SuccessStory;
 use App\Models\WhyChooseUs;
+use Database\Seeders\InvoiceSeeder;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -29,6 +30,7 @@ class DatabaseSeeder extends Seeder
         $this->call(HeroSeeder::class);
         $this->call(IndustrySolutionSeeder::class);
         $this->call(SuccessStorySeeder::class);
+        $this->call(InvoiceSeeder::class);
         $this->call(ApproachSeeder::class);
         $this->call(WhyChooseUsSeeder::class);
         $this->call(OurMissionSeeder::class);
