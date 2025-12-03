@@ -129,7 +129,19 @@ class ViewInvoice extends ViewRecord
                     ->format('a4')
                     ->orientation(Orientation::Portrait) // Invoices are usually portrait
                     ->withBrowsershot(function (Browsershot $browsershot) {
+                        // First try to find Puppeteer's Chrome (latest version)
+                        $puppeteerChrome = null;
+                        $puppeteerPath = '/home/forge/.cache/puppeteer/chrome';
+                        if (is_dir($puppeteerPath)) {
+                            $versions = glob($puppeteerPath . '/linux-*/chrome-linux64/chrome');
+                            if (!empty($versions)) {
+                                rsort($versions);
+                                $puppeteerChrome = $versions[0];
+                            }
+                        }
+
                         $chromePaths = [
+                            $puppeteerChrome,
                             config('app.chrome_path'),
                             '/usr/bin/chromium-browser',
                             '/usr/bin/chromium',
@@ -149,6 +161,13 @@ class ViewInvoice extends ViewRecord
                         if ($chromePath) {
                             $browsershot->setChromePath($chromePath);
                         }
+
+                        // Set custom temp directory with proper permissions
+                        $tempDir = storage_path('app/temp');
+                        if (!File::isDirectory($tempDir)) {
+                            File::makeDirectory($tempDir, 0755, true);
+                        }
+                        $browsershot->setCustomTempPath($tempDir);
 
                         $browsershot->format('A4')
                             ->margins(5, 5, 5, 5)
