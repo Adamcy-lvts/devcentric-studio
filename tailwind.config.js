@@ -29,7 +29,8 @@ export default {
                 warning: colors.yellow,
             },
             fontFamily: {
-                sans: ['Figtree', ...defaultTheme.fontFamily.sans],
+                sans: ['Plus Jakarta Sans', 'Figtree', ...defaultTheme.fontFamily.sans],
+                heading: ['Outfit', ...defaultTheme.fontFamily.sans],
             },
         },
     },

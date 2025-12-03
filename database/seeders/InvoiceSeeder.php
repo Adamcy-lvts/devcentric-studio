@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use App\Models\Invoice;
 use App\Models\InvoiceItem;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class InvoiceSeeder extends Seeder
 {
@@ -13,8 +14,16 @@ class InvoiceSeeder extends Seeder
      */
     public function run(): void
     {
+        // Truncate tables first to avoid duplicate records
+        DB::statement('SET FOREIGN_KEY_CHECKS=0;');
+        DB::table('invoice_items')->truncate();
+        DB::table('invoices')->truncate();
+        DB::statement('SET FOREIGN_KEY_CHECKS=1;');
+        
+        $this->command->info('Invoice tables truncated successfully.');
+
         // Sample Invoice 1: Website Development and Google Workspace
-        $invoice1 = Invoice::create([
+        $invoice1 = new Invoice([
             'client_name' => 'Chad Basin Development Authority',
             'client_email' => 'info@chadbasin.gov.ng',
             'client_phone' => '0801234567',
@@ -37,6 +46,10 @@ class InvoiceSeeder extends Seeder
             'account_name' => 'Devcentric Studio Ltd.',
             'account_number' => '0123456789',
         ]);
+        
+        // This will trigger the generateInvoiceNumber method in the model
+        $invoice1->generateInvoiceNumber();
+        $invoice1->save();
         
         // Create invoice items for Invoice 1
         InvoiceItem::create([
@@ -64,7 +77,7 @@ class InvoiceSeeder extends Seeder
         ]);
         
         // Sample Invoice 2: Healthcare System with Tax
-        $invoice2 = Invoice::create([
+        $invoice2 = new Invoice([
             'client_name' => 'General Hospital Wuse',
             'client_email' => 'admin@ghwuse.gov.ng',
             'client_phone' => '0809876543',
@@ -86,6 +99,10 @@ class InvoiceSeeder extends Seeder
             'account_name' => 'Devcentric Studio Ltd.',
             'account_number' => '0123456789',
         ]);
+        
+        // This will trigger the generateInvoiceNumber method in the model
+        $invoice2->generateInvoiceNumber();
+        $invoice2->save();
         
         // Create invoice items for Invoice 2
         InvoiceItem::create([

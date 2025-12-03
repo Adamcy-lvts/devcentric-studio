@@ -67,6 +67,10 @@ Route::get('/verify-invoice/{id}', [App\Http\Controllers\InvoiceController::clas
     ->name('verify.invoice')
     ->middleware('web');
 
+Route::get('/invoice/{invoice}/pdf', [App\Http\Controllers\InvoiceController::class, 'generatePDF'])
+    ->name('invoice.pdf')
+    ->middleware('auth');
+
 Route::get('/download-receipt/{transaction_id}', [DownloadReceiptController::class, 'downloadReceipt'])->name('download.receipt');
 Route::get('/download-receipt-png/{receipt_id}', [DownloadReceiptController::class, 'downloadReceiptPng'])->name('download.receipt.png');
 
