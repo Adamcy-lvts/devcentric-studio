@@ -21,7 +21,7 @@ jobs:
           port: 22 
           script: |
             cd /home/forge/devcentricstudios.com
-            # Fetch latest code and force reset to match remote (discard local changes)
+            # Fetch latest code and force reset to match remote
             git fetch origin main
             git reset --hard origin/main
             git clean -fd
@@ -29,16 +29,9 @@ jobs:
             composer install --optimize-autoloader --no-dev
             # Run migrations
             php artisan migrate --force
-            # Clear all caches
-            php artisan config:clear
-            php artisan route:clear
-            php artisan view:clear
-            php artisan cache:clear
-            php artisan filament:optimize-clear
-            # Rebuild caches
-            php artisan config:cache
-            php artisan route:cache
-            php artisan event:cache
+            # Clear and rebuild all caches (optimized single command)
+            php artisan optimize:clear
+            php artisan optimize
             # Restart queue workers
             php artisan queue:restart
 

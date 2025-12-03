@@ -90,13 +90,18 @@ class Invoice extends Model
         });
         
         static::saving(function ($invoice) {
-            // Recalculate totals when saving an existing invoice
-            if ($invoice->tax_rate > 0 && $invoice->subtotal > 0) {
-                $invoice->tax_amount = $invoice->subtotal * ($invoice->tax_rate / 100);
+            // Only recalculate if values are not already set (e.g., from form)
+            // This prevents conflicts with Filament form calculations
+            if ($invoice->isDirty(['subtotal', 'discount', 'tax_rate', 'deposit'])) {
+                if ($invoice->tax_rate > 0 && $invoice->subtotal > 0) {
+                    $invoice->tax_amount = ($invoice->subtotal - $invoice->discount) * ($invoice->tax_rate / 100);
+                } else {
+                    $invoice->tax_amount = 0;
+                }
+
+                $invoice->total_amount = ($invoice->subtotal - $invoice->discount) + $invoice->tax_amount;
+                $invoice->balance_due = $invoice->total_amount - $invoice->deposit;
             }
-            
-            $invoice->total_amount = ($invoice->subtotal - $invoice->discount) + $invoice->tax_amount;
-            $invoice->balance_due = $invoice->total_amount - $invoice->deposit;
         });
     }
 
