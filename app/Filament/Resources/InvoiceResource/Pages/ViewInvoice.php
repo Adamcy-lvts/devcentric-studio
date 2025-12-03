@@ -129,20 +129,7 @@ class ViewInvoice extends ViewRecord
                     ->format('a4')
                     ->orientation(Orientation::Portrait) // Invoices are usually portrait
                     ->withBrowsershot(function (Browsershot $browsershot) {
-                        // First try to find Puppeteer's Chrome (latest version)
-                        $puppeteerChrome = null;
-                        $puppeteerPath = '/home/forge/.cache/puppeteer/chrome';
-                        if (is_dir($puppeteerPath)) {
-                            $versions = glob($puppeteerPath . '/linux-*/chrome-linux64/chrome');
-                            if (!empty($versions)) {
-                                // Sort to get the latest version
-                                rsort($versions);
-                                $puppeteerChrome = $versions[0];
-                            }
-                        }
-
                         $chromePaths = [
-                            $puppeteerChrome,
                             config('app.chrome_path'),
                             '/usr/bin/chromium-browser',
                             '/usr/bin/chromium',
