@@ -20,21 +20,27 @@ jobs:
           passphrase: ${{ secrets.SSH_PASSPHRASE }}
           port: 22 
           script: |
-            cd /home/forge/devcentricstudios.com  # Path to your app on the droplet
-            git pull origin main
+            cd /home/forge/devcentricstudios.com
+            # Fetch latest code and force reset to match remote (discard local changes)
+            git fetch origin main
+            git reset --hard origin/main
+            git clean -fd
+            # Install PHP dependencies
             composer install --optimize-autoloader --no-dev
-            npm install
-            npm run build
+            # Run migrations
             php artisan migrate --force
+            # Clear all caches
             php artisan config:clear
             php artisan route:clear
             php artisan view:clear
             php artisan cache:clear
             php artisan filament:optimize-clear
-            php artisan optimize:clear
+            # Rebuild caches
             php artisan config:cache
             php artisan route:cache
-            php artisan view:cache
+            php artisan event:cache
+            # Restart queue workers
+            php artisan queue:restart
 
 
         
