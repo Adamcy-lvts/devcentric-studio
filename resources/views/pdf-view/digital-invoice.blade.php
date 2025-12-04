@@ -103,24 +103,28 @@
         </div>
 
         <!-- Info Bar -->
-        <div class="relative z-10 bg-slate-50 rounded-lg p-3 mb-6 flex justify-between items-center border border-slate-100">
+        <div class="relative z-10 bg-slate-50 rounded-lg p-3 mb-4 flex flex-wrap justify-between items-center gap-3 border border-slate-100">
             <div class="flex flex-col">
                 <span class="text-xs font-bold text-slate-400 uppercase tracking-wider">Invoice No</span>
-                <span class="text-sm font-bold text-slate-800">{{ $invoice->invoice_number }}</span>
+                <span class="text-xs font-bold text-slate-800">{{ $invoice->invoice_number }}</span>
+            </div>
+            <div class="flex flex-col text-center">
+                <span class="text-xs font-bold text-slate-400 uppercase tracking-wider">Service Period</span>
+                <span class="text-xs font-bold text-slate-800">April 2026 – April 2027</span>
             </div>
             <div class="flex flex-col text-right">
                 <span class="text-xs font-bold text-slate-400 uppercase tracking-wider">Date</span>
-                <span class="text-sm font-bold text-slate-800">{{ date('d M Y', strtotime($invoice->date)) }}</span>
+                <span class="text-xs font-bold text-slate-800">{{ date('d M Y', strtotime($invoice->date)) }}</span>
             </div>
         </div>
 
         <!-- Addresses -->
-        <div class="relative z-10 flex justify-between mb-8 gap-10">
+        <div class="relative z-10 flex justify-between mb-6 gap-10">
             <!-- Bill To -->
             <div class="w-1/2">
                 <h3 class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2 border-b border-slate-100 pb-1">Bill To</h3>
                 <div class="text-slate-700">
-                    <p class="font-bold text-sm text-slate-900 mb-1">{{ $invoice->client_name }}</p>
+                    <p class="font-bold text-xs text-slate-900 mb-1">{{ $invoice->client_name }}</p>
                     @if($invoice->client_address)
                         <p class="text-xs leading-relaxed mb-1 text-slate-500">{{ $invoice->client_address }}</p>
                     @endif
@@ -135,7 +139,7 @@
             <div class="w-1/2 text-right">
                 <h3 class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2 border-b border-slate-100 pb-1">From</h3>
                 <div class="text-slate-700">
-                    <p class="font-bold text-sm text-slate-900 mb-1">{{ $companyDetails['name'] ?? 'Devcentric Studio Ltd.' }}</p>
+                    <p class="font-bold text-xs text-slate-900 mb-1">{{ $companyDetails['name'] ?? 'Devcentric Studio Ltd.' }}</p>
                     <div class="space-y-0.5 text-xs text-slate-500">
                         <p>{{ $companyDetails['phone'] ?? '+234 706 074 1999' }}</p>
                         <p>{{ $companyDetails['email'] ?? 'info@devcentricstudios.com' }}</p>
@@ -146,7 +150,7 @@
         </div>
 
         <!-- Items Table -->
-        <div class="relative z-10 mb-6">
+        <div class="relative z-10 mb-4">
             <table class="w-full">
                 <thead>
                     <tr class="border-b-2 border-slate-100">
@@ -179,31 +183,28 @@
         <!-- Totals & Notes -->
         <div class="relative z-10 flex gap-12">
             <div class="w-7/12 space-y-4">
-                <!-- Amount in Words -->
-                <div>
-                    <p class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">Amount in Words</p>
-                    <p class="text-xs text-slate-600 italic capitalize border-l-2 border-slate-200 pl-3">{{ $amountInWords }}</p>
-                </div>
-
-                <!-- Bank Details -->
-                @if($invoice->status !== 'paid')
-                <div>
-                    <p class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-3">Payment Details</p>
-                    <div class="bg-slate-50 rounded p-4 text-xs text-slate-600 space-y-1 border border-slate-100">
-                        <div class="flex justify-between"><span class="text-slate-400">Bank:</span> <span class="font-medium text-slate-800">{{ $invoice->bank_name ?? 'Access Bank' }}</span></div>
-                        <div class="flex justify-between"><span class="text-slate-400">Account No:</span> <span class="font-bold text-slate-800 tracking-wider">{{ $invoice->account_number ?? '0123456789' }}</span></div>
-                        <div class="flex justify-between"><span class="text-slate-400">Account Name:</span> <span class="font-medium text-slate-800">{{ $invoice->account_name ?? 'Devcentric Studio Ltd.' }}</span></div>
+               
+               
+                    <!-- Bank Details -->
+                    @if($invoice->status !== 'paid')
+                    <div class="flex-1">
+                        <p class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">Payment Details</p>
+                        <div class="bg-slate-50 rounded p-3 text-xs text-slate-600 space-y-1 border border-slate-100">
+                            <div class="flex justify-between gap-2"><span class="text-slate-400">Bank:</span> <span class="font-medium text-slate-800 text-right">{{ $invoice->bank_name ?? 'Access Bank' }}</span></div>
+                            <div class="flex justify-between gap-2"><span class="text-slate-400">Acc No:</span> <span class="font-bold text-slate-800 tracking-wider text-right">{{ $invoice->account_number ?? '0123456789' }}</span></div>
+                            <div class="flex justify-between gap-2"><span class="text-slate-400">Name:</span> <span class="font-medium text-slate-800 text-right">{{ $invoice->account_name ?? 'Devcentric Studio Ltd.' }}</span></div>
+                        </div>
                     </div>
-                </div>
-                @endif
-                
-                <!-- Notes -->
-                @if($invoice->notes)
-                <div>
-                    <p class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">Notes</p>
-                    <p class="text-xs text-slate-500">{{ $invoice->notes }}</p>
-                </div>
-                @endif
+                    @endif
+                    
+                    <!-- Notes -->
+                    @if($invoice->notes)
+                    <div class="flex-1">
+                        <p class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">Notes</p>
+                        <p class="text-xs text-slate-500 leading-relaxed">{!! $invoice->notes !!}</p>
+                    </div>
+                    @endif
+               
             </div>
 
             <div class="w-5/12">
@@ -229,11 +230,17 @@
                         <span class="text-xs font-black text-indigo-600">{{ formatNaira($invoice->total_amount) }}</span>
                     </div>
                 </div>
+                 <!-- Amount in Words -->
+                <div>
+                    <p class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">Amount in Words</p>
+                    <p class="text-xs text-slate-600 italic capitalize border-l-2 border-slate-200 pl-3">{{ $amountInWords }}</p>
+                </div>
+
             </div>
         </div>
 
         <!-- Footer -->
-        <div class="relative z-10 mt-auto pt-4 border-t border-slate-100 flex justify-between items-end">
+        <div class="relative z-10 mt-auto  border-t border-slate-100 flex justify-between items-end">
             <div class="text-xs text-slate-400 italic">
                 <p>Thank you for your business!</p>
                 <p>This invoice is valid without a physical signature.</p>

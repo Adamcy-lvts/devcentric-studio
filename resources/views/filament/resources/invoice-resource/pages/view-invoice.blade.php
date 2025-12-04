@@ -112,10 +112,14 @@
             </div>
 
             <!-- Info Bar -->
-            <div class="relative z-10 bg-gray-50 rounded-lg p-4 mb-10 flex flex-wrap justify-between items-center border border-gray-100">
+            <div class="relative z-10 bg-gray-50 rounded-lg p-4 mb-10 flex flex-wrap justify-between items-center gap-4 border border-gray-100">
                 <div class="flex flex-col">
                     <span class="text-xs font-bold text-gray-400 uppercase tracking-wider">Invoice No</span>
                     <span class="text-lg font-bold text-gray-800">{{ $invoice->invoice_number }}</span>
+                </div>
+                <div class="flex flex-col text-center">
+                    <span class="text-xs font-bold text-gray-400 uppercase tracking-wider">Service Period</span>
+                    <span class="text-lg font-bold text-gray-800">April 2026 – April 2027</span>
                 </div>
                 <div class="flex flex-col text-right">
                     <span class="text-xs font-bold text-gray-400 uppercase tracking-wider">Date</span>
@@ -155,7 +159,7 @@
             </div>
 
             <!-- Items Table -->
-            <div class="relative z-10 mb-10">
+            <div class="relative z-10 mb-6">
                 <table class="w-full">
                     <thead>
                         <tr class="border-b-2 border-gray-100">
@@ -188,12 +192,7 @@
             <!-- Totals & Notes -->
             <div class="relative z-10 flex flex-col md:flex-row gap-12">
                 <div class="w-full md:w-7/12 space-y-8">
-                    <!-- Amount in Words -->
-                    <div>
-                        <p class="text-xs font-bold text-gray-400 uppercase tracking-wider mb-2">Amount in Words</p>
-                        <p class="text-sm text-gray-600 italic capitalize border-l-2 border-gray-200 pl-3">{{ $amountInWords }}</p>
-                    </div>
-
+                  
                     <!-- Bank Details -->
                     @if($invoice->status !== 'paid')
                     <div>
@@ -210,7 +209,7 @@
                     @if($invoice->notes)
                     <div>
                         <p class="text-xs font-bold text-gray-400 uppercase tracking-wider mb-2">Notes</p>
-                        <p class="text-sm text-gray-500">{{ $invoice->notes }}</p>
+                        <p class="text-sm text-gray-500">{!! $invoice->notes !!}</p>
                     </div>
                     @endif
                 </div>
@@ -238,6 +237,13 @@
                             <span class="text-2xl font-black text-indigo-600">{{ formatNaira($invoice->total_amount) }}</span>
                         </div>
                     </div>
+
+                      <!-- Amount in Words -->
+                    <div>
+                        <p class="text-xs font-bold text-gray-400 uppercase tracking-wider mb-2">Amount in Words</p>
+                        <p class="text-sm text-gray-600 italic capitalize border-l-2 border-gray-200 pl-3">{{ $amountInWords }}</p>
+                    </div>
+
                 </div>
             </div>
 
