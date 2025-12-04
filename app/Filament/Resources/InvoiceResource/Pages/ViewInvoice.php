@@ -39,7 +39,7 @@ class ViewInvoice extends ViewRecord
             'rc_number' => '6875953',
             'email' => 'info@devcentricstudios.com',
             'website' => 'www.devcentricstudios.com',
-            'phone' => '+234 706 074 1999 | +234 707 194 0611',
+            'phone' => '07060741999 | 08081816703',
             'logo' => 'img/devcentric_logo.png',
         ];
 
