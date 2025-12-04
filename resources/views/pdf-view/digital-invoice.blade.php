@@ -82,11 +82,11 @@
         @endif
 
         <!-- Header -->
-        <div class="relative z-10 flex justify-between items-center mb-6">
+        <div class="relative z-10 flex justify-between items-center mb-4">
             <!-- Logo & RC -->
             <div class="flex flex-col items-start">
                 @if (isset($companyLogo) && !empty($companyLogo))
-                    <img src="{{ $companyLogo }}" alt="Company Logo" class="w-32 mb-2">
+                    <img src="{{ $companyLogo }}" alt="Company Logo" class="w-28 mb-2">
                 @else
                     <div class="flex items-center gap-2 mb-2">
                         <div class="w-8 h-8 bg-red-600 rounded-lg flex items-center justify-center shadow-sm">
@@ -99,7 +99,7 @@
             </div>
 
             <!-- Title -->
-            <h1 class="text-5xl font-black text-slate-100 tracking-[0.2em]">INVOICE</h1>
+            <h1 class="text-4xl font-black text-slate-100 tracking-[0.2em]">INVOICE</h1>
         </div>
 
         <!-- Info Bar -->
@@ -119,7 +119,7 @@
         </div>
 
         <!-- Addresses -->
-        <div class="relative z-10 flex justify-between mb-6 gap-10">
+        <div class="relative z-10 flex justify-between mb-5 gap-10">
             <!-- Bill To -->
             <div class="w-1/2">
                 <h3 class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2 border-b border-slate-100 pb-1">Bill To</h3>
