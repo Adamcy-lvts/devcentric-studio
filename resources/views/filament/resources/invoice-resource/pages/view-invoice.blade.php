@@ -172,7 +172,7 @@
                     </thead>
                     <tbody class="divide-y divide-gray-50">
                         @foreach($invoice->items as $index => $item)
-                            <tr>
+                            <tr class="py-2">
                                 <td class="py-4 text-gray-400 text-sm font-medium">{{ str_pad($index + 1, 2, '0', STR_PAD_LEFT) }}</td>
                                 <td class="py-4">
                                     <p class="text-gray-800 font-bold text-sm">{{ $item->name }}</p>

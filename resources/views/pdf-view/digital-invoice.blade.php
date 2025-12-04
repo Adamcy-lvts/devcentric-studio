@@ -99,7 +99,7 @@
             </div>
 
             <!-- Title -->
-            <h1 class="text-4xl font-black text-slate-100 tracking-[0.2em]">INVOICE</h1>
+            <h1 class="text-5xl font-black text-slate-100 tracking-[0.2em]">INVOICE</h1>
         </div>
 
         <!-- Info Bar -->
@@ -119,7 +119,7 @@
         </div>
 
         <!-- Addresses -->
-        <div class="relative z-10 flex justify-between mb-5 gap-10">
+        <div class="relative z-10 flex justify-between mb-4 gap-10">
             <!-- Bill To -->
             <div class="w-1/2">
                 <h3 class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2 border-b border-slate-100 pb-1">Bill To</h3>
@@ -163,7 +163,7 @@
                 </thead>
                 <tbody class="divide-y divide-slate-50">
                     @foreach($invoice->items as $index => $item)
-                        <tr>
+                        <tr class="py-2">
                             <td class="py-2 text-slate-400 text-xs font-medium">{{ str_pad($index + 1, 2, '0', STR_PAD_LEFT) }}</td>
                             <td class="py-2">
                                 <p class="text-slate-800 font-bold text-xs">{{ $item->name }}</p>
@@ -190,7 +190,7 @@
                     <div class="flex-1">
                         <p class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">Payment Details</p>
                         <div class="bg-slate-50 rounded p-3 text-xs text-slate-600 space-y-1 border border-slate-100">
-                            <div class="flex justify-between gap-2"><span class="text-slate-400">Bank:</span> <span class="font-medium text-slate-800 text-right">{{ $invoice->bank_name ?? 'Access Bank' }}</span></div>
+                            <div class="flex  justify-between gap-2"><span class="text-slate-400">Bank:</span> <span class="font-medium text-slate-800 text-right">{{ $invoice->bank_name ?? 'Access Bank' }}</span></div>
                             <div class="flex justify-between gap-2"><span class="text-slate-400">Acc No:</span> <span class="font-bold text-slate-800 tracking-wider text-right">{{ $invoice->account_number ?? '0123456789' }}</span></div>
                             <div class="flex justify-between gap-2"><span class="text-slate-400">Name:</span> <span class="font-medium text-slate-800 text-right">{{ $invoice->account_name ?? 'Devcentric Studio Ltd.' }}</span></div>
                         </div>
